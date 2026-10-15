@@ -1,0 +1,7 @@
+{
+  "local_contract_failures": 12,
+  "local_manifest_failures": 3,
+  "spark_red_run": 126375746438073,
+  "spark_red_task": 51985960214107,
+  "spark_red_error": "AssertionError: Missing normalized, validated candidate payload"
+}

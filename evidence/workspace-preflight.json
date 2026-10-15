@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-15",
+  "profile": "M2M",
+  "host": "https://dbc-9d765ae8-3bb9.cloud.databricks.com",
+  "run_id": 44570688159001,
+  "task_run_id": 657392076730641,
+  "status": "BLOCKED",
+  "error": "[UNAUTHORIZED_ACCESS] Unauthorized access:\nPERMISSION_DENIED: User does not have CREATE SCHEMA on Catalog 'workspace'. SQLSTATE: 42501",
+  "cli_version": "1.16.1",
+  "local_python": "3.14.4",
+  "serverless_python_observed_in_trace": "3.11",
+  "warehouse_id": "ec9f4c81bc387245"
+}

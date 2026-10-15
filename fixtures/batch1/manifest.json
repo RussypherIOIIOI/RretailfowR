@@ -1,0 +1,24 @@
+{
+  "contract_version": 1,
+  "batch_id": "batch1",
+  "files": [
+    {
+      "entity": "customers",
+      "filename": "customers.csv",
+      "sha256": "39e3c81fa4690fa087a3e3e9a7e866758053369d193fa555e7dc885ce6bad1ff",
+      "record_count": 2
+    },
+    {
+      "entity": "products",
+      "filename": "products.csv",
+      "sha256": "111706cd8c1b7375b7fd267a0a6601f2f9eafbefc4b6db83251afd3d9cd87828",
+      "record_count": 2
+    },
+    {
+      "entity": "orders",
+      "filename": "orders.csv",
+      "sha256": "ec0601d79bae093fcb4e6b2f72f09ac489fe20d20550073f2d906bf93cb3b5d6",
+      "record_count": 5
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+order_id,line_id,customer_id,product_id,order_date,sale_region,quantity,unit_price,discount_amount,source_revision,source_updated_at
+A1,1,C1,P1,2026-01-01,WEST,2,10.00,0.00,1,2026-01-01T00:00:00Z
+A2,1,C2,P2,2026-01-01,EAST,1,30.00,5.00,1,2026-01-01T00:00:00Z
+A1,1,C1,P1,2026-01-01,WEST,2,10.00,0.00,1,2026-01-01T00:00:00Z
+BAD,1,C1,P1,2026-01-01,WEST,0,10.00,0.00,1,2026-01-01T00:00:00Z
+A2,2,C2,P1,2026-01-01,EAST,1,10.00,0.00,1,2026-01-01T00:00:00Z

@@ -1,0 +1,12 @@
+{
+  "run_name": "RetailFlow capability preflight",
+  "tasks": [
+    {
+      "task_key": "preflight",
+      "timeout_seconds": 600,
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/preflight_probe"
+      }
+    }
+  ]
+}

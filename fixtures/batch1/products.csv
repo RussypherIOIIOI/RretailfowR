@@ -1,0 +1,3 @@
+product_id,product_name,category,current_price,source_revision,source_updated_at
+P1,Mug,Home,10.00,1,2026-01-01T00:00:00Z
+P2,Kettle,Home,30.00,1,2026-01-01T00:00:00Z

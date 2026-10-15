@@ -1,0 +1,8 @@
+{
+  "run_id": 963051473837153,
+  "task_run_id": 1078821230668557,
+  "result": "SUCCESS",
+  "checks": 4,
+  "spark": "4.2.0",
+  "scope": "Read-only DataFrame validation and revision selection; no Delta persistence tested"
+}
