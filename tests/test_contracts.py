@@ -112,3 +112,39 @@ class ResolutionTests(unittest.TestCase):
         self.assertEqual(
             self.outcomes([candidate("a", 1, "x")], candidate("t", 1, "x")), {"a": "exact_duplicate"}
         )
+
+
+class TimestampBoundaryTests(unittest.TestCase):
+    def test_invalid_offset_is_rejected(self):
+        self.assertIn(
+            "INVALID_SOURCE_UPDATED_AT",
+            validate("orders", {**ORDER, "source_updated_at": "2026-01-01T00:00:00+00:99"})[1],
+        )
+
+    def test_utc_overflow_is_quarantined(self):
+        for value in ("0001-01-01T00:00:00+01:00", "9999-12-31T23:59:59-01:00"):
+            self.assertIn(
+                "INVALID_SOURCE_UPDATED_AT", validate("orders", {**ORDER, "source_updated_at": value})[1]
+            )
+
+
+class CsvBoundaryTests(unittest.TestCase):
+    def test_unicode_separator_is_field_content_not_a_record_boundary(self):
+        raw = "customer_id,customer_name,home_region,source_revision,source_updated_at\nC1,Ada\u2028Lovelace,WEST,1,2026-01-01T00:00:00Z\n".encode(
+            "utf8"
+        )
+        rows = parse_csv("customers", raw, "b", "x.csv")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["parse_reasons"], [])
+
+
+class InvalidCorrectionTests(unittest.TestCase):
+    def test_invalid_timestamp_cannot_win_over_valid_revision(self):
+        normalized, reasons = validate(
+            "orders", {**ORDER, "source_revision": "2", "source_updated_at": "2026-01-01T00:00:00+00:99"}
+        )
+        outcomes = resolve(
+            [candidate("new", normalized["source_revision"], "different", reasons)],
+            candidate("target", 1, "old"),
+        )
+        self.assertEqual(outcomes[0]["disposition"], "invalid")

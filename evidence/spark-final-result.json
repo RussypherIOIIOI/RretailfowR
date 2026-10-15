@@ -1,0 +1,14 @@
+{
+  "run_id": 553452324904270,
+  "task_run_id": 361606882192218,
+  "state": {
+    "life_cycle_state": "TERMINATED",
+    "result_state": "SUCCESS",
+    "state_message": "",
+    "user_cancelled_or_timedout": false
+  },
+  "result": {
+    "result": "{\"python\": \"3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]\", \"checks\": 9, \"status\": \"passed\", \"spark\": \"4.2.0\"}",
+    "truncated": false
+  }
+}

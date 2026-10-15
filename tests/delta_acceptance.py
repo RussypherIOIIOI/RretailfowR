@@ -31,7 +31,7 @@ def run(spark, catalog, suffix, expected_path):
     def pipeline(batch, evaluation, replay=(), fault=""):
         lake.begin(evaluation, batch, list(replay))
         lake.ingest(Path(cfg.volume) / batch, evaluation, fault)
-        lake.silver(evaluation)
+        lake.silver(evaluation, fault)
         if fault == "after_silver":
             raise InjectedFailure(fault)
         lake.stage(evaluation, fault)
@@ -61,6 +61,14 @@ def run(spark, catalog, suffix, expected_path):
     else:
         raise AssertionError("Fault not injected")
     assert lake.current_id() == old_publication
+    for injected in ("after_freeze_customers", "after_merge_customers", "during_stage"):
+        try:
+            pipeline("batch2", "second", fault=injected)
+        except InjectedFailure:
+            pass
+        else:
+            raise AssertionError("Fault not injected: " + injected)
+        assert lake.current_id() == old_publication
     try:
         pipeline("batch2", "second", fault="after_silver")
     except InjectedFailure:
@@ -103,6 +111,24 @@ def run(spark, catalog, suffix, expected_path):
     assert rejects.filter("disposition='invalid' AND size(reasons)>1").count() > 0
     assert rejects.filter("disposition='conflict'").count() >= 3
     assert lake.read("ops", "evaluations").filter("evaluation_id='replay' AND kind='row'").count() == 18
+    # Roll back an unpublished evaluation without deleting its audit history.
+    before = lake.typed("orders").orderBy("order_id", "line_id").collect()
+    lake.begin("abandoncheck", "arrival", [])
+    lake.silver("abandoncheck")
+    # A deliberately wrong unpublished Silver edit exercises restoration, not just status.
+    spark.sql(f"UPDATE {lake.name('silver', 'orders')} SET source_revision=2147483647")
+    lake.abandon("abandoncheck", confirm=True)
+    after = lake.typed("orders").orderBy("order_id", "line_id").collect()
+    assert before == after
+    assert lake.read("silver", "orders").filter("source_revision=2147483647").count() == 0
+    try:
+        lake.stage("abandoncheck")
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Abandoned evaluation was executable")
+    pipeline("arrival", "afterrollback")
+    check("replay")
     # Changed bytes under an existing batch identity fail before affecting data.
     with (directory / "renamed.csv").open("ab") as stream:
         stream.write(b"changed\n")
@@ -112,4 +138,17 @@ def run(spark, catalog, suffix, expected_path):
         pass
     else:
         raise AssertionError("Changed bytes accepted")
+    # Even a correctly refreshed manifest cannot reuse the old batch ID.
+    from retailflow.contracts import digest
+
+    data = (directory / "renamed.csv").read_bytes()
+    manifest["files"][2]["sha256"] = digest(data)
+    manifest["files"][2]["record_count"] += 1
+    (directory / "manifest.json").write_text(json.dumps(manifest))
+    try:
+        lake.ingest(directory, "tamper")
+    except ValueError as error:
+        assert "Immutable batch ID" in str(error), str(error)
+    else:
+        raise AssertionError("Changed immutable batch accepted")
     return {"status": "passed", "checks": checks, "namespace": cfg.prefix, "spark": spark.version}

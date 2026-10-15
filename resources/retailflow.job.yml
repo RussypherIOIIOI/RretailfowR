@@ -1,0 +1,162 @@
+{
+  "resources": {
+    "jobs": {
+      "retailflow": {
+        "name": "RetailFlow — Sales Lakehouse",
+        "max_concurrent_runs": 1,
+        "timeout_seconds": 7200,
+        "queue": {
+          "enabled": true
+        },
+        "parameters": [
+          {
+            "name": "catalog",
+            "default": "${var.catalog}"
+          },
+          {
+            "name": "schema_prefix",
+            "default": "${var.schema_prefix}"
+          },
+          {
+            "name": "batch_id",
+            "default": "batch1"
+          },
+          {
+            "name": "evaluation_id",
+            "default": "{{job.run_id}}"
+          },
+          {
+            "name": "replay_batches",
+            "default": ""
+          },
+          {
+            "name": "max_reject_fraction",
+            "default": "1.0"
+          }
+        ],
+        "environments": [
+          {
+            "environment_key": "default",
+            "spec": {
+              "environment_version": "5",
+              "dependencies": [
+                "../dist/*.whl"
+              ]
+            }
+          }
+        ],
+        "tasks": [
+          {
+            "task_key": "preflight",
+            "environment_key": "default",
+            "max_retries": 1,
+            "min_retry_interval_millis": 30000,
+            "retry_on_timeout": false,
+            "timeout_seconds": 1200,
+            "notebook_task": {
+              "notebook_path": "../notebooks/task.py",
+              "base_parameters": {
+                "stage": "preflight"
+              }
+            }
+          },
+          {
+            "task_key": "bronze",
+            "depends_on": [
+              {
+                "task_key": "preflight"
+              }
+            ],
+            "environment_key": "default",
+            "max_retries": 1,
+            "min_retry_interval_millis": 30000,
+            "retry_on_timeout": false,
+            "timeout_seconds": 1200,
+            "notebook_task": {
+              "notebook_path": "../notebooks/task.py",
+              "base_parameters": {
+                "stage": "bronze"
+              }
+            }
+          },
+          {
+            "task_key": "silver",
+            "depends_on": [
+              {
+                "task_key": "bronze"
+              }
+            ],
+            "environment_key": "default",
+            "max_retries": 1,
+            "min_retry_interval_millis": 30000,
+            "retry_on_timeout": false,
+            "timeout_seconds": 1200,
+            "notebook_task": {
+              "notebook_path": "../notebooks/task.py",
+              "base_parameters": {
+                "stage": "silver"
+              }
+            }
+          },
+          {
+            "task_key": "gold",
+            "depends_on": [
+              {
+                "task_key": "silver"
+              }
+            ],
+            "environment_key": "default",
+            "max_retries": 1,
+            "min_retry_interval_millis": 30000,
+            "retry_on_timeout": false,
+            "timeout_seconds": 1200,
+            "notebook_task": {
+              "notebook_path": "../notebooks/task.py",
+              "base_parameters": {
+                "stage": "gold"
+              }
+            }
+          },
+          {
+            "task_key": "quality",
+            "depends_on": [
+              {
+                "task_key": "gold"
+              }
+            ],
+            "environment_key": "default",
+            "max_retries": 1,
+            "min_retry_interval_millis": 30000,
+            "retry_on_timeout": false,
+            "timeout_seconds": 1200,
+            "notebook_task": {
+              "notebook_path": "../notebooks/task.py",
+              "base_parameters": {
+                "stage": "quality"
+              }
+            }
+          },
+          {
+            "task_key": "publish",
+            "depends_on": [
+              {
+                "task_key": "quality"
+              }
+            ],
+            "environment_key": "default",
+            "max_retries": 1,
+            "min_retry_interval_millis": 30000,
+            "retry_on_timeout": false,
+            "timeout_seconds": 1200,
+            "notebook_task": {
+              "notebook_path": "../notebooks/task.py",
+              "base_parameters": {
+                "stage": "publish"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

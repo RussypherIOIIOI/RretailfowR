@@ -3,8 +3,9 @@
 import json
 from datetime import datetime, timezone
 from retailflow.config import Config, token
-from retailflow.contracts import RULESET, canonical, digest
+from retailflow.contracts import FIELDS, RULESET, canonical, digest
 from retailflow.manifest import load_batch
+from retailflow.lifecycle import may_start, may_abandon
 from retailflow.spark_transform import choose, foreign_keys, prepare
 
 BRONZE_SCHEMA = """occurrence_id string,batch_id string,entity string,filename string,file_hash string,
@@ -15,11 +16,11 @@ EVALUATION_SCHEMA = """scope_id string,evaluation_id string,entity string,kind s
 business_key string,source_revision long,payload_hash string,payload_json string,reasons array<string>,
 disposition string,evaluated_at timestamp,ruleset string"""
 PAYLOAD_SCHEMAS = {
-    "customers": "customer_id string,customer_name string,home_region string,source_revision long,source_updated_at string",
-    "products": "product_id string,product_name string,category string,current_price decimal(18,2),source_revision long,source_updated_at string",
+    "customers": "customer_id string,customer_name string,home_region string,source_revision long,source_updated_at timestamp",
+    "products": "product_id string,product_name string,category string,current_price decimal(18,2),source_revision long,source_updated_at timestamp",
     "orders": """order_id string,line_id string,customer_id string,product_id string,order_date date,
 sale_region string,quantity long,unit_price decimal(18,2),discount_amount decimal(18,2),
-net_sales decimal(18,2),source_revision long,source_updated_at string""",
+net_sales decimal(18,2),source_revision long,source_updated_at timestamp""",
 }
 SNAPSHOTS = (
     "fact_order_line",
@@ -56,7 +57,8 @@ class Lakehouse:
         self.spark.sql(f"CREATE VOLUME IF NOT EXISTS {self.name('bronze', 'fixtures')}")
         self._create("bronze", "records", BRONZE_SCHEMA)
         for entity in PAYLOAD_SCHEMAS:
-            self._create("silver", entity, SILVER_SCHEMA)
+            typed_schema = PAYLOAD_SCHEMAS[entity].replace(",source_revision long", "")
+            self._create("silver", entity, SILVER_SCHEMA + "," + typed_schema)
         self._create(
             "ops",
             "batches",
@@ -65,12 +67,14 @@ class Lakehouse:
         self._create(
             "ops",
             "runs",
-            "evaluation_id string,batch_id string,replay_json string,sequence long,created_at timestamp,status string",
+            "evaluation_id string,batch_id string,replay_json string,sequence long,created_at timestamp,status string,silver_versions_json string",
         )
         self._create("ops", "evaluations", EVALUATION_SCHEMA, "scope_id")
         self._create("ops", "stages", "publication_id string,sequence long,status string,staged_at timestamp")
         self._create(
-            "gold", "publication", "singleton int,publication_id string,sequence long,published_at timestamp"
+            "gold",
+            "publication",
+            "singleton int,publication_id string,sequence long,published_at timestamp,publication_ids array<string>",
         )
         self._create(
             "ops", "gates", "publication_id string,passed boolean,checked_at timestamp,report_json string"
@@ -106,15 +110,29 @@ class Lakehouse:
         replay = sorted(set(token(x) for x in replay))
         existing = self.read("ops", "runs").filter(F.col("evaluation_id") == evaluation).collect()
         if existing:
+            if existing[0].status in ("abandoned", "abandoning"):
+                raise ValueError("Evaluation was abandoned or rollback must finish")
             if existing[0].batch_id != batch or existing[0].replay_json != canonical(replay):
                 raise ValueError("Evaluation ID reused with different batch or replay scope")
             return
         current = self.read("gold", "publication").collect()
         last_published = current[0].sequence if current else 0
-        if self.read("ops", "runs").filter(F.col("sequence") > last_published).count():
+        if not may_start([r.asDict() for r in self.read("ops", "runs").collect()], last_published):
             raise ValueError("Resume the unfinished evaluation before starting another")
         sequence = (self.read("ops", "runs").agg(F.max("sequence")).first()[0] or 0) + 1
-        row = (evaluation, batch, canonical(replay), sequence, datetime.now(timezone.utc), "started")
+        versions = {
+            entity: self.spark.sql(f"DESCRIBE HISTORY {self.name('silver', entity)} LIMIT 1").first().version
+            for entity in PAYLOAD_SCHEMAS
+        }
+        row = (
+            evaluation,
+            batch,
+            canonical(replay),
+            sequence,
+            datetime.now(timezone.utc),
+            "started",
+            canonical(versions),
+        )
         self._merge(
             "ops",
             "runs",
@@ -128,7 +146,41 @@ class Lakehouse:
         rows = self.read("ops", "runs").filter(F.col("evaluation_id") == token(evaluation)).collect()
         if len(rows) != 1:
             raise ValueError("Run preflight must create one evaluation")
+        if rows[0].status in ("abandoned", "abandoning"):
+            raise ValueError("Abandoned evaluations cannot execute; finish rollback if necessary")
         return rows[0]
+
+    def abandon(self, evaluation, confirm=False):
+        """Explicit rollback of an unpublished run; single writer and no retention vacuum required."""
+        from pyspark.sql import functions as F
+
+        if not confirm:
+            raise ValueError("Rollback requires confirm=True; it restores pre-run Silver versions")
+        token(evaluation)
+        runs = self.read("ops", "runs").filter(F.col("evaluation_id") == evaluation)
+        rows = runs.collect()
+        if len(rows) != 1:
+            raise ValueError("Unknown evaluation")
+        current = self.read("gold", "publication").collect()
+        published_sequence = current[0].sequence if current else 0
+        if not may_abandon(rows[0].asDict(), published_sequence):
+            raise ValueError("Cannot roll back a published evaluation")
+        if rows[0].status == "abandoned":
+            return
+        if self.read("ops", "runs").filter(F.col("sequence") > rows[0].sequence).count():
+            raise ValueError("Only the latest unpublished evaluation may be rolled back")
+        self._merge("ops", "runs", runs.withColumn("status", F.lit("abandoning")), ["evaluation_id"], True)
+        for entity, version in json.loads(rows[0].silver_versions_json).items():
+            if entity not in PAYLOAD_SCHEMAS or not isinstance(version, int) or version < 0:
+                raise ValueError("Invalid captured table version")
+            self.spark.sql(f"RESTORE TABLE {self.name('silver', entity)} TO VERSION AS OF {version}")
+        self._merge("ops", "runs", runs.withColumn("status", F.lit("abandoned")), ["evaluation_id"], True)
+        self._event(
+            evaluation,
+            "rollback",
+            "completed",
+            "Pre-run Silver restored; Bronze and evaluation evidence retained",
+        )
 
     def _batch_status(self, batch, status, error=""):
         values = [
@@ -178,7 +230,7 @@ class Lakehouse:
             self._event(evaluation, "bronze", "failed", type(exc).__name__)
             raise
 
-    def silver(self, evaluation):
+    def silver(self, evaluation, fault=""):
         from pyspark.sql import functions as F
 
         info = self.run_info(evaluation)
@@ -238,6 +290,8 @@ class Lakehouse:
                 values.write.format("delta").mode("overwrite").option(
                     "replaceWhere", f"scope_id = '{scope}'"
                 ).saveAsTable(self.name("ops", "evaluations"))
+            if fault == "after_freeze_" + entity:
+                raise InjectedFailure(fault)
             frozen = self.read("ops", "evaluations").filter(F.col("scope_id") == scope)
             winners = frozen.filter("kind='row' AND disposition='accepted_winner'").select(
                 "business_key",
@@ -247,9 +301,17 @@ class Lakehouse:
                 "occurrence_id",
                 F.col("evaluated_at").alias("updated_at"),
             )
+            business_fields = [name for name in FIELDS[entity] if name != "source_revision"]
+            if entity == "orders":
+                business_fields.append("net_sales")
+            winners = winners.withColumn(
+                "parsed", F.from_json("payload_json", PAYLOAD_SCHEMAS[entity])
+            ).select(*winners.columns, *[F.col("parsed." + name).alias(name) for name in business_fields])
             self._merge(
                 "silver", entity, winners, ["business_key"], True, "s.source_revision > t.source_revision"
             )
+            if fault == "after_merge_" + entity:
+                raise InjectedFailure(fault)
         completed = (
             self.read("ops", "runs")
             .filter(F.col("evaluation_id") == evaluation)
@@ -259,13 +321,10 @@ class Lakehouse:
         self._event(evaluation, "silver", "completed")
 
     def typed(self, entity):
-        from pyspark.sql import functions as F
-
-        return (
-            self.read("silver", entity)
-            .select(F.from_json("payload_json", PAYLOAD_SCHEMAS[entity]).alias("p"), "occurrence_id")
-            .select("p.*", "occurrence_id")
-        )
+        fields = list(FIELDS[entity])
+        if entity == "orders":
+            fields.append("net_sales")
+        return self.read("silver", entity).select(*fields, "occurrence_id")
 
     def current_id(self):
         rows = self.read("gold", "publication").collect()
@@ -282,7 +341,9 @@ class Lakehouse:
     def _snapshot(self, name, frame, evaluation):
         from pyspark.sql import functions as F
 
-        frame = frame.withColumn("publication_id", F.lit(evaluation))
+        frame = frame.withColumn("publication_id", F.lit(evaluation)).withColumn(
+            "snapshot_created_at", F.lit(datetime.now(timezone.utc))
+        )
         table = self.name("gold", name + "_snapshots")
         if not self.spark.catalog.tableExists(table):
             frame.limit(0).write.format("delta").partitionBy("publication_id").saveAsTable(table)
@@ -307,6 +368,8 @@ class Lakehouse:
             return
         self._event(evaluation, "gold", "started")
         self._snapshot("fact_order_line", self.typed("orders"), evaluation)
+        if fault == "during_stage":
+            raise InjectedFailure(fault)
         self._snapshot("dim_customer", self.typed("customers"), evaluation)
         self._snapshot("dim_product", self.typed("products"), evaluation)
         fact = self.read("gold", "fact_order_line_snapshots").filter(F.col("publication_id") == evaluation)
@@ -317,7 +380,12 @@ class Lakehouse:
             F.count("*").alias("order_lines"),
         )
         self._snapshot("daily_sales", daily, evaluation)
-        all_rows = self.read("ops", "evaluations").filter("kind='row'")
+        active_runs = (
+            self.read("ops", "runs")
+            .filter("status NOT IN ('abandoned','abandoning')")
+            .select("evaluation_id")
+        )
+        all_rows = self.read("ops", "evaluations").filter("kind='row'").join(active_runs, "evaluation_id")
         order = Window.partitionBy("occurrence_id").orderBy(
             F.col("evaluated_at").desc(), F.col("evaluation_id").desc()
         )
@@ -395,6 +463,18 @@ class Lakehouse:
         fact_sum = fact.agg(F.sum("net_sales")).first()[0] or 0
         daily_sum = snap("daily_sales").agg(F.sum("net_sales")).first()[0] or 0
         report["reconciliation"] = fact_sum == daily_sum
+        group_keys = ["order_date", "sale_region", "product_id"]
+        aggregate = fact.groupBy(*group_keys).agg(
+            F.sum("net_sales").alias("net_sales"),
+            F.sum("quantity").alias("units"),
+            F.countDistinct("order_id").alias("distinct_orders"),
+            F.count("*").alias("order_lines"),
+        )
+        staged_aggregate = snap("daily_sales").select(*aggregate.columns)
+        report["group_reconciliation"] = (
+            aggregate.exceptAll(staged_aggregate).count() == 0
+            and staged_aggregate.exceptAll(aggregate).count() == 0
+        )
         evaluations = self.read("ops", "evaluations").filter(F.col("evaluation_id") == evaluation)
         report["conservation"] = True
         for header in evaluations.filter("kind='header'").collect():
@@ -428,8 +508,11 @@ class Lakehouse:
             .count()
         ):
             raise ValueError("Publication requires a passing quality gate")
+        current = self.read("gold", "publication").collect()
+        history = list(current[0].publication_ids) if current else []
+        history = sorted(set(history + [evaluation]))
         pointer = self.spark.createDataFrame(
-            [(1, evaluation, info.sequence, datetime.now(timezone.utc))],
+            [(1, evaluation, info.sequence, datetime.now(timezone.utc), history)],
             self.read("gold", "publication").schema,
         )
         self._merge("gold", "publication", pointer, ["singleton"], True, "s.sequence > t.sequence")

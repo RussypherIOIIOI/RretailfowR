@@ -1,0 +1,33 @@
+bundle:
+  name: retailflow
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    description: Existing writable Unity Catalog catalog
+  schema_prefix:
+    default: retailflow
+  warehouse_id:
+    description: Existing SQL warehouse for dashboard validation
+
+artifacts:
+  default:
+    type: whl
+    path: .
+    build: python -m build --wheel --no-isolation
+
+sync:
+  exclude:
+    - .venv/**
+    - build/**
+    - '*.egg-info/**'
+    - evidence/**
+
+targets:
+  dev:
+    default: true
+    mode: development
+    workspace:
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/retailflow/${bundle.target}

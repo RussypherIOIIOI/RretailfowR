@@ -1,0 +1,19 @@
+{
+  "job_id": 1055508848756404,
+  "task_count": 6,
+  "max_concurrent_runs": 1,
+  "status": "deployed_not_run",
+  "host": "https://dbc-9d765ae8-3bb9.cloud.databricks.com",
+  "environment_version": "5",
+  "blocked_by": "CREATE SCHEMA privilege on workspace catalog",
+  "artifact_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/artifacts/964c4bbbeb6e1be3/retailflow-0.1.0-py3-none-any.whl",
+  "verified_task_order": [
+    "preflight",
+    "bronze",
+    "silver",
+    "gold",
+    "quality",
+    "publish"
+  ],
+  "verified_at": "2026-10-15"
+}

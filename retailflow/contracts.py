@@ -66,12 +66,14 @@ def validate(entity, row):
         result["source_revision"] = int(revision)
     stamp = result["source_updated_at"]
     try:
-        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:Z|[+-]\d{2}:\d{2})", stamp):
+        if not re.fullmatch(
+            r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)", stamp
+        ):
             raise ValueError("Timestamp needs explicit timezone")
         result["source_updated_at"] = (
             datetime.fromisoformat(stamp.replace("Z", "+00:00")).astimezone(timezone.utc).isoformat()
         )
-    except ValueError:
+    except (ValueError, OverflowError):
         reasons.append("INVALID_SOURCE_UPDATED_AT")
     for key in ("sale_region", "home_region"):
         if key in result:
@@ -130,7 +132,9 @@ def validate(entity, row):
 def parse_csv(entity, content, batch_id, filename):
     if entity not in FIELDS or len(content) > MAX_BYTES:
         raise ValueError("Unsupported entity or file larger than 10 MiB")
-    lines = content.decode("utf-8-sig", errors="strict").splitlines()
+    lines = re.split(r"\r\n|\n|\r", content.decode("utf-8-sig", errors="strict"))
+    if lines and lines[-1] == "":
+        lines.pop()
     if not lines or next(csv.reader([lines[0]], strict=True)) != FIELDS[entity]:
         raise ValueError("CSV header must match the versioned contract exactly")
     if len(lines) - 1 > MAX_RECORDS:

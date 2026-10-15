@@ -1,0 +1,28 @@
+{
+  "run_name": "RetailFlow spark acceptance",
+  "environments": [
+    {
+      "environment_key": "default",
+      "spec": {
+        "dependencies": [
+          "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/artifacts/964c4bbbeb6e1be3/retailflow-0.1.0-py3-none-any.whl"
+        ],
+        "environment_version": "5"
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "task_key": "checks",
+      "environment_key": "default",
+      "max_retries": 0,
+      "timeout_seconds": 900,
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/spark_checks",
+        "base_parameters": {
+          "check_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/spark_acceptance.py"
+        }
+      }
+    }
+  ]
+}

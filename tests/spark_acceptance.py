@@ -2,7 +2,7 @@
 
 import json
 from retailflow.contracts import canonical
-from retailflow.spark_transform import prepare, choose
+from retailflow.spark_transform import prepare, choose, foreign_keys
 
 
 def run(spark):
@@ -54,4 +54,27 @@ def run(spark):
         "conflict",
         "invalid",
     }
-    return {"checks": 4, "status": "passed", "spark": spark.version}
+    customer = spark.createDataFrame([('{"customer_id":"C1"}',)], "payload_json string")
+    product = spark.createDataFrame([('{"product_id":"P1"}',)], "payload_json string")
+    assert foreign_keys(clean, customer, product).first().reasons == []
+    assert foreign_keys(clean, customer, product.limit(0)).first().reasons == ["UNKNOWN_PRODUCT"]
+    from retailflow.contracts import parse_csv
+
+    weird = "customer_id,customer_name,home_region,source_revision,source_updated_at\nC1,Ada\u2028Lovelace,WEST,1,2026-01-01T00:00:00Z\n".encode()
+    assert len(parse_csv("customers", weird, "b", "x.csv")) == 1
+    row["source_updated_at"] = "2026-01-01T00:00:00+00:99"
+    invalid = spark.createDataFrame(
+        [("bad", canonical(row), [])], "occurrence_id string,row_json string,parse_reasons array<string>"
+    )
+    assert "INVALID_SOURCE_UPDATED_AT" in prepare(spark, invalid, "orders").first().reasons
+    from pyspark.sql import functions as F
+    from decimal import Decimal
+    from retailflow.pipeline import PAYLOAD_SCHEMAS
+
+    typed = (
+        clean.select(F.from_json("payload_json", PAYLOAD_SCHEMAS["orders"]).alias("p")).select("p.*").first()
+    )
+    assert typed.net_sales == Decimal("19.00") and typed.quantity == 2 and typed.source_updated_at is not None
+    import sys
+
+    return {"python": sys.version, "checks": 9, "status": "passed", "spark": spark.version}
