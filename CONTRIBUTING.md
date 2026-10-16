@@ -28,4 +28,4 @@ One writer per namespace is mandatory. Do not deploy a second job or manually ed
 
 Maintain relative links and keep Mermaid .mmd sources synchronized with embedded diagrams. Update [verification](docs/verification.md) only from actual results. Add new evidence files with command/run context, redact credentials, and describe what each artifact does and does not prove. Do not substitute mock screenshots for live evidence.
 
-GitHub publication is pending; no PR destination is assumed. Once available, describe the concrete problem, resulting behavior, tests and material limits in the PR. Licensing has not yet been selected; no license grant is implied by this guide.
+Repository: [RussypherIOIIOI/RretailfowR](https://github.com/RussypherIOIIOI/RretailfowR). Describe the concrete problem, resulting behavior, tests and material limits in each PR. See the owner-selected [GPL-3.0 license](LICENSE).

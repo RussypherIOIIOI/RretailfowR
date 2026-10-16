@@ -8,7 +8,12 @@ This path needs no Databricks account. It exercises pure Python contracts and th
 - Open a terminal in the directory containing pyproject.toml. Use a path without square brackets or other glob characters; the bundle CLI rejected the original bracketed checkout path.
 - Do not override the Databricks runtime's PySpark / Delta packages with local dependencies.
 
-GitHub publication is pending, so no clone URL is advertised. Extract the supplied source archive, then enter its retailflow directory.
+Clone the published repository, or extract the supplied source archive:
+
+```text
+git clone https://github.com/RussypherIOIIOI/RretailfowR.git retailflow
+cd retailflow
+```
 
 ## Windows PowerShell
 

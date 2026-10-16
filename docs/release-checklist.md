@@ -1,6 +1,6 @@
 # Portfolio release checklist
 
-Snapshot: 2026-10-15. Checked items are supported by existing artifacts; unchecked items require work or execution. Documentation completion is separate from pipeline release completion.
+Updated: 2026-10-16. Checked items are supported by existing artifacts; unchecked items require work or execution. Documentation completion is separate from pipeline release completion.
 
 ## Implementation and evidence
 
@@ -31,9 +31,9 @@ Snapshot: 2026-10-15. Checked items are supported by existing artifacts; uncheck
 - [x] README, architecture/ER/sequence diagrams, data dictionary and quality guide authored.
 - [x] Quickstart, runbook, testing guide and limitations documented.
 - [x] Portfolio case study and accurate resume/project-card wording supplied.
-- [ ] Select/create GitHub destination and publish source.
-- [ ] Run hosted CI and link its actual result.
-- [ ] Decide licensing terms before presenting the repository as licensed open source.
+- [x] Publish source to [RussypherIOIIOI/RretailfowR](https://github.com/RussypherIOIIOI/RretailfowR).
+- [x] Run hosted CI: [successful run](https://github.com/RussypherIOIIOI/RretailfowR/actions/runs/38928719727).
+- [x] Preserve the owner's selected [GPL-3.0 license](../LICENSE).
 - [ ] Review screenshots/logs for credentials or unrelated personal/workspace information.
 - [ ] Replace dated status text with evidence from the completed release.
 

@@ -92,4 +92,6 @@ Deploy using the [runbook](docs/runbook.md) after arranging workspace access. Th
 
 V1 uses USD, Type 1 dimensions, full Gold recomputation, no deletes/returns and one writer. Driver-side CSV parsing is bounded to 10 MiB / 10,000 records per file, with one physical line per record. Spark selection rejects groups over 1,000 candidates per business key; this is not a scale benchmark. No commercial-impact claim is made.
 
-Next: resolve scoped catalog access, execute Delta acceptance, validate dashboard SQL, capture genuine dashboard/video evidence, and publish the repository. [Release checklist](docs/release-checklist.md) · [limits and roadmap](docs/limitations-and-roadmap.md) · [contributing](CONTRIBUTING.md).
+Source: [RussypherIOIIOI/RretailfowR](https://github.com/RussypherIOIIOI/RretailfowR). The repository preserves the owner-selected [GPL-3.0 license](LICENSE).
+
+Next: resolve scoped catalog access, execute Delta acceptance, validate dashboard SQL, and capture genuine dashboard/video evidence. [Release checklist](docs/release-checklist.md) · [limits and roadmap](docs/limitations-and-roadmap.md) · [contributing](CONTRIBUTING.md).

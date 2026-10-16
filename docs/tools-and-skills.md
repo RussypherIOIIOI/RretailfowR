@@ -3,7 +3,7 @@
 | Tool or skill | When to use | Purpose | Use in this build |
 |---|---|---|---|
 | Codex | Throughout implementation | Edit real files, run tests, maintain evidence | Used |
-| GitHub plugin | Inspect repository/account access; review/publish when a target repo exists | Repository collaboration | Account/repository discovery used; no RetailFlow repository found |
+| GitHub plugin | Inspect repository/account access; review/publish when a target repo exists | Repository collaboration | Used to verify destination and access; Git CLI published source to RussypherIOIIOI/RretailfowR |
 | Git CLI / Git CMD installation | Local branching, diffs and commits | Reproducible source control | Git executable used directly; terminal UI automation is unnecessary |
 | Context7 | Before version-sensitive APIs and recovery operations | Retrieve current official documentation | Used for bundle/serverless configuration and Delta RESTORE |
 | Browser / computer-use | Inspect workspace or GitHub UI and capture real evidence when available | UI-only operations | GitHub repository page checked; browser is signed out |

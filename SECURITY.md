@@ -18,4 +18,4 @@ One writer and retained Delta history are prerequisites for recovery. Cleanup is
 
 Inspect tracked files and captures for credentials and unrelated information. Workspace URLs, principal identifiers and job/run IDs in evidence identify the demonstration environment; they are not credentials, but review whether to retain them publicly. Redact secrets while preserving enough context to substantiate results.
 
-If a credential is exposed, revoke/rotate it through its owner and follow the host's incident process; deleting a file alone does not revoke access. No public vulnerability-reporting address has been established for this unpublished repository. Use the maintainer's verified private channel once one is provided; never place secrets in a public issue.
+If a credential is exposed, revoke/rotate it through its owner and follow the host's incident process; deleting a file alone does not revoke access. No public vulnerability-reporting address has been established for this repository. Use the maintainer's verified private channel once one is provided; never place secrets in a public issue.

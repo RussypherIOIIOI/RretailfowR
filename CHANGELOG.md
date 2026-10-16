@@ -1,5 +1,9 @@
 # Changelog
 
+## Repository publication — 2026-10-16
+
+Published the implementation and documentation to [RussypherIOIIOI/RretailfowR](https://github.com/RussypherIOIIOI/RretailfowR), preserving the remote initial commit and GPL-3.0 license. Local checks passed again: 24 tests and Ruff. [Hosted CI passed](https://github.com/RussypherIOIIOI/RretailfowR/actions/runs/38928719727), including wheel build. This publication does not establish end-to-end Databricks completion.
+
 ## Unreleased — 2026-10-15
 
 ### Implemented
@@ -24,4 +28,4 @@
 
 ### Pending
 
-Unity Catalog CREATE SCHEMA access, Delta acceptance, dashboard validation/export/captures, recording, GitHub publication and hosted CI. Strict bundle validation remains environment-blocked. See [verification](docs/verification.md); this entry is not a claim of a released v1.
+Unity Catalog CREATE SCHEMA access, Delta acceptance, dashboard validation/export/captures, recording. Strict bundle validation remains environment-blocked. See [verification](docs/verification.md); this entry is not a claim of a released v1.

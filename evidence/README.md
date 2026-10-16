@@ -17,7 +17,7 @@ Evidence is dated 2026-10-15 unless its contents say otherwise. These files reco
 
 The earlier preflight trace reported a Python 3.11 environment. Final acceptance used serverless environment 5 and reported Python 3.12.3. These are different runs, not conflicting descriptions of one run.
 
-The fixture [expected.json](../fixtures/expected.json) is a manually calculated **oracle**, not execution evidence. Screenshots, dashboard export, recording, Delta output and GitHub CI results are not present yet.
+The fixture [expected.json](../fixtures/expected.json) is a manually calculated **oracle**, not execution evidence. Screenshots, dashboard export, recording and Delta output are not present yet. Hosted CI subsequently passed on 2026-10-16: [github-ci.json](github-ci.json).
 
 ## Reproducing and updating evidence
 

@@ -124,7 +124,7 @@ The Gold rejected_records view includes each ever-rejected occurrence once with 
 
 Follow dashboard/README.md. Execute all four SQL datasets with a real registered publication ID before creating the dashboard. Pin that same ID across widgets. Export the actual dashboard definition and capture screenshots only after correct results appear. Record the two-minute script in docs/walkthrough.md.
 
-GitHub publication is pending: the connector could inspect the account, but no RetailFlow repository was present; the CLI and browser were signed out and the connector exposed no repository-creation tool. Create/select the destination repository, add its remote, and push the reviewed commits. No credentials are stored in the archive.
+Source was published on 2026-10-16 to [RussypherIOIIOI/RretailfowR](https://github.com/RussypherIOIIOI/RretailfowR), preserving its initial commit and owner-selected GPL-3.0 license. The local main branch tracks origin/main. Credentials and local deployment state remain excluded.
 
 No automated reset command is supplied. Any cleanup must explicitly name only project-owned objects and requires deliberate opt-in.
 

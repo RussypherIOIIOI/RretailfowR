@@ -11,7 +11,7 @@ Test layers establish different facts. Local Python success does not establish D
 | Real Spark | tests/spark_acceptance.py via notebooks/spark_checks.py | Runtime validation, FK joins, selection and typed projection | Nine checks passed |
 | Persisted Delta | tests/delta_acceptance.py via notebooks/integration.py | MERGE, ledgers, snapshots, retries, replay and recovery assertions | Not run; catalog permission blocked |
 | Dashboard | Execute dashboard/*.sql and test widgets | SQL compatibility, pinned snapshots, metrics and filters | Not run |
-| GitHub CI | .github/workflows/ci.yml | Repeat local checks and wheel build in hosted CI | Supplied, not run |
+| GitHub CI | .github/workflows/ci.yml | Repeat local checks and wheel build in hosted CI | Passed on publication commit 37cf3da; [evidence](../evidence/github-ci.json) |
 
 Local commands are in [quickstart](quickstart.md). Remote submission and output inspection are in [runbook](runbook.md). The Spark script needs the deployment state and wheel from scripts.deploy; it does not create project tables. The Delta script creates an explicitly selected, new test namespace and intentionally mutates test data.
 

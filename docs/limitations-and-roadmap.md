@@ -2,7 +2,7 @@
 
 ## Current release boundary
 
-The code is implemented and partially verified. Local tests, lint/build and nine live Spark checks passed. The job is deployed. CREATE SCHEMA denial blocked table initialization, so Delta acceptance, actual Gold data, dashboard SQL/export and recording remain unfinished. GitHub publication and hosted CI are pending. See [verification](verification.md).
+The code is implemented and partially verified. Local tests, lint/build and nine live Spark checks passed. The job is deployed. CREATE SCHEMA denial blocked table initialization, so Delta acceptance, actual Gold data, dashboard SQL/export and recording remain unfinished. Source is published at [RussypherIOIIOI/RretailfowR](https://github.com/RussypherIOIIOI/RretailfowR); consult the Actions page for hosted CI results. See [verification](verification.md).
 
 ## Deliberate v1 limits
 
@@ -25,7 +25,7 @@ The code is implemented and partially verified. Local tests, lint/build and nine
 1. **Finish evidence:** resolve catalog grants through the administrator, run isolated Delta acceptance, fix any real failures, and record actual output.
 2. **Close recovery gaps:** add interruption-mid-rollback and exact frozen-outcome preservation assertions, then run them.
 3. **Validate consumption:** execute all SQL datasets with registered IDs, test metric/filter behavior, create/export the real dashboard and capture screenshots.
-4. **Publish portfolio:** record the walkthrough, choose the repository destination and licensing terms, push reviewed source, run CI and update status links.
+4. **Complete the portfolio evidence:** record the walkthrough, retain hosted CI results and update status links. Source and the owner-selected GPL-3.0 license are published.
 5. **Only then expand scope:** benchmark larger data, consider distributed ingestion/native window selection, retention, alerting, and richer source contracts.
 
 These are ordered milestones, not delivery-date promises. The original four-day estimate assumed a working workspace and PySpark/SQL familiarity; permission blockers prevent treating that estimate as an achieved schedule.

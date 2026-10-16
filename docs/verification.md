@@ -13,7 +13,7 @@
 | Delta persistence, replay and fault recovery | NOT RUN | tests/delta_acceptance.py supplied; requires scoped catalog access |
 | Dashboard dataset SQL | NOT RUN | Gold tables do not exist yet |
 | Dashboard export/screenshots/video | PENDING | dashboard/README.md and docs/walkthrough.md |
-| GitHub publication | PENDING | No RetailFlow repo found; CLI/browser not signed in |
+| GitHub publication | PASS — 2026-10-16 | [Repository](https://github.com/RussypherIOIIOI/RretailfowR); initial history and GPL-3.0 license preserved |
 
 Actual deployed job: https://dbc-9d765ae8-3bb9.cloud.databricks.com/jobs/1055508848756404
 
@@ -23,7 +23,7 @@ The current artifact is a reviewed implementation with partial live verification
 
 The executable Delta suite specifies same-evaluation retry, a new evaluation of unchanged files, renamed files, duplicates, conflicting/stale/invalid revisions, dimension arrival and explicit replay, frozen-evaluation interruption, partial dimension merge, Silver-before-Gold failure, partial Gold staging, stage-before-publish failure, a failing threshold preserving the pointer, rollback of unpublished Silver state, and changed immutable batch identity even with a refreshed file hash.
 
-No failed or unexecuted check is counted as passed. CI workflow is supplied but has not run on GitHub.
+No failed or unexecuted check is counted as passed. Hosted CI passed on implementation/publication commit 37cf3da: [run 38928719727](https://github.com/RussypherIOIIOI/RretailfowR/actions/runs/38928719727), [recorded evidence](../evidence/github-ci.json). This covers local tests, lint and wheel build, not Databricks integration.
 
 ## Documentation revision
 
