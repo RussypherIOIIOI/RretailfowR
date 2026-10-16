@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-15",
+  "scope": "Documentation only; pipeline implementation unchanged",
+  "implementation_commit": "ca19ae878bee1c3b67a63be8a0a326441e91e93e",
+  "checks": {
+    "markdown_files": 25,
+    "relative_links_checked": 162,
+    "broken_relative_links": 0,
+    "code_fences_balanced": true,
+    "editable_mermaid_sources": 3,
+    "embedded_mermaid_source_parity": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "reader_review": {
+    "method": "Fresh reader agent, documentation only, no conversation context",
+    "questions_answered": 10,
+    "result": "Core contracts and evidence boundaries understood; no material contradiction reported",
+    "fixes": [
+      "Separate grants for isolated acceptance schemas",
+      "Precise fixture-generation trigger and partial-tree warning",
+      "Scope registered-publication restriction to supplied SQL",
+      "Distinguish publication selector from parameterized datasets",
+      "Clarify deployment state and duplicate-writer risk"
+    ]
+  },
+  "limitations": [
+    "Mermaid visual rendering not executed in this environment",
+    "External website links not revalidated in documentation-only revision",
+    "No local/Spark/Delta workload re-execution in documentation-only revision"
+  ]
+}

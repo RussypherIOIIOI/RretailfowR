@@ -1,0 +1,15 @@
+flowchart TD
+    FILES["CSV batches and SHA256 manifests"] --> B["Bronze records: raw occurrences"]
+    B --> C["Silver customers and products"]
+    C --> O["Silver order lines: FK checks and revisions"]
+    B --> O
+    C --> E["Ops evaluations: frozen outcomes"]
+    O --> E
+    C --> G["Gold snapshots: dimensions, fact, daily sales"]
+    O --> G
+    E --> Q["Gold rejection and evaluation snapshots"]
+    G --> CHECK["Quality gate"]
+    Q --> CHECK
+    CHECK -->|"pass"| P["Publication pointer and registered IDs"]
+    CHECK -->|"fail"| OLD["Previous publication remains current"]
+    P --> VIEW["Current views / pinned dashboard datasets"]

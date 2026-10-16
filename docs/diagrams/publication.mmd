@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant J as Serial job
+    participant S as Silver
+    participant G as Gold snapshots
+    participant P as Publication row
+    participant D as Dashboard
+    J->>S: Validate, freeze outcomes, merge revisions
+    J->>G: Write all six partitions for evaluation ID
+    J->>J: Mark stage complete; run quality gates
+    alt All gates pass
+        J->>P: Atomically switch current ID and register history
+        D->>P: Select a registered publication ID
+        D->>G: Query every dataset with that same ID
+    else Gate fails
+        J->>J: Record failure; stop before publication
+        D->>G: Continue reading prior registered ID
+    end

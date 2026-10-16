@@ -24,3 +24,7 @@ The current artifact is a reviewed implementation with partial live verification
 The executable Delta suite specifies same-evaluation retry, a new evaluation of unchanged files, renamed files, duplicates, conflicting/stale/invalid revisions, dimension arrival and explicit replay, frozen-evaluation interruption, partial dimension merge, Silver-before-Gold failure, partial Gold staging, stage-before-publish failure, a failing threshold preserving the pointer, rollback of unpublished Silver state, and changed immutable batch identity even with a refreshed file hash.
 
 No failed or unexecuted check is counted as passed. CI workflow is supplied but has not run on GitHub.
+
+## Documentation revision
+
+The portfolio documentation was expanded after the recorded implementation checks. This revision changes documentation only; it does not upgrade any blocked runtime result. See [documentation verification](../evidence/documentation-verification.json) for link/source-parity checks and fresh-reader review. Full Mermaid visual rendering was not tested in this environment; editable sources and GitHub-renderable blocks are supplied.

@@ -17,3 +17,17 @@
 8. **One writer is an operational contract.** The job uses max_concurrent_runs=1. Do not create another writer job for the same schema prefix or mutate Silver manually. Metadata sequence allocation and rollback rely on this restriction; they are not distributed locks.
 
 9. **Dashboard deployment follows evidence.** SQL and layout are supplied now. The actual dashboard export and screenshots will be captured only after successful table-backed SQL validation. A plausible-looking JSON file or mocked screenshot is not deployment evidence.
+
+## Alternatives considered and consequences
+
+| Choice | Alternative | Reason for v1 choice / consequence |
+|---|---|---|
+| Explicit revision precedence | Latest ingestion timestamp wins | Re-delivery is not a correction; source must provide authoritative revisions |
+| Retain invalid occurrences | Drop invalid rows | Enables inspection and later explicit replay; increases audit storage |
+| Type 1 dimensions | SCD Type 2 | Smaller inspectable model; historical descriptions are not retained |
+| Full Gold snapshots | Incremental aggregate updates | Simpler correction/reconciliation across changed date/product/region; more recomputation |
+| One pointer plus pinned queries | Treat multi-table writes as atomic | Makes transaction boundary explicit; consumers must coordinate selected version |
+| Bounded driver parsing / grouped resolver | Distributed ingestion / native windows | Small reproducible fixture scope; no scale claim and future redesign required |
+| Serial writer and explicit rollback | Concurrent writers with locking | Keeps recovery comprehensible; operational exclusivity is mandatory |
+
+These are implementation decisions, not benchmark comparisons. [Architecture](architecture.md) explains mechanisms; [limitations](limitations-and-roadmap.md) describes when to revisit them.

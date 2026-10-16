@@ -19,5 +19,6 @@
 | Databricks jobs/dabs | Job definition and deployment | One serial serverless workflow | Used; CLI deployment succeeded, bundle validation environment-blocked |
 | Databricks dbsql/aibi-dashboards | Gold SQL and dashboard setup | Metric/filter correctness and real export | SQL/layout prepared; live dataset validation blocked |
 | Databricks python-sdk | API reference and authentication patterns | Supported programmatic access | Guidance consulted; deployment uses CLI |
+| doc-coauthoring | Before and during portfolio documentation | Ground claims in source/evidence, structure by reader needs, and test comprehension with a fresh reader | Applied to this documentation set |
 
 Do not add tools just to increase the tool count. Direct file and Git operations are more reliable here than controlling a terminal or editor through clicks. None of these tools guarantees bug-free code; evidence and review determine what can be claimed.

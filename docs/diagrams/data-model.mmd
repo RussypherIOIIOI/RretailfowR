@@ -1,0 +1,43 @@
+erDiagram
+    DIM_CUSTOMER ||--o{ FACT_ORDER_LINE : "customer_id within publication"
+    DIM_PRODUCT ||--o{ FACT_ORDER_LINE : "product_id within publication"
+    DIM_PRODUCT ||--o{ DAILY_SALES : "product_id within publication"
+    DIM_CUSTOMER {
+        string publication_id PK
+        string customer_id PK
+        string customer_name
+        string home_region
+        long source_revision
+    }
+    DIM_PRODUCT {
+        string publication_id PK
+        string product_id PK
+        string product_name
+        string category
+        decimal current_price
+        long source_revision
+    }
+    FACT_ORDER_LINE {
+        string publication_id PK
+        string order_id PK
+        string line_id PK
+        string customer_id FK
+        string product_id FK
+        date order_date
+        string sale_region
+        long quantity
+        decimal unit_price
+        decimal discount_amount
+        decimal net_sales
+        long source_revision
+    }
+    DAILY_SALES {
+        string publication_id PK
+        date order_date PK
+        string sale_region PK
+        string product_id PK,FK
+        decimal net_sales
+        long units
+        long distinct_orders
+        long order_lines
+    }

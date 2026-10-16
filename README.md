@@ -2,86 +2,94 @@
 
 **Which products and regions drive sales, and how trustworthy is the underlying data?**
 
-RetailFlow is a compact data engineering portfolio project built around imperfect incoming data. It preserves raw evidence, validates and merges corrections, and publishes versioned sales models for a Databricks AI/BI dashboard.
+RetailFlow turns deliberately messy synthetic CSVs into a dimensional sales model. Its central demonstration is a second batch containing corrections, duplicates, conflicts and invalid records: valid corrections should update sales, duplicates should not inflate them, and rejected rows should remain explainable.
 
-**Current status:** 24 local tests pass. Nine read-only acceptance checks passed on Databricks Spark 4.2.0 / Python 3.12.3. The six-task Lakeflow Job is deployed. Full Delta integration and the live dashboard are **blocked by a missing Unity Catalog permission**, not verified. See [verification](docs/verification.md) for exact evidence.
+**Release status · 15 October 2026:** implementation and documentation are available; **24 local tests and nine live Spark checks passed**. A six-task Lakeflow Job is deployed. **Persisted Delta behavior and the dashboard remain unverified** because Unity Catalog preflight denied CREATE SCHEMA. This is a partially verified portfolio build. [Evidence and remaining gates](docs/verification.md).
 
-## Demonstration
+**Stack:** Databricks · PySpark · SQL · Delta Lake · Unity Catalog · Lakeflow Jobs · Databricks AI/BI dashboard specification. Data workloads run in Databricks; local Python supports development and deployment. No separate frontend.
 
-| Stage | Net sales USD | Units | Distinct orders | Order lines |
-|---|---:|---:|---:|---:|
-| Batch 1 | 55.00 | 4 | 2 | 3 |
-| Batch 2 corrections | 91.00 | 7 | 4 | 5 |
-| Missing customer arrives, explicit replay | 98.00 | 8 | 5 | 6 |
+## Start here
 
-These are the hand-calculated acceptance expectations, checked by local contract simulation. They are not claimed as persisted Databricks results.
+| Your goal | Read |
+|---|---|
+| Assess the project in two minutes | [Portfolio case study](docs/portfolio-case-study.md) and [verified results](docs/verification.md) |
+| Review engineering decisions | [Architecture](docs/architecture.md), [data model](docs/data-model.md), [quality rules](docs/data-quality.md) |
+| Reproduce or operate it | [Local quickstart](docs/quickstart.md), [deployment and recovery](docs/runbook.md) |
+| See the demonstration plan | [Walkthrough](docs/walkthrough.md), [dashboard specification](dashboard/README.md) |
+| Browse everything | [Documentation index](docs/index.md) |
 
-Batch 2 changes one sale's product, date and region; sends duplicates, stale updates, equal-revision disagreements, malformed CSV, and an invalid newer correction. A rejected sale is accepted only after its customer arrives and an explicit replay runs. A product price update never changes transaction prices.
+## What this demonstrates
+
+- **Incremental correctness:** business keys, explicit revision precedence, immutable batch identity and revision-guarded Delta merges.
+- **Inspectable quality:** original raw records, multiple rejection reasons, frozen evaluation outcomes and explicit replay after a missing dimension arrives.
+- **Dimensional modeling:** an order-line fact, Type 1 dimensions, transaction-price semantics and daily aggregates with explicit grain.
+- **Controlled publication:** versioned Gold snapshots, reconciliation gates and one atomic pointer. Dashboard datasets pin the same registered version.
+- **Engineering discipline:** deterministic fixtures, an independent oracle, behavioral tests, failure-injection specifications and candid verification boundaries.
+
+These are implementation capabilities. Their verification levels differ; consult the [test matrix](docs/testing.md).
 
 ## Architecture
 
 ```mermaid
 flowchart TD
-    A["CSV batches and manifests"] --> B["Bronze raw occurrences"]
-    B --> C["Silver validation and revisions"]
-    C --> D["Gold versioned snapshots"]
-    C --> E["Quarantine and evaluation history"]
-    E --> D
-    D --> F["Quality gate"]
-    F --> G["Atomic publication pointer"]
-    G --> H["Databricks AI/BI dashboard"]
-    I["Batch and run ledgers"] --> B
-    I --> C
+    INPUT["Synthetic CSVs and immutable manifest"] --> BRONZE["Bronze: raw occurrences"]
+    BRONZE --> SILVER["Silver: typed entities and revision merges"]
+    SILVER --> GOLD["Gold: versioned fact, dimensions and aggregates"]
+    SILVER --> EVAL["Ops: frozen evaluations and rejection history"]
+    EVAL --> GOLD
+    GOLD --> GATE["Quality: keys, amounts and reconciliation"]
+    GATE -->|"pass"| POINTER["Atomic publication pointer"]
+    GATE -->|"fail"| HOLD["Keep previous publication"]
+    POINTER --> BI["Planned dashboard: one pinned publication"]
 ```
 
-One serial Lakeflow Job runs preflight → Bronze → Silver → Gold → quality → publish. All workload execution is in Databricks. Local Python is used for development, tests and deployment.
+One serial job executes **preflight → bronze → silver → gold → quality → publish**. It permits one concurrent run; the operator must prevent any second writer to the same namespace. See [architecture and diagrams](docs/architecture.md).
 
-## Start locally
+## The correction demonstration
 
-Use Python 3.11 or later. Keep the checkout path free of glob characters such as square brackets.
+| Stage | Expected net sales (USD) | Units | Distinct orders | Order lines |
+|---|---:|---:|---:|---:|
+| Batch 1 | 55.00 | 4 | 2 | 3 |
+| Batch 2: corrections and imperfect records | 91.00 | 7 | 4 | 5 |
+| Missing customer arrives, without replay | 91.00 | 7 | 4 | 5 |
+| Explicit replay of batch 2 | 98.00 | 8 | 5 | 6 |
+
+These are **hand-calculated expectations**, checked by local contract simulation; they are not observed persisted Gold results. [Independent oracle](fixtures/expected.json).
+
+Batch 2 moves one corrected line to another product, date and region. An invalid newer correction cannot replace an existing valid line. Equal-revision disagreement is quarantined. Updating a product's current price does not reprice past order lines. Arrival of customer C9 alone does not replay an earlier rejection.
+
+## Try it locally
+
+From the repository root, with Python 3.11 or later:
 
 ```text
 python -m venv .venv
-# Activate the environment using your operating system's normal command.
+# Activate .venv for your operating system; commands below use that Python.
 python -m pip install -r requirements-dev.txt
 python -m pytest -q
 python -m ruff check retailflow tests scripts
 python -m build --wheel --no-isolation
 ```
 
-The committed fixtures are deterministic and require no downloaded data. To regenerate in a new directory:
+No Databricks credentials are needed for local checks. They do not test Delta persistence. See [Windows and POSIX commands](docs/quickstart.md).
 
-```text
-python -m retailflow.fixtures --output generated-fixtures --seed 17
-```
+Deploy using the [runbook](docs/runbook.md) after arranging workspace access. The checked CLI path creates or updates one job without starting it. Optional bundle configuration is supplied; strict bundle validation was blocked in the authoring environment.
 
-## Deploy and demonstrate
+## Inspect the source
 
-Follow [setup and recovery](docs/runbook.md). The checked deployment path uses the Databricks CLI and a content-addressed wheel. It creates or updates one project-owned job and does not start it automatically:
-
-```text
-python -m scripts.deploy --profile YOUR_PROFILE --catalog YOUR_CATALOG --workspace-root /Workspace/Users/YOUR_ID/retailflow
-```
-
-A parameterized `databricks.yml` is also supplied. Strict bundle validation was attempted but blocked by this agent environment's missing home configuration; it is not represented as passed.
-
-## Repository guide
-
-| Location | What a reviewer can inspect |
+| Area | Entry point |
 |---|---|
-| `retailflow/contracts.py` | Decimal parsing, source validation, deterministic revision decisions |
-| `retailflow/manifest.py` | Immutable manifests and raw occurrence identity |
-| `retailflow/spark_transform.py` | Real Spark validation, FK checks and selection |
-| `retailflow/pipeline.py` | Delta merges, frozen evaluations, recovery, Gold snapshots and publication |
-| `fixtures/` | Two messy batches, dimension arrival, independent expected results |
-| `tests/` | Local regressions, Spark checks and unexecuted Delta acceptance suite |
-| `resources/`, `notebooks/`, `scripts/` | Orchestration and deployment |
-| `dashboard/` | SQL datasets, filter definitions and dashboard layout |
-| `evidence/` | Actual local/live checks, deployment ID and permission failure |
-| `docs/` | Contracts, architecture choices, runbook, verification and walkthrough |
+| Validation and revision decisions | [contracts.py](retailflow/contracts.py) |
+| Batch manifests and occurrence identity | [manifest.py](retailflow/manifest.py) |
+| Spark validation and foreign keys | [spark_transform.py](retailflow/spark_transform.py) |
+| Delta persistence, rollback and publication | [pipeline.py](retailflow/pipeline.py) |
+| Workflow and deployment | [job definition](resources/retailflow.job.yml), [task notebook](notebooks/task.py), [deploy script](scripts/deploy.py) |
+| Behavioral and acceptance checks | [tests](tests/), [testing guide](docs/testing.md) |
+| SQL metrics and dashboard layout | [dashboard](dashboard/README.md) |
+| Actual execution evidence | [evidence index](evidence/README.md) |
 
-## Deliberate limits
+## Scope and next milestone
 
-Single writer per namespace, single currency, Type 1 dimensions and no deletes/returns. CSV files are bounded to 10 MiB and 10,000 records, with one physical line per record; at most 1,000 candidates per business key per evaluation. Tiny fixture parsing happens on the Databricks driver; validation and selection execute through Spark. Gold recomputes the current model fully. These choices keep the first release inspectable; they are not a claim of large-scale benchmark performance.
+V1 uses USD, Type 1 dimensions, full Gold recomputation, no deletes/returns and one writer. Driver-side CSV parsing is bounded to 10 MiB / 10,000 records per file, with one physical line per record. Spark selection rejects groups over 1,000 candidates per business key; this is not a scale benchmark. No commercial-impact claim is made.
 
-GitPulse, RetailFlow and IncidentLens together demonstrate application integration, reliable data engineering and evaluated applied AI. RetailFlow is intended to provide the strongest evidence for data engineering applications.
+Next: resolve scoped catalog access, execute Delta acceptance, validate dashboard SQL, capture genuine dashboard/video evidence, and publish the repository. [Release checklist](docs/release-checklist.md) · [limits and roadmap](docs/limitations-and-roadmap.md) · [contributing](CONTRIBUTING.md).
