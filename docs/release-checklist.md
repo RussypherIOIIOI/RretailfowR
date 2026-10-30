@@ -1,6 +1,6 @@
 # Portfolio release checklist
 
-Updated: 2026-10-16. Checked items are supported by existing artifacts; unchecked items require work or execution. Documentation completion is separate from pipeline release completion.
+Updated: 2026-10-30. [Latest evidence, pending permission plan and resume commands](../evidence/release-20261030/README.md). Checked items are supported by existing artifacts; unchecked items require work or execution. Documentation completion is separate from pipeline release completion.
 
 ## Implementation and evidence
 
@@ -13,7 +13,7 @@ Updated: 2026-10-16. Checked items are supported by existing artifacts; unchecke
 - [ ] Resolve execution-principal catalog permissions.
 - [ ] Run Delta acceptance in a fresh isolated namespace and retain successful output.
 - [ ] Add/run interrupted-rollback and exact frozen-outcome regression assertions.
-- [ ] Verify strict bundle validation if advertising bundle deployment as supported.
+- [x] Verify strict bundle validation: CLI 1.16.1, zero warnings. Bundle deployment itself remains unexecuted.
 - [ ] Record real job success and persisted 55.00 → 91.00 → 98.00 results.
 - [ ] Validate reruns, rejection history, replay and last-good publication retention.
 

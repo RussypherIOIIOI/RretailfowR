@@ -1,5 +1,7 @@
 # Evidence index
 
+Latest: [30 October release attempt](release-20261030/README.md), including passing strict bundle validation, access diagnosis, the exact pending permission plan, extended assertions, and precise unexecuted live gates.
+
 Evidence is dated 2026-10-15 unless its contents say otherwise. These files record different stages of development; an earlier run is not the final verification result. [Verification summary](../docs/verification.md).
 
 | File | What it records | What it does not establish |

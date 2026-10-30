@@ -4,7 +4,7 @@
 
 RetailFlow turns deliberately messy synthetic CSVs into a dimensional sales model. Its central demonstration is a second batch containing corrections, duplicates, conflicts and invalid records: valid corrections should update sales, duplicates should not inflate them, and rejected rows should remain explainable.
 
-**Release status · 15 October 2026:** implementation and documentation are available; **24 local tests and nine live Spark checks passed**. A six-task Lakeflow Job is deployed. **Persisted Delta behavior and the dashboard remain unverified** because Unity Catalog preflight denied CREATE SCHEMA. This is a partially verified portfolio build. [Evidence and remaining gates](docs/verification.md).
+**Release status · 30 October 2026:** strict bundle validation now passes without warnings. Additional Delta assertions cover exact frozen outcomes and interrupted rollback across all three Silver tables. **Persisted Delta, successful demo jobs, and the dashboard remain unverified**: the old job targets a nonexistent `workspace` catalog. A scoped permission plan for the existing `tmc_solutions_jvs` catalog awaits owner approval. [Current release evidence and blockers](evidence/release-20261030/README.md).
 
 **Stack:** Databricks · PySpark · SQL · Delta Lake · Unity Catalog · Lakeflow Jobs · Databricks AI/BI dashboard specification. Data workloads run in Databricks; local Python supports development and deployment. No separate frontend.
 
@@ -73,7 +73,7 @@ python -m build --wheel --no-isolation
 
 No Databricks credentials are needed for local checks. They do not test Delta persistence. See [Windows and POSIX commands](docs/quickstart.md).
 
-Deploy using the [runbook](docs/runbook.md) after arranging workspace access. The checked CLI path creates or updates one job without starting it. Optional bundle configuration is supplied; strict bundle validation was blocked in the authoring environment.
+Deploy using the [runbook](docs/runbook.md) after arranging workspace access. The checked CLI path creates or updates one job without starting it. Optional bundle configuration passes strict validation on CLI 1.16.1; bundle deployment itself has not been executed. Keep one deployment owner per namespace.
 
 ## Inspect the source
 

@@ -1,5 +1,11 @@
 # Setup, execution and recovery
 
+## Current destination and release attempt — 2026-10-30
+
+The configured `workspace` catalog no longer exists. The available managed catalog is `tmc_solutions_jvs`; do not blindly run the historical commands below. The existing job still runs as M2M principal `jarvis-cli-m2m`. No grants or deployment settings were changed in the latest attempt. Strict bundle validation now passes without warnings; bundle deployment remains unexecuted.
+
+Use the [exact permission plan, current status and resume sequence](../evidence/release-20261030/README.md). Live acceptance, successful demo runs, SQL/widget checks, dashboard export and recording await that scoped approval. Do not switch the job to the admin identity to bypass its grants. The remaining sections preserve historical deployment/recovery context.
+
 ## Actual deployment
 
 - Local repository: C:/workspace/retailflow

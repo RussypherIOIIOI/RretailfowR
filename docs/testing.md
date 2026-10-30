@@ -6,7 +6,7 @@ Test layers establish different facts. Local Python success does not establish D
 
 | Layer | Entry point | What it establishes | Recorded status |
 |---|---|---|---|
-| Pure contracts | tests/test_*.py via pytest | Validation, revision decisions, manifest identity, lifecycle policy, independent fixture totals | 24 passed |
+| Pure contracts and release guard rails | tests/test_*.py via pytest | Validation, revision decisions, manifest identity, lifecycle policy, independent fixture totals, refusal to grant on unrelated/nonempty schemas and incomplete evidence rejection | 28 passed on October 30; [evidence](../evidence/release-20261030/local-verification.json) |
 | Static/build | Ruff; Python build | Source lint and distributable wheel | Passed |
 | Real Spark | tests/spark_acceptance.py via notebooks/spark_checks.py | Runtime validation, FK joins, selection and typed projection | Nine checks passed |
 | Persisted Delta | tests/delta_acceptance.py via notebooks/integration.py | MERGE, ledgers, snapshots, retries, replay and recovery assertions | Not run; catalog permission blocked |
@@ -43,7 +43,7 @@ Expected progression: 55.00 / 4 units / 2 orders / 3 lines; 91.00 / 7 / 4 / 5; a
 
 The Delta suite interrupts after Bronze, after customer evaluation freeze, after customer merge, after Silver, during Gold staging and after complete staging. It also forces a failing reject threshold and tests explicit abandonment/restoration. The complete suite remains unexecuted.
 
-Two important follow-up tests are **not implemented as full assertions**: crash midway through rollback followed by restoration of all three tables, and exact frozen-outcome equality across retries (beyond pointer/totals assertions). Also unproven: multi-writer behavior (unsupported), large data performance, dashboard cross-refresh behavior and long-term snapshot cleanup.
+The October 30 suite now includes full assertions for crash midway through rollback followed by restoration of all three tables, and exact frozen-outcome equality across retries, including evaluation metadata. Both are **implemented but not executed on Delta** pending scoped permissions. The suite also rejects reused test namespaces, checks historical snapshot totals, and proves replay preserves the original missing-customer rejection. [Current evidence](../evidence/release-20261030/README.md). Still unproven: multi-writer behavior (unsupported), large data performance, dashboard cross-refresh behavior and long-term snapshot cleanup.
 
 ## Change verification
 
