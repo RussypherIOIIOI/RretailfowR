@@ -1,10 +1,12 @@
 {
+  "error": "OSError: [Errno 29] Illegal seek",
+  "error_trace": "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n\u001b[0;31mOSError\u001b[0m                                   Traceback (most recent call last)\n\u001b[0;31mOSError\u001b[0m: [Errno 29] Illegal seek\n\nDuring handling of the above exception, another exception occurred:\n\n\u001b[0;31mOSError\u001b[0m                                   Traceback (most recent call last)\nFile \u001b[0;32m\u003ccommand-7508676551834118\u003e, line 6\u001b[0m\n\u001b[1;32m      4\u001b[0m check_path \u001b[38;5;241m=\u001b[39m Path(dbutils\u001b[38;5;241m.\u001b[39mwidgets\u001b[38;5;241m.\u001b[39mget(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mcheck_path\u001b[39m\u001b[38;5;124m\"\u001b[39m))\n\u001b[1;32m      5\u001b[0m exec(\u001b[38;5;28mcompile\u001b[39m(check_path\u001b[38;5;241m.\u001b[39mread_text(), \u001b[38;5;28mstr\u001b[39m(check_path), \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mexec\u001b[39m\u001b[38;5;124m\"\u001b[39m))\n\u001b[0;32m----\u003e 6\u001b[0m result \u001b[38;5;241m=\u001b[39m \u001b[43mrun\u001b[49m\u001b[43m(\u001b[49m\u001b[43mspark\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43mdbutils\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mwidgets\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mget\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43mcatalog\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m)\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43mdbutils\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mwidgets\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mget\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43mtest_suffix\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m)\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43mdbutils\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mwidgets\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mget\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43mexpected_path\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m)\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43mdbutils\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mwidgets\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mget\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43mattempt\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m)\u001b[49m\u001b[43m)\u001b[49m\n\u001b[1;32m      7\u001b[0m dbutils\u001b[38;5;241m.\u001b[39mnotebook\u001b[38;5;241m.\u001b[39mexit(json\u001b[38;5;241m.\u001b[39mdumps(result))\n\nFile \u001b[0;32m/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/delta_acceptance.py:256\u001b[0m, in \u001b[0;36mrun\u001b[0;34m(spark, catalog, suffix, expected_path, attempt)\u001b[0m\n\u001b[1;32m    254\u001b[0m check(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mreplay\u001b[39m\u001b[38;5;124m\"\u001b[39m)\n\u001b[1;32m    255\u001b[0m \u001b[38;5;66;03m# Changed bytes under an existing batch identity fail before affecting data.\u001b[39;00m\n\u001b[0;32m--\u003e 256\u001b[0m \u001b[43m\u001b[49m\u001b[38;5;28;43;01mwith\u001b[39;49;00m\u001b[43m \u001b[49m\u001b[43m(\u001b[49m\u001b[43mdirectory\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;241;43m/\u001b[39;49m\u001b[43m \u001b[49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43mrenamed.csv\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m)\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mopen\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43mab\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m)\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;28;43;01mas\u001b[39;49;00m\u001b[43m \u001b[49m\u001b[43mstream\u001b[49m\u001b[43m:\u001b[49m\n\u001b[1;32m    257\u001b[0m \u001b[43m    \u001b[49m\u001b[43mstream\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mwrite\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;124;43mb\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43mchanged\u001b[39;49m\u001b[38;5;130;43;01m\\n\u001b[39;49;00m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m)\u001b[49m\n\u001b[1;32m    258\u001b[0m \u001b[38;5;28;01mtry\u001b[39;00m:\n\n\u001b[0;31mOSError\u001b[0m: [Errno 29] Illegal seek",
   "metadata": {
     "cleanup_duration": 0,
     "creator_user_name": "e92b585c-22cc-4813-b00e-b894ea680a37",
     "effective_performance_target": "PERFORMANCE_OPTIMIZED",
-    "end_time": 0,
-    "execution_duration": 0,
+    "end_time": 1793405228799,
+    "execution_duration": 955000,
     "job_id": 558495174685508,
     "job_run_id": 323634755760496,
     "number_in_job": 448001746680440,
@@ -15,21 +17,27 @@
     "setup_duration": 3000,
     "start_time": 1793404270456,
     "state": {
-      "life_cycle_state": "RUNNING",
-      "state_message": "In run",
+      "life_cycle_state": "TERMINATED",
+      "result_state": "FAILED",
+      "state_message": "Workload failed, see run output for details",
       "user_cancelled_or_timedout": false
     },
     "status": {
-      "state": "RUNNING"
+      "state": "TERMINATED",
+      "termination_details": {
+        "code": "RUN_EXECUTION_ERROR",
+        "message": "Workload failed, see run output for details",
+        "type": "CLIENT_ERROR"
+      }
     },
     "tasks": [
       {
         "attempt_number": 0,
         "cleanup_duration": 0,
         "effective_performance_target": "PERFORMANCE_OPTIMIZED",
-        "end_time": 0,
+        "end_time": 1793405228799,
         "environment_key": "default",
-        "execution_duration": 0,
+        "execution_duration": 955000,
         "notebook_task": {
           "base_parameters": {
             "attempt": "attemptb",
@@ -46,12 +54,18 @@
         "setup_duration": 3000,
         "start_time": 1793404270456,
         "state": {
-          "life_cycle_state": "RUNNING",
-          "state_message": "In run",
+          "life_cycle_state": "TERMINATED",
+          "result_state": "FAILED",
+          "state_message": "Workload failed, see run output for details",
           "user_cancelled_or_timedout": false
         },
         "status": {
-          "state": "RUNNING"
+          "state": "TERMINATED",
+          "termination_details": {
+            "code": "RUN_EXECUTION_ERROR",
+            "message": "Workload failed, see run output for details",
+            "type": "CLIENT_ERROR"
+          }
         },
         "task_key": "checks"
       }

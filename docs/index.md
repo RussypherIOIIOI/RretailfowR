@@ -1,6 +1,6 @@
 # Documentation index
 
-The authoritative status is [verification](verification.md); expected sales are in [expected.json](../fixtures/expected.json). Last documentation review: 2026-10-15.
+The authoritative status is [current execution evidence](../evidence/release-20261030/README.md) and [verification](verification.md); expected sales are in [expected.json](../fixtures/expected.json). Last documentation update: 2026-10-31.
 
 | Reader | Suggested path |
 |---|---|

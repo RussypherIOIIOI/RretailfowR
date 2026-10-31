@@ -1,0 +1,60 @@
+{
+  "cleanup_duration": 0,
+  "creator_user_name": "e92b585c-22cc-4813-b00e-b894ea680a37",
+  "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+  "end_time": 0,
+  "execution_duration": 0,
+  "job_id": 763420030436171,
+  "job_run_id": 853846258218717,
+  "number_in_job": 853846258218717,
+  "run_duration": 452165,
+  "run_id": 853846258218717,
+  "run_name": "RetailFlow delta acceptance",
+  "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/763420030436171/run/853846258218717",
+  "run_type": "SUBMIT_RUN",
+  "setup_duration": 3000,
+  "start_time": 1793405487190,
+  "state": {
+    "life_cycle_state": "RUNNING",
+    "state_message": "",
+    "user_cancelled_or_timedout": false
+  },
+  "status": {
+    "state": "RUNNING"
+  },
+  "tasks": [
+    {
+      "attempt_number": 0,
+      "cleanup_duration": 0,
+      "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+      "end_time": 0,
+      "environment_key": "default",
+      "execution_duration": 0,
+      "notebook_task": {
+        "base_parameters": {
+          "attempt": "attemptc",
+          "catalog": "tmc_solutions_jvs",
+          "check_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/delta_acceptance.py",
+          "expected_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/expected.json",
+          "test_suffix": "20261030a"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/delta_checks",
+        "source": "WORKSPACE"
+      },
+      "run_id": 833933180481456,
+      "run_if": "ALL_SUCCESS",
+      "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/763420030436171/run/833933180481456",
+      "setup_duration": 3000,
+      "start_time": 1793405487232,
+      "state": {
+        "life_cycle_state": "RUNNING",
+        "state_message": "In run",
+        "user_cancelled_or_timedout": false
+      },
+      "status": {
+        "state": "RUNNING"
+      },
+      "task_key": "checks"
+    }
+  ]
+}

@@ -6,16 +6,18 @@ Test layers establish different facts. Local Python success does not establish D
 
 | Layer | Entry point | What it establishes | Recorded status |
 |---|---|---|---|
-| Pure contracts and release guard rails | tests/test_*.py via pytest | Validation, revision decisions, manifest identity, lifecycle policy, independent fixture totals, refusal to grant on unrelated/nonempty schemas and incomplete evidence rejection | 28 passed on October 30; [evidence](../evidence/release-20261030/local-verification.json) |
+| Pure contracts and release guard rails | tests/test_*.py via pytest | Validation, revision decisions, manifest identity, lifecycle policy, independent fixture totals, refusal to grant on unrelated/nonempty schemas, evidence completeness and fresh attempt isolation | 30 tests and seven subtests passed; [evidence](../evidence/release-20261030/local-verification-current.json) |
 | Static/build | Ruff; Python build | Source lint and distributable wheel | Passed |
 | Real Spark | tests/spark_acceptance.py via notebooks/spark_checks.py | Runtime validation, FK joins, selection and typed projection | Nine checks passed |
-| Persisted Delta | tests/delta_acceptance.py via notebooks/integration.py | MERGE, ledgers, snapshots, retries, replay and recovery assertions | Not run; catalog permission blocked |
-| Dashboard | Execute dashboard/*.sql and test widgets | SQL compatibility, pinned snapshots, metrics and filters | Not run |
-| GitHub CI | .github/workflows/ci.yml | Repeat local checks and wheel build in hosted CI | Passed on publication commit 37cf3da; [evidence](../evidence/github-ci.json) |
+| Persisted Delta | tests/delta_acceptance.py via notebooks/integration.py | MERGE, ledgers, snapshots, retries, replay and recovery assertions | Five demo jobs passed; full corrected acceptance C is running after two retained test failures |
+| Dashboard | Execute dashboard/*.sql and test widgets | SQL compatibility, pinned snapshots, metrics and filters | Four datasets and 12 SQL checks passed; real export retained; rendered publication approval pending |
+| GitHub CI | .github/workflows/ci.yml | Repeat local checks and wheel build in hosted CI | Passed on `4ba6d95`; [run](https://github.com/RussypherIOIIOI/RretailfowR/actions/runs/41148021420) |
 
 Local commands are in [quickstart](quickstart.md). Remote submission and output inspection are in [runbook](runbook.md). The Spark script needs the deployment state and wheel from scripts.deploy; it does not create project tables. The Delta script creates an explicitly selected, new test namespace and intentionally mutates test data.
 
 ## Behavioral coverage
+
+The original planned matrix below is historical. Current evidence includes five successful persisted demo jobs, exact 21-row frozen-outcome equality, and execution through interrupted rollback/resume in attempt B before its later fixture-I/O failure. Full corrected attempt C is running. Use the [current execution checklist](../evidence/release-20261030/README.md) for actual pass/fail states; the old plan is not a current claim that no persistence checks have executed.
 
 | Scenario | Local / Spark evidence | Persisted acceptance |
 |---|---|---|
@@ -41,9 +43,9 @@ Expected progression: 55.00 / 4 units / 2 orders / 3 lines; 91.00 / 7 / 4 / 5; a
 
 ## Failure-injection scope and gaps
 
-The Delta suite interrupts after Bronze, after customer evaluation freeze, after customer merge, after Silver, during Gold staging and after complete staging. It also forces a failing reject threshold and tests explicit abandonment/restoration. The complete suite remains unexecuted.
+The Delta suite interrupts after Bronze, after customer evaluation freeze, after customer merge, after Silver, during Gold staging and after complete staging. It forces a failing reject threshold and interrupts rollback after one real table restore, requiring the retry to restore all three tables. Attempts and their actual terminal failures are retained; a full green attempt is still pending.
 
-The October 30 suite now includes full assertions for crash midway through rollback followed by restoration of all three tables, and exact frozen-outcome equality across retries, including evaluation metadata. Both are **implemented but not executed on Delta** pending scoped permissions. The suite also rejects reused test namespaces, checks historical snapshot totals, and proves replay preserves the original missing-customer rejection. [Current evidence](../evidence/release-20261030/README.md). Still unproven: multi-writer behavior (unsupported), large data performance, dashboard cross-refresh behavior and long-term snapshot cleanup.
+Exact frozen outcomes and interrupted three-table rollback/resume executed in attempt B; that run later failed when the test used unsupported append-mode file I/O on the volume. The corrected suite uses a fresh logical table/file namespace within the same approved schemas/volume and preserves the failed attempts. It also checks historical snapshot totals, original C9 rejection retention, and malformed records remaining rejected. [Current evidence](../evidence/release-20261030/README.md). Still unproven: multi-writer behavior (unsupported), large data performance, dashboard cross-refresh behavior and long-term snapshot cleanup.
 
 ## Change verification
 

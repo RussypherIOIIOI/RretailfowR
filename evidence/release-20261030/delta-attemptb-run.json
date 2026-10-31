@@ -2,34 +2,40 @@
   "cleanup_duration": 0,
   "creator_user_name": "e92b585c-22cc-4813-b00e-b894ea680a37",
   "effective_performance_target": "PERFORMANCE_OPTIMIZED",
-  "end_time": 0,
+  "end_time": 1793405264577,
   "execution_duration": 0,
   "job_id": 558495174685508,
   "job_run_id": 323634755760496,
   "number_in_job": 323634755760496,
-  "run_duration": 424617,
+  "run_duration": 994154,
   "run_id": 323634755760496,
   "run_name": "RetailFlow delta acceptance",
   "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/558495174685508/run/323634755760496",
   "run_type": "SUBMIT_RUN",
-  "setup_duration": 3000,
+  "setup_duration": 0,
   "start_time": 1793404270423,
   "state": {
-    "life_cycle_state": "RUNNING",
-    "state_message": "",
+    "life_cycle_state": "INTERNAL_ERROR",
+    "result_state": "FAILED",
+    "state_message": "Task checks failed with message: Workload failed, see run output for details.",
     "user_cancelled_or_timedout": false
   },
   "status": {
-    "state": "RUNNING"
+    "state": "TERMINATED",
+    "termination_details": {
+      "code": "RUN_EXECUTION_ERROR",
+      "message": "Task checks failed with message: Workload failed, see run output for details.",
+      "type": "CLIENT_ERROR"
+    }
   },
   "tasks": [
     {
       "attempt_number": 0,
       "cleanup_duration": 0,
       "effective_performance_target": "PERFORMANCE_OPTIMIZED",
-      "end_time": 0,
+      "end_time": 1793405228799,
       "environment_key": "default",
-      "execution_duration": 0,
+      "execution_duration": 955000,
       "notebook_task": {
         "base_parameters": {
           "attempt": "attemptb",
@@ -47,12 +53,57 @@
       "setup_duration": 3000,
       "start_time": 1793404270456,
       "state": {
-        "life_cycle_state": "RUNNING",
-        "state_message": "In run",
+        "life_cycle_state": "TERMINATED",
+        "result_state": "FAILED",
+        "state_message": "Workload failed, see run output for details",
         "user_cancelled_or_timedout": false
       },
       "status": {
-        "state": "RUNNING"
+        "state": "TERMINATED",
+        "termination_details": {
+          "code": "RUN_EXECUTION_ERROR",
+          "message": "Workload failed, see run output for details",
+          "type": "CLIENT_ERROR"
+        }
+      },
+      "task_key": "checks"
+    },
+    {
+      "attempt_number": 1,
+      "cleanup_duration": 0,
+      "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+      "end_time": 1793405264053,
+      "environment_key": "default",
+      "execution_duration": 28000,
+      "notebook_task": {
+        "base_parameters": {
+          "attempt": "attemptb",
+          "catalog": "tmc_solutions_jvs",
+          "check_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/delta_acceptance.py",
+          "expected_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/expected.json",
+          "test_suffix": "20261030a"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/delta_checks",
+        "source": "WORKSPACE"
+      },
+      "run_id": 659743773834340,
+      "run_if": "ALL_SUCCESS",
+      "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/558495174685508/run/659743773834340",
+      "setup_duration": 3000,
+      "start_time": 1793405232220,
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "FAILED",
+        "state_message": "Workload failed, see run output for details",
+        "user_cancelled_or_timedout": false
+      },
+      "status": {
+        "state": "TERMINATED",
+        "termination_details": {
+          "code": "RUN_EXECUTION_ERROR",
+          "message": "Workload failed, see run output for details",
+          "type": "CLIENT_ERROR"
+        }
       },
       "task_key": "checks"
     }

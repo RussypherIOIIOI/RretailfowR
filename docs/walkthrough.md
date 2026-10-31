@@ -33,7 +33,7 @@ Use statements about observed values and passed fault tests only after correspon
 | lakeflow-success.png | All six successful tasks | Same completed demo run |
 | acceptance-result.png | Actual Delta assertions and run ID | No expected-output substitution |
 
-Store finished images under docs/assets/ and the real dashboard export under dashboard/retailflow.lvdash.json. Those files do not exist yet. Add relative image links to the README only after capture; do not create placeholder success screenshots. Publish the finished video at a real accessible URL and link it from the README.
+Store finished images under docs/assets/ and the real dashboard export under dashboard/retailflow.lvdash.json. The actual dashboard export and successful-job screenshot now exist; metric/rejection captures and the video remain pending rendered access. Add image/video links only after actual capture; do not create placeholder success evidence.
 
 ## Hiring-viewer close
 

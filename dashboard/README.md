@@ -10,7 +10,7 @@ Create a Databricks AI/BI dashboard using the existing serverless SQL warehouse.
 | First row | Net sales / units / orders | sales_lines: SUM(net_sales), SUM(quantity), COUNT(DISTINCT order_id) |
 | Second row | Daily sales / top products | sales_lines: net sales by order_date / product_id and product_name, descending |
 | Third row | Regional sales / rejected records | sales_lines by sale_region / rejected_records COUNT(DISTINCT occurrence_id) where resolved=false |
-| Fourth row | Rejection reasons and batches | rejected_reasons, bars; label overlapping reason counts |
+| Fourth row | Rejection reasons and batches | rejected_reasons table; 26 observed reason codes make a full bar chart unreadable; counts overlap |
 | Last row | Inspect rejected records | rejected_records table: raw text, filename, record number, revision, reason list, resolved flag |
 
 Use date range, transaction region and product filters on the shared sales_lines dataset. Rejection batch/entity filters apply only to quality widgets; rejected rows can have invalid dates, so never imply the sales date filter scopes their count. Distinct orders are calculated at the active filter grain, never summed from daily/product groups. Dimensions show current Type 1 descriptions while line prices and region retain transaction meaning.

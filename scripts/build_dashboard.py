@@ -125,9 +125,10 @@ def main():
                counter("unresolved", "Unresolved occurrences", "rejected_records", "COUNT(DISTINCT `unresolved_occurrence_id`)", 0, 4),
                counter("resolved", "Resolved occurrences", "rejected_records", "COUNT(DISTINCT `resolved_occurrence_id`)", 4, 4),
                counter("ever-rejected", "Ever rejected · unique", "rejected_records", "COUNT(DISTINCT `occurrence_id`)", 8, 4),
-               chart("reasons", "Rejection reasons · overlapping counts", "rejected_reasons", "reason", "SUM(`rejected_records`)", 0, 7, 12),
+               table("reasons", "Rejection reasons · overlapping counts by batch/entity", "rejected_reasons",
+                     ["reason", "rejected_records", "batch_id", "entity"], 7, 7),
                table("reject-evidence", "Rejected source records · original bytes and latest disposition", "rejected_records",
-                     ["batch_id", "filename", "record_index", "business_key", "disposition", "reasons", "resolved", "raw_record"], 12, 8)]
+                     ["batch_id", "filename", "record_index", "business_key", "disposition", "reasons", "resolved", "raw_record"], 14, 8)]
     pages = [{"name": name, "displayName": title, "pageType": kind, "layoutVersion": "GRID_V1", "layout": layout}
              for name, title, kind, layout in [("sales", "Sales", "PAGE_TYPE_CANVAS", sales),
                  ("quality", "Data quality", "PAGE_TYPE_CANVAS", quality),

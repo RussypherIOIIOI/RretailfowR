@@ -253,8 +253,10 @@ def run(spark, catalog, suffix, expected_path, attempt=""):
     pipeline("arrival", "afterrollback")
     check("replay")
     # Changed bytes under an existing batch identity fail before affecting data.
-    with (directory / "renamed.csv").open("ab") as stream:
-        stream.write(b"changed\n")
+    # Managed volumes do not support append/random-write file handles.
+    # Replace the tiny test-only file sequentially to inject changed bytes.
+    changed_file = directory / "renamed.csv"
+    changed_file.write_bytes(changed_file.read_bytes() + b"changed\n")
     try:
         lake.ingest(directory, "tamper")
     except ValueError:

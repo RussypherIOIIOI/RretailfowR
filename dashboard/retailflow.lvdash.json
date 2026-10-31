@@ -997,41 +997,48 @@
                       "expression": "`reason`"
                     },
                     {
-                      "name": "value",
-                      "expression": "SUM(`rejected_records`)"
+                      "name": "rejected_records",
+                      "expression": "`rejected_records`"
+                    },
+                    {
+                      "name": "batch_id",
+                      "expression": "`batch_id`"
+                    },
+                    {
+                      "name": "entity",
+                      "expression": "`entity`"
                     }
                   ],
-                  "disaggregated": false,
-                  "orders": [
-                    {
-                      "direction": "DESC",
-                      "expression": "SUM(`rejected_records`)"
-                    }
-                  ]
+                  "disaggregated": true
                 }
               }
             ],
             "spec": {
-              "version": 3,
-              "widgetType": "bar",
+              "version": 2,
+              "widgetType": "table",
               "encodings": {
-                "x": {
-                  "fieldName": "reason",
-                  "scale": {
-                    "type": "categorical"
+                "columns": [
+                  {
+                    "fieldName": "reason",
+                    "displayName": "Reason"
+                  },
+                  {
+                    "fieldName": "rejected_records",
+                    "displayName": "Rejected Records"
+                  },
+                  {
+                    "fieldName": "batch_id",
+                    "displayName": "Batch Id"
+                  },
+                  {
+                    "fieldName": "entity",
+                    "displayName": "Entity"
                   }
-                },
-                "y": {
-                  "fieldName": "value",
-                  "displayName": "Occurrences",
-                  "scale": {
-                    "type": "quantitative"
-                  }
-                }
+                ]
               },
               "frame": {
                 "showTitle": true,
-                "title": "Rejection reasons \u00c2\u00b7 overlapping counts"
+                "title": "Rejection reasons \u00c2\u00b7 overlapping counts by batch/entity"
               }
             }
           },
@@ -1039,7 +1046,7 @@
             "x": 0,
             "y": 7,
             "width": 12,
-            "height": 5
+            "height": 7
           }
         },
         {
@@ -1135,7 +1142,7 @@
           },
           "position": {
             "x": 0,
-            "y": 12,
+            "y": 14,
             "width": 12,
             "height": 8
           }
