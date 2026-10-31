@@ -2,9 +2,9 @@
 
 ## Current destination and release attempt — 2026-10-30
 
-The configured `workspace` catalog no longer exists. The available managed catalog is `tmc_solutions_jvs`; do not blindly run the historical commands below. The existing job still runs as M2M principal `jarvis-cli-m2m`. No grants or deployment settings were changed in the latest attempt. Strict bundle validation now passes without warnings; bundle deployment remains unexecuted.
+The former `workspace` catalog no longer exists. The exact approved schema/volume grants were applied in `tmc_solutions_jvs`, and existing job `1055508848756404` was updated to that catalog while retaining M2M principal `jarvis-cli-m2m` and concurrency one. All five demo runs succeeded, including the identical rerun. Do not blindly repeat the historical commands below. Strict bundle validation passes without warnings; bundle deployment remains unexecuted.
 
-Use the [exact permission plan, current status and resume sequence](../evidence/release-20261030/README.md). Live acceptance, successful demo runs, SQL/widget checks, dashboard export and recording await that scoped approval. Do not switch the job to the admin identity to bypass its grants. The remaining sections preserve historical deployment/recovery context.
+Use the [current status, actual run IDs and remaining approval](../evidence/release-20261030/README.md). SQL dataset checks passed and the real dashboard export exists. Corrected full acceptance is running; do not duplicate it. The next approval is private publisher-mode dashboard publication, not broader catalog grants. Do not switch the job to the admin identity. The remaining sections preserve historical deployment/recovery context.
 
 ## Actual deployment
 

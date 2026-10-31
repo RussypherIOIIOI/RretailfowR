@@ -10,19 +10,19 @@ Updated: 2026-10-30. [Latest evidence, pending permission plan and resume comman
 - [x] Nine real Spark checks recorded.
 - [x] Six-task job deployed and read back.
 - [x] Review findings and fixes documented.
-- [ ] Resolve execution-principal catalog permissions.
+- [x] Resolve execution-principal catalog permissions with the exact approved schema/volume plan.
 - [ ] Run Delta acceptance in a fresh isolated namespace and retain successful output.
 - [ ] Add/run interrupted-rollback and exact frozen-outcome regression assertions.
 - [x] Verify strict bundle validation: CLI 1.16.1, zero warnings. Bundle deployment itself remains unexecuted.
-- [ ] Record real job success and persisted 55.00 → 91.00 → 98.00 results.
+- [x] Record real job success and persisted 55.00 → 91.00 → 98.00 results.
 - [ ] Validate reruns, rejection history, replay and last-good publication retention.
 
 ## Dashboard and demonstration
 
 - [x] SQL datasets, metric contract and layout authored.
-- [ ] Execute each SQL dataset against actual Gold with one registered publication ID.
+- [x] Execute each SQL dataset against actual Gold with one registered publication ID (`demo04`).
 - [ ] Test date/product/region filters and separate quality filters.
-- [ ] Create the dashboard and export its real definition.
+- [x] Create the dashboard and export its real definition; rendered publication remains approval-blocked.
 - [ ] Capture screenshots showing real metrics, rejects and job execution.
 - [ ] Record the two-minute walkthrough; link the actual video.
 

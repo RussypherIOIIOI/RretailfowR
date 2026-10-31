@@ -2,7 +2,7 @@
 
 ## Latest attempt — 2026-10-30
 
-Strict bundle validation passes with zero warnings. Exact frozen-outcome and interrupted-rollback assertions are implemented; their real Delta execution is still blocked. The existing job runs as `jarvis-cli-m2m` and points at nonexistent `workspace`. The existing `tmc_solutions_jvs` catalog requires a scoped provisioning/grant decision before live execution. No grants or deployment settings have changed. [Dated checklist, evidence and resume commands](../evidence/release-20261030/README.md).
+The exact scoped grants were approved, applied and verified. The existing job now targets `tmc_solutions_jvs`; all five six-task demo runs succeeded. Actual Gold SQL matches 55.00 / 91.00 / 91.00 / 98.00 and confirms rerun conservation, resolved rejection history and exact frozen outcomes. All four dashboard datasets and 12 SQL assertions passed against `demo04`; a real dashboard was created and exported. Its rendered queries require a separate private publisher-mode publication approval. Corrected full Delta acceptance is running in fresh tables/files inside the approved test schemas/volume; the initial failed test assertion and its diagnosis are retained. [Dated checklist, actual run IDs and exact remaining gate](../evidence/release-20261030/README.md).
 
 The following table records the historical October 15 build, not the current bundle validation status.
 

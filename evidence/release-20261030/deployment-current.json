@@ -1,0 +1,187 @@
+{
+  "email_notifications": {},
+  "environments": [
+    {
+      "environment_key": "default",
+      "spec": {
+        "dependencies": [
+          "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/artifacts/bf8996b79ed04b93/retailflow-0.1.0-py3-none-any.whl"
+        ],
+        "environment_version": "5"
+      }
+    }
+  ],
+  "format": "MULTI_TASK",
+  "max_concurrent_runs": 1,
+  "name": "RetailFlow \u00e2\u20ac\u201d Sales Lakehouse",
+  "parameters": [
+    {
+      "default": "tmc_solutions_jvs",
+      "name": "catalog"
+    },
+    {
+      "default": "retailflow",
+      "name": "schema_prefix"
+    },
+    {
+      "default": "batch1",
+      "name": "batch_id"
+    },
+    {
+      "default": "{{job.run_id}}",
+      "name": "evaluation_id"
+    },
+    {
+      "default": "",
+      "name": "replay_batches"
+    },
+    {
+      "default": "1.0",
+      "name": "max_reject_fraction"
+    }
+  ],
+  "queue": {
+    "enabled": true
+  },
+  "tags": {
+    "project": "retailflow",
+    "schema_prefix": "retailflow"
+  },
+  "tasks": [
+    {
+      "disabled": false,
+      "email_notifications": {},
+      "environment_key": "default",
+      "max_retries": 1,
+      "min_retry_interval_millis": 30000,
+      "notebook_task": {
+        "base_parameters": {
+          "stage": "preflight"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+        "source": "WORKSPACE"
+      },
+      "retry_on_timeout": false,
+      "run_if": "ALL_SUCCESS",
+      "task_key": "preflight",
+      "timeout_seconds": 1200
+    },
+    {
+      "depends_on": [
+        {
+          "task_key": "preflight"
+        }
+      ],
+      "disabled": false,
+      "email_notifications": {},
+      "environment_key": "default",
+      "max_retries": 1,
+      "min_retry_interval_millis": 30000,
+      "notebook_task": {
+        "base_parameters": {
+          "stage": "bronze"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+        "source": "WORKSPACE"
+      },
+      "retry_on_timeout": false,
+      "run_if": "ALL_SUCCESS",
+      "task_key": "bronze",
+      "timeout_seconds": 1200
+    },
+    {
+      "depends_on": [
+        {
+          "task_key": "bronze"
+        }
+      ],
+      "disabled": false,
+      "email_notifications": {},
+      "environment_key": "default",
+      "max_retries": 1,
+      "min_retry_interval_millis": 30000,
+      "notebook_task": {
+        "base_parameters": {
+          "stage": "silver"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+        "source": "WORKSPACE"
+      },
+      "retry_on_timeout": false,
+      "run_if": "ALL_SUCCESS",
+      "task_key": "silver",
+      "timeout_seconds": 1200
+    },
+    {
+      "depends_on": [
+        {
+          "task_key": "silver"
+        }
+      ],
+      "disabled": false,
+      "email_notifications": {},
+      "environment_key": "default",
+      "max_retries": 1,
+      "min_retry_interval_millis": 30000,
+      "notebook_task": {
+        "base_parameters": {
+          "stage": "gold"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+        "source": "WORKSPACE"
+      },
+      "retry_on_timeout": false,
+      "run_if": "ALL_SUCCESS",
+      "task_key": "gold",
+      "timeout_seconds": 1200
+    },
+    {
+      "depends_on": [
+        {
+          "task_key": "gold"
+        }
+      ],
+      "disabled": false,
+      "email_notifications": {},
+      "environment_key": "default",
+      "max_retries": 1,
+      "min_retry_interval_millis": 30000,
+      "notebook_task": {
+        "base_parameters": {
+          "stage": "quality"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+        "source": "WORKSPACE"
+      },
+      "retry_on_timeout": false,
+      "run_if": "ALL_SUCCESS",
+      "task_key": "quality",
+      "timeout_seconds": 1200
+    },
+    {
+      "depends_on": [
+        {
+          "task_key": "quality"
+        }
+      ],
+      "disabled": false,
+      "email_notifications": {},
+      "environment_key": "default",
+      "max_retries": 1,
+      "min_retry_interval_millis": 30000,
+      "notebook_task": {
+        "base_parameters": {
+          "stage": "publish"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+        "source": "WORKSPACE"
+      },
+      "retry_on_timeout": false,
+      "run_if": "ALL_SUCCESS",
+      "task_key": "publish",
+      "timeout_seconds": 1200
+    }
+  ],
+  "timeout_seconds": 7200,
+  "webhook_notifications": {}
+}

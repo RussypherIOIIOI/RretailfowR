@@ -1,0 +1,424 @@
+{
+  "manifest": {
+    "chunks": [
+      {
+        "chunk_index": 0,
+        "row_count": 21,
+        "row_offset": 0
+      }
+    ],
+    "format": "JSON_ARRAY",
+    "schema": {
+      "column_count": 13,
+      "columns": [
+        {
+          "name": "scope_id",
+          "position": 0,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "evaluation_id",
+          "position": 1,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "entity",
+          "position": 2,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "kind",
+          "position": 3,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "occurrence_id",
+          "position": 4,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "business_key",
+          "position": 5,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "source_revision",
+          "position": 6,
+          "type_name": "LONG",
+          "type_text": "BIGINT"
+        },
+        {
+          "name": "payload_hash",
+          "position": 7,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "payload_json",
+          "position": 8,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "reasons",
+          "position": 9,
+          "type_name": "ARRAY",
+          "type_text": "ARRAY<STRING>"
+        },
+        {
+          "name": "disposition",
+          "position": 10,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "evaluated_at",
+          "position": 11,
+          "type_name": "TIMESTAMP",
+          "type_text": "TIMESTAMP"
+        },
+        {
+          "name": "ruleset",
+          "position": 12,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        }
+      ]
+    },
+    "total_chunk_count": 1,
+    "total_row_count": 21,
+    "truncated": false
+  },
+  "result": {
+    "chunk_index": 0,
+    "data_array": [
+      [
+        "e5532e490781fc6dc2ab930c09e6396e8baa2c4b0515424632a27c40b75a49d5",
+        "demo04",
+        "customers",
+        "header",
+        "__header__",
+        null,
+        null,
+        null,
+        "{\"batches\":[\"arrival\",\"batch2\"],\"expected_count\":3}",
+        "[]",
+        null,
+        "2026-10-30T23:45:43.123Z",
+        "retailflow-v1"
+      ],
+      [
+        "e5532e490781fc6dc2ab930c09e6396e8baa2c4b0515424632a27c40b75a49d5",
+        "demo04",
+        "customers",
+        "row",
+        "14debdfab683516c1d9064aca56617d0c88e2ed17c654705ce655398025ac69d",
+        "[\"C3\"]",
+        "1",
+        "8cab6ebb62f61e08e6dfc78c6511b12fe64a8bba2384cd07d791f01cd8146db6",
+        "{\"business_key\":\"[\\\"C3\\\"]\",\"customer_id\":\"C3\",\"customer_name\":\"Cy\",\"home_region\":\"NORTH\",\"payload_hash\":\"8cab6ebb62f61e08e6dfc78c6511b12fe64a8bba2384cd07d791f01cd8146db6\",\"source_revision\":1,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\"}",
+        "[]",
+        "exact_duplicate",
+        "2026-10-30T23:45:43.123Z",
+        "retailflow-v1"
+      ],
+      [
+        "e5532e490781fc6dc2ab930c09e6396e8baa2c4b0515424632a27c40b75a49d5",
+        "demo04",
+        "customers",
+        "row",
+        "642104b913576911a0735c3669aa0f53bf59ab996d3f0ce8bfe4e61c84c998b7",
+        "[\"C1\"]",
+        "2",
+        "1eda787a81a4b75dcc70543c25f8523fb76316bb080349e812c579aca5cf042b",
+        "{\"business_key\":\"[\\\"C1\\\"]\",\"customer_id\":\"C1\",\"customer_name\":\"Ada Lovelace\",\"home_region\":\"SOUTH\",\"payload_hash\":\"1eda787a81a4b75dcc70543c25f8523fb76316bb080349e812c579aca5cf042b\",\"source_revision\":2,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\"}",
+        "[]",
+        "exact_duplicate",
+        "2026-10-30T23:45:43.123Z",
+        "retailflow-v1"
+      ],
+      [
+        "e5532e490781fc6dc2ab930c09e6396e8baa2c4b0515424632a27c40b75a49d5",
+        "demo04",
+        "customers",
+        "row",
+        "eb1c9bd6abaf543d532e515ead87fcd15aa365bd4c17f78aa4c26f715f432016",
+        "[\"C9\"]",
+        "1",
+        "5455f422a78cfe6a19343ba0f1c0f396dc228617b5b566e012b091f000dc5e58",
+        "{\"business_key\":\"[\\\"C9\\\"]\",\"customer_id\":\"C9\",\"customer_name\":\"Dee\",\"home_region\":\"NORTH\",\"payload_hash\":\"5455f422a78cfe6a19343ba0f1c0f396dc228617b5b566e012b091f000dc5e58\",\"source_revision\":1,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\"}",
+        "[]",
+        "exact_duplicate",
+        "2026-10-30T23:45:43.123Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "header",
+        "__header__",
+        null,
+        null,
+        null,
+        "{\"batches\":[\"arrival\",\"batch2\"],\"expected_count\":14}",
+        "[]",
+        null,
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "29b12dec27aae4baa06692cce09033b8ab3b81be8344b5e08c5f2756a48dc8d9",
+        "[\"BROKEN\",\"1\"]",
+        "1",
+        "cb2de5a17554c380df851de6c24458f13cc2ac822db937f444a5ee3e408ed977",
+        "{\"business_key\":\"[\\\"BROKEN\\\",\\\"1\\\"]\",\"customer_id\":\"C1\",\"discount_amount\":\"0.00\",\"line_id\":\"1\",\"order_date\":\"2026-02-30\",\"order_id\":\"BROKEN\",\"payload_hash\":\"cb2de5a17554c380df851de6c24458f13cc2ac822db937f444a5ee3e408ed977\",\"product_id\":\"P1\",\"quantity\":null,\"sale_region\":\"WEST\",\"source_revision\":1,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"oops\"}",
+        "[\"INVALID_ORDER_DATE\",\"INVALID_QUANTITY\",\"INVALID_UNIT_PRICE\"]",
+        "invalid",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "32493e9c3a7ca88703c5922b3ea9a035e5deb7e88907571d46a374cdd78b6a3c",
+        "[\"\",\"\"]",
+        null,
+        "c6b69eaf6ec5f7e597368bf911d5515a317b94f3ceac1e24d5d3d8944f783cbb",
+        "{\"business_key\":\"[\\\"\\\",\\\"\\\"]\",\"customer_id\":\"\",\"discount_amount\":\"\",\"line_id\":\"\",\"order_date\":\"\",\"order_id\":\"\",\"payload_hash\":\"c6b69eaf6ec5f7e597368bf911d5515a317b94f3ceac1e24d5d3d8944f783cbb\",\"product_id\":\"\",\"quantity\":null,\"sale_region\":\"\",\"source_revision\":null,\"source_updated_at\":\"\",\"unit_price\":\"\"}",
+        "[\"INVALID_CUSTOMER_ID\",\"INVALID_DISCOUNT_AMOUNT\",\"INVALID_LINE_ID\",\"INVALID_ORDER_DATE\",\"INVALID_ORDER_ID\",\"INVALID_PRODUCT_ID\",\"INVALID_QUANTITY\",\"INVALID_REVISION\",\"INVALID_SALE_REGION\",\"INVALID_SOURCE_UPDATED_AT\",\"INVALID_UNIT_PRICE\",\"MALFORMED_CSV\",\"MISSING_CUSTOMER_ID\",\"MISSING_DISCOUNT_AMOUNT\",\"MISSING_LINE_ID\",\"MISSING_ORDER_DATE\",\"MISSING_ORDER_ID\",\"MISSING_PRODUCT_ID\",\"MISSING_QUANTITY\",\"MISSING_SALE_REGION\",\"MISSING_SOURCE_REVISION\",\"MISSING_SOURCE_UPDATED_AT\",\"MISSING_UNIT_PRICE\",\"UNKNOWN_CUSTOMER\",\"UNKNOWN_PRODUCT\"]",
+        "invalid",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "36f355792b95e7974cd948b8fcedb883863e28d2ba55c7a913a503b20ea05f3d",
+        "[\"A1\",\"1\"]",
+        "2",
+        "a3af0606aa8407c1e68e1655b066719a7f117dd4861a9ba5646fbd1499779b39",
+        "{\"business_key\":\"[\\\"A1\\\",\\\"1\\\"]\",\"customer_id\":\"C1\",\"discount_amount\":\"1.00\",\"line_id\":\"1\",\"net_sales\":\"35.00\",\"order_date\":\"2026-01-02\",\"order_id\":\"A1\",\"payload_hash\":\"a3af0606aa8407c1e68e1655b066719a7f117dd4861a9ba5646fbd1499779b39\",\"product_id\":\"P2\",\"quantity\":3,\"sale_region\":\"EAST\",\"source_revision\":2,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"12.00\"}",
+        "[]",
+        "exact_duplicate",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "3dcf3fa6888d9ab960fbdf4296e7195b5677b2751eadb52059e2e2c9352c2f15",
+        "[\"A5\",\"1\"]",
+        "2",
+        "b56d9990550c23ad86a7a470da6578fa3896483a1f5f9d71adcd3750da9c81e1",
+        "{\"business_key\":\"[\\\"A5\\\",\\\"1\\\"]\",\"customer_id\":\"C1\",\"discount_amount\":\"0.00\",\"line_id\":\"1\",\"net_sales\":\"8.00\",\"order_date\":\"2026-01-01\",\"order_id\":\"A5\",\"payload_hash\":\"b56d9990550c23ad86a7a470da6578fa3896483a1f5f9d71adcd3750da9c81e1\",\"product_id\":\"P1\",\"quantity\":1,\"sale_region\":\"WEST\",\"source_revision\":2,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"8.00\"}",
+        "[\"REVISION_CONFLICT\"]",
+        "conflict",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "6850b9f23d524675ba8792e77ad7b1aa3671551017dd47c1efcf4262803ee882",
+        "[\"A5\",\"1\"]",
+        "1",
+        "c0652f915e5336298830d6cddf49ffac86c6b99e34b798c28ad34dd34cf6de18",
+        "{\"business_key\":\"[\\\"A5\\\",\\\"1\\\"]\",\"customer_id\":\"C1\",\"discount_amount\":\"0.00\",\"line_id\":\"1\",\"net_sales\":\"6.00\",\"order_date\":\"2026-01-01\",\"order_id\":\"A5\",\"payload_hash\":\"c0652f915e5336298830d6cddf49ffac86c6b99e34b798c28ad34dd34cf6de18\",\"product_id\":\"P1\",\"quantity\":1,\"sale_region\":\"WEST\",\"source_revision\":1,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"6.00\"}",
+        "[]",
+        "exact_duplicate",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "71dcba543d4887c27b6992e007bb2de7131baab06e4d5e784e78e57994f77bdb",
+        "[\"A4\",\"1\"]",
+        "1",
+        "290301c56f488f31ae2e5975f31e2fae68071ed913322d39cca58e376d32fb1b",
+        "{\"business_key\":\"[\\\"A4\\\",\\\"1\\\"]\",\"customer_id\":\"C9\",\"discount_amount\":\"0.00\",\"line_id\":\"1\",\"net_sales\":\"7.00\",\"order_date\":\"2026-01-01\",\"order_id\":\"A4\",\"payload_hash\":\"290301c56f488f31ae2e5975f31e2fae68071ed913322d39cca58e376d32fb1b\",\"product_id\":\"P1\",\"quantity\":1,\"sale_region\":\"WEST\",\"source_revision\":1,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"7.00\"}",
+        "[]",
+        "accepted_winner",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "784f3d775d41dcd714e338c763be1bb9f240ba7e96dab80f4f92da88dea54bf8",
+        "[\"A2\",\"2\"]",
+        "1",
+        "d075936b003f0fa6cf4130957d1f5cac5fd15ef0ef46fc546b14c8f06b670cdd",
+        "{\"business_key\":\"[\\\"A2\\\",\\\"2\\\"]\",\"customer_id\":\"C2\",\"discount_amount\":\"0.00\",\"line_id\":\"2\",\"net_sales\":\"11.00\",\"order_date\":\"2026-01-01\",\"order_id\":\"A2\",\"payload_hash\":\"d075936b003f0fa6cf4130957d1f5cac5fd15ef0ef46fc546b14c8f06b670cdd\",\"product_id\":\"P1\",\"quantity\":1,\"sale_region\":\"EAST\",\"source_revision\":1,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"11.00\"}",
+        "[\"REVISION_CONFLICT\"]",
+        "conflict",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "8a885fb431b90cf20b99d54bbecdc663c3fc1bc147b2e3e2635a845cc9d1a1d6",
+        "[\"A1\",\"1\"]",
+        "1",
+        "13b1d2cc100731af57b644eb7609ff5b6ee1961016fe354126221a0c8f34c42a",
+        "{\"business_key\":\"[\\\"A1\\\",\\\"1\\\"]\",\"customer_id\":\"C1\",\"discount_amount\":\"0.00\",\"line_id\":\"1\",\"net_sales\":\"20.00\",\"order_date\":\"2026-01-01\",\"order_id\":\"A1\",\"payload_hash\":\"13b1d2cc100731af57b644eb7609ff5b6ee1961016fe354126221a0c8f34c42a\",\"product_id\":\"P1\",\"quantity\":2,\"sale_region\":\"WEST\",\"source_revision\":1,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"10.00\"}",
+        "[]",
+        "stale_superseded",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "8fd301bc7e56839cfe8629b8f1549fbbc9d4390fdc0064df6a15250472fee450",
+        "[\"A3\",\"1\"]",
+        "2",
+        "4c71265d9a8f07c706fd1f28075df7eaa9be22617c18f34dc24662fa34cd4b8b",
+        "{\"business_key\":\"[\\\"A3\\\",\\\"1\\\"]\",\"customer_id\":\"C1\",\"discount_amount\":\"0.00\",\"line_id\":\"1\",\"net_sales\":\"19.00\",\"order_date\":\"2026-01-01\",\"order_id\":\"A3\",\"payload_hash\":\"4c71265d9a8f07c706fd1f28075df7eaa9be22617c18f34dc24662fa34cd4b8b\",\"product_id\":\"P1\",\"quantity\":1,\"sale_region\":\"WEST\",\"source_revision\":2,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"19.00\"}",
+        "[]",
+        "stale_superseded",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "b5d1aa074c32c7517a9d94abcc767f8dc49d29bc9fe67c205fbd2bb29f882f8e",
+        "[\"A1\",\"1\"]",
+        "2",
+        "a3af0606aa8407c1e68e1655b066719a7f117dd4861a9ba5646fbd1499779b39",
+        "{\"business_key\":\"[\\\"A1\\\",\\\"1\\\"]\",\"customer_id\":\"C1\",\"discount_amount\":\"1.00\",\"line_id\":\"1\",\"net_sales\":\"35.00\",\"order_date\":\"2026-01-02\",\"order_id\":\"A1\",\"payload_hash\":\"a3af0606aa8407c1e68e1655b066719a7f117dd4861a9ba5646fbd1499779b39\",\"product_id\":\"P2\",\"quantity\":3,\"sale_region\":\"EAST\",\"source_revision\":2,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"12.00\"}",
+        "[]",
+        "exact_duplicate",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "b931aed9a338c77f96ef1b10d5644343407e00274e5d27989e555a2416c79da5",
+        "[\"A3\",\"1\"]",
+        "1",
+        "85e04a0448e0e2c70ced416a93960d054ef5fb13ca324623aa6b68af832de6c2",
+        "{\"business_key\":\"[\\\"A3\\\",\\\"1\\\"]\",\"customer_id\":\"C1\",\"discount_amount\":\"0.00\",\"line_id\":\"1\",\"net_sales\":\"15.00\",\"order_date\":\"2026-01-01\",\"order_id\":\"A3\",\"payload_hash\":\"85e04a0448e0e2c70ced416a93960d054ef5fb13ca324623aa6b68af832de6c2\",\"product_id\":\"P1\",\"quantity\":1,\"sale_region\":\"WEST\",\"source_revision\":1,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"15.00\"}",
+        "[]",
+        "stale_superseded",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "c93cf232a18a101010db43df19a731955f665ce2e69dd056af17c0509a5d4478",
+        "[\"A2\",\"1\"]",
+        "2",
+        "89993fe6bacb73ff82f7ccd5f5b57d84a9b277a8109d1eeff6d8d69c0f8936ff",
+        "{\"business_key\":\"[\\\"A2\\\",\\\"1\\\"]\",\"customer_id\":\"C2\",\"discount_amount\":\"0.00\",\"line_id\":\"1\",\"order_date\":\"2026-01-01\",\"order_id\":\"A2\",\"payload_hash\":\"89993fe6bacb73ff82f7ccd5f5b57d84a9b277a8109d1eeff6d8d69c0f8936ff\",\"product_id\":\"P2\",\"quantity\":null,\"sale_region\":\"EAST\",\"source_revision\":2,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"30.00\"}",
+        "[\"INVALID_QUANTITY\"]",
+        "invalid",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "f38ce59b1c741e9ada6ace98ce58d226a2cf27ca1095e4ee4f804c2d6434837c",
+        "[\"A5\",\"1\"]",
+        "2",
+        "0b0ef0345129c5d31c85adc6042ce6a07728f6f7d1dd4f09fb4e1ce5a01f89cd",
+        "{\"business_key\":\"[\\\"A5\\\",\\\"1\\\"]\",\"customer_id\":\"C1\",\"discount_amount\":\"0.00\",\"line_id\":\"1\",\"net_sales\":\"9.00\",\"order_date\":\"2026-01-01\",\"order_id\":\"A5\",\"payload_hash\":\"0b0ef0345129c5d31c85adc6042ce6a07728f6f7d1dd4f09fb4e1ce5a01f89cd\",\"product_id\":\"P1\",\"quantity\":1,\"sale_region\":\"WEST\",\"source_revision\":2,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"9.00\"}",
+        "[\"REVISION_CONFLICT\"]",
+        "conflict",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "c3100e6552a5f4a53c379c4ba3a903052dcfd5816b49ffef1c7206dceddcefa8",
+        "demo04",
+        "orders",
+        "row",
+        "fe24bd5b25d4362063db1c06834a7399540789c5f3181e939ccbbadd8ed30cf0",
+        "[\"A3\",\"1\"]",
+        "3",
+        "85e04a0448e0e2c70ced416a93960d054ef5fb13ca324623aa6b68af832de6c2",
+        "{\"business_key\":\"[\\\"A3\\\",\\\"1\\\"]\",\"customer_id\":\"C1\",\"discount_amount\":\"0.00\",\"line_id\":\"1\",\"net_sales\":\"15.00\",\"order_date\":\"2026-01-01\",\"order_id\":\"A3\",\"payload_hash\":\"85e04a0448e0e2c70ced416a93960d054ef5fb13ca324623aa6b68af832de6c2\",\"product_id\":\"P1\",\"quantity\":1,\"sale_region\":\"WEST\",\"source_revision\":3,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"15.00\"}",
+        "[]",
+        "exact_duplicate",
+        "2026-10-30T23:46:00.545Z",
+        "retailflow-v1"
+      ],
+      [
+        "fa2cec5b85a0d1be47b7161fa2b998bd2c75051fb1ce5da7623f56fb4b0d139d",
+        "demo04",
+        "products",
+        "header",
+        "__header__",
+        null,
+        null,
+        null,
+        "{\"batches\":[\"arrival\",\"batch2\"],\"expected_count\":1}",
+        "[]",
+        null,
+        "2026-10-30T23:45:52.635Z",
+        "retailflow-v1"
+      ],
+      [
+        "fa2cec5b85a0d1be47b7161fa2b998bd2c75051fb1ce5da7623f56fb4b0d139d",
+        "demo04",
+        "products",
+        "row",
+        "ac149a8453454b5f9b760b8ca99b0ca557cd8cf1754a66c7f60a6053915ee029",
+        "[\"P2\"]",
+        "2",
+        "b1522a56f2b84a4d0dd04c6a9ee380f275f396ab409b59a451522b2415fbe94f",
+        "{\"business_key\":\"[\\\"P2\\\"]\",\"category\":\"Home\",\"current_price\":\"99.00\",\"payload_hash\":\"b1522a56f2b84a4d0dd04c6a9ee380f275f396ab409b59a451522b2415fbe94f\",\"product_id\":\"P2\",\"product_name\":\"Kettle Plus\",\"source_revision\":2,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\"}",
+        "[]",
+        "exact_duplicate",
+        "2026-10-30T23:45:52.635Z",
+        "retailflow-v1"
+      ]
+    ],
+    "row_count": 21,
+    "row_offset": 0
+  },
+  "statement_id": "01f1d4bd-25bd-1c49-8371-7ecd917eddbe",
+  "status": {
+    "state": "SUCCEEDED"
+  }
+}

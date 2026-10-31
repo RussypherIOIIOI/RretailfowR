@@ -2,6 +2,7 @@
 
 import json
 import hashlib
+import re
 from decimal import Decimal
 from pathlib import Path
 from unittest.mock import patch
@@ -10,13 +11,36 @@ from retailflow.fixtures import generate
 from retailflow.pipeline import Lakehouse, InjectedFailure
 
 
-def run(spark, catalog, suffix, expected_path):
-    cfg = Config(catalog, "retailflow_test" + suffix)
+def acceptance_config(catalog, suffix, attempt=""):
+    """Isolate new tables/files without widening the approved schema or volume scope."""
+    prefix = "retailflow_test" + suffix
+    if not attempt:
+        return Config(catalog, prefix)
+    if not re.fullmatch(r"[a-z][a-z0-9]{0,15}", attempt):
+        raise ValueError("Attempt must be 1-16 lowercase alphanumeric characters, starting with a letter")
+
+    class AttemptConfig(Config):
+        def table(self, layer, name):
+            # setup() must keep using the preprovisioned fixture volume.
+            scoped = name if layer == "bronze" and name == "fixtures" else attempt + "_" + name
+            return super().table(layer, scoped)
+
+        @property
+        def volume(self):
+            return super().volume + "/" + attempt
+
+    return AttemptConfig(catalog, prefix)
+
+
+def run(spark, catalog, suffix, expected_path, attempt=""):
+    cfg = acceptance_config(catalog, suffix, attempt)
     lake = Lakehouse(spark, cfg)
     # Empty administrator-provisioned schemas are allowed; reused test data is not.
     for layer in ("bronze", "silver", "gold", "ops"):
         if spark.catalog.databaseExists(cfg.schema(layer)):
-            assert not spark.catalog.listTables(cfg.schema(layer)), "Acceptance namespace is not fresh"
+            existing = spark.catalog.listTables(cfg.schema(layer))
+            occupied = [table for table in existing if not attempt or table.name.startswith(attempt + "_")]
+            assert not occupied, "Acceptance table namespace is not fresh"
     if Path(cfg.volume).exists():
         assert not list(Path(cfg.volume).iterdir()), "Acceptance fixture volume is not empty"
     lake.setup()
@@ -118,7 +142,7 @@ def run(spark, catalog, suffix, expected_path):
     assert lake.current_id() == old_publication
     assert_frozen(frozen_all, "second")
     # A genuine failed gate must preserve the pointer.
-    strict = Lakehouse(spark, Config(catalog, cfg.prefix, max_reject_fraction=0))
+    strict = Lakehouse(spark, type(cfg)(catalog, cfg.prefix, max_reject_fraction=0))
     try:
         strict.quality("second")
     except ValueError:
@@ -160,11 +184,13 @@ def run(spark, catalog, suffix, expected_path):
     assert lake.read("ops", "evaluations").filter("evaluation_id='replay' AND kind='row'").count() == 18
     # Replay resolves the missing customer without erasing its original rejection.
     original_missing = lake.read("ops", "evaluations").filter(
-        "evaluation_id='second' AND kind='row' AND array_contains(reasons, 'UNKNOWN_CUSTOMER')"
+        "evaluation_id='second' AND kind='row' AND array_contains(reasons, 'UNKNOWN_CUSTOMER') "
+        "AND get_json_object(payload_json, '$.customer_id')='C9'"
     ).collect()
-    assert original_missing, "Missing-customer rejection history absent"
+    assert len(original_missing) == 1, "Recoverable C9 rejection history absent or duplicated"
     for rejected in original_missing:
         assert rejects.filter(f"occurrence_id='{rejected.occurrence_id}' AND resolved").count() == 1
+    assert rejects.filter("array_contains(reasons, 'MALFORMED_CSV') AND NOT resolved").count() == 1
     checks.append("rejection_history_and_explicit_replay")
     # Roll back an unpublished evaluation without deleting its audit history.
     entities = ("customers", "orders", "products")
@@ -252,5 +278,6 @@ def run(spark, catalog, suffix, expected_path):
     return {
         "status": "passed", "checks": checks, "metrics": metrics, "frozen_evidence": frozen_evidence,
         "historical_totals": retained, "namespace": cfg.prefix, "catalog": cfg.catalog,
+        "table_prefix": attempt + "_" if attempt else "", "fixture_directory": cfg.volume,
         "spark": spark.version,
     }

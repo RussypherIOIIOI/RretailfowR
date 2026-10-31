@@ -1,6 +1,49 @@
 # Release evidence — 30 October 2026
 
-This is an incomplete release attempt. No Delta result, dashboard, screenshot or video is claimed.
+## Current checkpoint — 30 October, 23:59 UTC
+
+| Requirement | Observed status | Evidence |
+|---|---|---|
+| Exact scoped permissions | **Passed** — eight schemas and two fixture volumes; no catalog grant added | [Applied plan](permission-apply.json), [effective privileges verified as M2M](permission-effective.json) |
+| Correct existing job destination | **Passed** — job `1055508848756404`, six tasks, concurrency one, `tmc_solutions_jvs`; no schedule | [Current deployment](deployment-current.json) |
+| Real baseline, correction, arrival, replay and identical rerun | **All five succeeded**, all six tasks per run | [Persisted verification and run IDs](demo-persisted.json), `demo-*-outputs.json` |
+| Persisted Gold results | **Passed** — `demo01` 55.00/4 units/2 orders/3 lines; `demo02` and `demo03` 91.00/7/4/5; `demo04` 98.00/8/5/6 | [Real SQL receipts](demo-persisted.json) |
+| Real rerun conservation | **Passed** — 27 unique Bronze occurrences, four evaluations, final facts unchanged | [Real SQL receipts](demo-persisted.json) |
+| Exact frozen outcomes in the real job rerun | **Passed** — all 21 rows and fields unchanged, SHA256 `daca53d2fc2952ad5fba7c4f0805121f1f9f3ac8afdc4bcf1c9e6ba8c618aa30` | [Comparison and statement IDs](demo04-frozen-rerun-comparison.json) |
+| Rejection history and explicit replay | **Passed** — C9's original invalid occurrence remains in ops and becomes resolved/accepted in Gold; 8 ever rejected, 7 unresolved, 1 resolved | [Real SQL receipts](demo-persisted.json) |
+| Full Delta failure/recovery acceptance | **Running**, corrected fresh attempt: parent `323634755760496`, task `448001746680440` | [Submission](delta-attemptb-submit.json), [latest parent state](delta-attemptb-run.json), [latest task output](delta-attemptb-output.json) |
+| Initial isolated Delta attempt | **Failed at a test assertion**, preserved without reset/deletion | [Failure](delta-initial-failed-output.json), [diagnosis](delta-assertion-diagnosis.json), [executed original suite](delta-initial-suite.py) |
+| Strict bundle validation | **Passed**, zero warnings. Bundle deployment itself is not claimed | [CLI receipt](bundle-validation.json) |
+| Four actual Gold SQL datasets | **Passed**, one registered publication `demo04` | [Dataset receipts and 12 checks](dashboard-sql.json) |
+| SQL date/product/region and separate quality filters | **Passed** — date 63, product 38, WEST 28, quality batch2 6 unresolved, resolved history 1, unregistered ID zero rows | [SQL receipts](dashboard-sql.json) |
+| Dashboard creation and real export | **Passed** — actual draft ID `01f1d4bd43b6157d96bdf99719c7f0c3` | [Server resource](dashboard-resource.json), [actual exported definition](../../dashboard/retailflow.lvdash.json) |
+| Rendered dashboard metrics and filter testing | **Blocked** — browser owner has no direct SELECT on the service principal's Gold tables | Proposed private publisher mode requires approval; see below |
+| Real job screenshot | **Captured and inspected** | [Six successful tasks and run ID](../../docs/assets/lakeflow-baseline-success.jpg) |
+| Dashboard metric/rejection screenshots and two-minute recording | **Not captured/recorded** pending rendered dashboard access | Recording encoder prepared in [render_walkthrough.py](../../scripts/render_walkthrough.py); no video link exists yet |
+| Production/main publication | **Not performed** | Work remains on [draft PR #1](https://github.com/RussypherIOIIOI/RretailfowR/pull/1) |
+
+The completed demo run IDs are baseline `165301235945373`, correction `157203734280731`, arrival `260330560109801`, replay `451352689364258`, and rerun `772106039108256`.
+
+### Retained failure and corrected fresh namespace
+
+The initial run `806119123199987` / task `1116104186911172` reached the replay assertions, then the newly added test incorrectly required every row carrying `UNKNOWN_CUSTOMER` to become resolved. Actual persisted diagnosis showed two such rows: the recoverable C9 order and a malformed CSV row with many additional defects. C9 resolved correctly; malformed CSV correctly remained rejected. The corrected assertion selects the C9 payload and separately requires the malformed occurrence to remain unresolved. No production transform was changed to satisfy this test.
+
+The new full attempt uses fresh `attemptb_*` tables/views in the **same four approved** `retailflow_test20261030a_*` schemas and a fresh `attemptb` subdirectory in the **same approved** fixture volume. It creates no new schema or volume and adds no privileges. Fresh-table/path guards refuse collisions. All original attempt data and Delta history remain intact. Two local namespace tests prove table separation, unchanged schema/volume scope, and rejection of unsafe attempt identifiers. Local verification after this change: **30 tests and seven subtests passed**, Ruff clean. A running remote attempt is not counted as a pass.
+
+### Pending dashboard publication approval
+
+Draft dashboard: https://dbc-9d765ae8-3bb9.cloud.databricks.com/sql/dashboardsv3/01f1d4bd43b6157d96bdf99719c7f0c3
+
+Its [actual ACL](dashboard-permissions.json) contains only the creator service principal and inherited workspace admins. The SQL verifier succeeded as the approved service principal; the browser owner's individual-permission draft queries fail with `INSUFFICIENT_PERMISSIONS` on `tmc_solutions_jvs.retailflow_gold.fact_order_line_snapshots`.
+
+The proposed action is `databricks lakeview publish 01f1d4bd43b6157d96bdf99719c7f0c3 --embed-credentials --warehouse-id ec9f4c81bc387245 --profile M2M`. This lets the unchanged private dashboard audience query using publisher `jarvis-cli-m2m`; it adds no catalog/table grants or viewers. **Automatic approval review rejected this publication because creation/export authorization did not include credential-embedding publication. The command did not execute, and no workaround was attempted.** User approval for that exact action is pending.
+
+Continue independent acceptance monitoring without duplicating run `323634755760496`. After explicit publication approval, perform the exact publish action once, retrieve published metadata, test rendered widgets/filters, re-export if the definition changes, capture actual metrics/rejects, and record the real walkthrough. Until those stages complete, this remains an incomplete portfolio release.
+
+<details>
+<summary>Historical pre-approval plan and original blockers (superseded by the checkpoint above)</summary>
+
+At the initial checkpoint, no Delta result, dashboard, screenshot or video was claimed.
 
 | Requirement | Status | Evidence / exact dependency |
 |---|---|---|
@@ -51,3 +94,5 @@ Databricks CLI 1.16.1, local Python 3.12, existing serverless environment 5, exi
 Initial strict bundle validation failed because `.venv/**`, `build/**` and `*.egg-info/**` exclusion patterns matched no tracked files in the fresh clone. They were removed from `sync.exclude`; `.gitignore` already excludes them. The subsequent strict command exited zero with no warnings. Full resolved CLI metadata remains in an ignored local file, because it includes unrelated account metadata.
 
 An initial sandboxed pytest run encountered Windows temporary-directory access denials. The same suite passed outside that sandbox. These are environment failures, not red behavioral regression evidence.
+
+</details>

@@ -4,7 +4,7 @@
 
 RetailFlow turns deliberately messy synthetic CSVs into a dimensional sales model. Its central demonstration is a second batch containing corrections, duplicates, conflicts and invalid records: valid corrections should update sales, duplicates should not inflate them, and rejected rows should remain explainable.
 
-**Release status · 30 October 2026:** strict bundle validation now passes without warnings. Additional Delta assertions cover exact frozen outcomes and interrupted rollback across all three Silver tables. **Persisted Delta, successful demo jobs, and the dashboard remain unverified**: the old job targets a nonexistent `workspace` catalog. A scoped permission plan for the existing `tmc_solutions_jvs` catalog awaits owner approval. [Current release evidence and blockers](evidence/release-20261030/README.md).
+**Release status · 30 October 2026:** scoped permissions are repaired, and all five real six-task demo jobs succeeded. SQL verified persisted **55.00 → 91.00 → 91.00 → 98.00** results, rejection history, replay, and rerun conservation. All four Gold datasets and 12 SQL checks passed; the actual dashboard definition is exported. Full corrected Delta recovery acceptance is running. Rendered dashboard checks and recording await approval for private publisher-mode publication. [Current evidence and exact remaining gate](evidence/release-20261030/README.md).
 
 **Stack:** Databricks · PySpark · SQL · Delta Lake · Unity Catalog · Lakeflow Jobs · Databricks AI/BI dashboard specification. Data workloads run in Databricks; local Python supports development and deployment. No separate frontend.
 
@@ -54,7 +54,7 @@ One serial job executes **preflight → bronze → silver → gold → quality �
 | Missing customer arrives, without replay | 91.00 | 7 | 4 | 5 |
 | Explicit replay of batch 2 | 98.00 | 8 | 5 | 6 |
 
-These are **hand-calculated expectations**, checked by local contract simulation; they are not observed persisted Gold results. [Independent oracle](fixtures/expected.json).
+These **hand-calculated expectations** now match actual registered Gold results from successful demo jobs. [Independent oracle](fixtures/expected.json) · [real SQL receipts and run IDs](evidence/release-20261030/demo-persisted.json).
 
 Batch 2 moves one corrected line to another product, date and region. An invalid newer correction cannot replace an existing valid line. Equal-revision disagreement is quarantined. Updating a product's current price does not reprice past order lines. Arrival of customer C9 alone does not replay an earlier rejection.
 

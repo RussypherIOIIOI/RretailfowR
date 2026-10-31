@@ -1,6 +1,6 @@
 # Two-minute portfolio walkthrough
 
-**Capture status: pending.** Full Delta execution and the live dashboard require catalog access. This is a recording plan, not a claim that the demonstration has run.
+**Capture status: incomplete.** The five real demo jobs and persisted 55.00 → 91.00 → 91.00 → 98.00 results are verified. A [real successful-job screenshot](assets/lakeflow-baseline-success.jpg) is captured. Corrected Delta acceptance is running; rendered dashboard access requires a separate private publisher-mode publication approval. The two-minute video has not been recorded and no video URL is claimed. [Current evidence](../evidence/release-20261030/README.md).
 
 ## Prepare the demonstration
 

@@ -1,0 +1,356 @@
+{
+  "status": "passed",
+  "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+  "objects": [
+    {
+      "securable_type": "schema",
+      "name": "tmc_solutions_jvs.retailflow_bronze",
+      "expected": [
+        "USE_SCHEMA",
+        "CREATE_TABLE",
+        "SELECT",
+        "MODIFY"
+      ],
+      "observed": [
+        "CREATE_TABLE",
+        "MODIFY",
+        "SELECT",
+        "USE_SCHEMA"
+      ],
+      "receipt": {
+        "privilege_assignments": [
+          {
+            "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+            "privileges": [
+              {
+                "privilege": "CREATE_TABLE"
+              },
+              {
+                "privilege": "MODIFY"
+              },
+              {
+                "privilege": "SELECT"
+              },
+              {
+                "privilege": "USE_SCHEMA"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "securable_type": "schema",
+      "name": "tmc_solutions_jvs.retailflow_silver",
+      "expected": [
+        "USE_SCHEMA",
+        "CREATE_TABLE",
+        "SELECT",
+        "MODIFY"
+      ],
+      "observed": [
+        "CREATE_TABLE",
+        "MODIFY",
+        "SELECT",
+        "USE_SCHEMA"
+      ],
+      "receipt": {
+        "privilege_assignments": [
+          {
+            "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+            "privileges": [
+              {
+                "privilege": "CREATE_TABLE"
+              },
+              {
+                "privilege": "MODIFY"
+              },
+              {
+                "privilege": "SELECT"
+              },
+              {
+                "privilege": "USE_SCHEMA"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "securable_type": "schema",
+      "name": "tmc_solutions_jvs.retailflow_gold",
+      "expected": [
+        "USE_SCHEMA",
+        "CREATE_TABLE",
+        "SELECT",
+        "MODIFY"
+      ],
+      "observed": [
+        "CREATE_TABLE",
+        "MODIFY",
+        "SELECT",
+        "USE_SCHEMA"
+      ],
+      "receipt": {
+        "privilege_assignments": [
+          {
+            "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+            "privileges": [
+              {
+                "privilege": "CREATE_TABLE"
+              },
+              {
+                "privilege": "MODIFY"
+              },
+              {
+                "privilege": "SELECT"
+              },
+              {
+                "privilege": "USE_SCHEMA"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "securable_type": "schema",
+      "name": "tmc_solutions_jvs.retailflow_ops",
+      "expected": [
+        "USE_SCHEMA",
+        "CREATE_TABLE",
+        "SELECT",
+        "MODIFY"
+      ],
+      "observed": [
+        "CREATE_TABLE",
+        "MODIFY",
+        "SELECT",
+        "USE_SCHEMA"
+      ],
+      "receipt": {
+        "privilege_assignments": [
+          {
+            "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+            "privileges": [
+              {
+                "privilege": "CREATE_TABLE"
+              },
+              {
+                "privilege": "MODIFY"
+              },
+              {
+                "privilege": "SELECT"
+              },
+              {
+                "privilege": "USE_SCHEMA"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "securable_type": "schema",
+      "name": "tmc_solutions_jvs.retailflow_test20261030a_bronze",
+      "expected": [
+        "USE_SCHEMA",
+        "CREATE_TABLE",
+        "SELECT",
+        "MODIFY"
+      ],
+      "observed": [
+        "CREATE_TABLE",
+        "MODIFY",
+        "SELECT",
+        "USE_SCHEMA"
+      ],
+      "receipt": {
+        "privilege_assignments": [
+          {
+            "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+            "privileges": [
+              {
+                "privilege": "CREATE_TABLE"
+              },
+              {
+                "privilege": "MODIFY"
+              },
+              {
+                "privilege": "SELECT"
+              },
+              {
+                "privilege": "USE_SCHEMA"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "securable_type": "schema",
+      "name": "tmc_solutions_jvs.retailflow_test20261030a_silver",
+      "expected": [
+        "USE_SCHEMA",
+        "CREATE_TABLE",
+        "SELECT",
+        "MODIFY"
+      ],
+      "observed": [
+        "CREATE_TABLE",
+        "MODIFY",
+        "SELECT",
+        "USE_SCHEMA"
+      ],
+      "receipt": {
+        "privilege_assignments": [
+          {
+            "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+            "privileges": [
+              {
+                "privilege": "CREATE_TABLE"
+              },
+              {
+                "privilege": "MODIFY"
+              },
+              {
+                "privilege": "SELECT"
+              },
+              {
+                "privilege": "USE_SCHEMA"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "securable_type": "schema",
+      "name": "tmc_solutions_jvs.retailflow_test20261030a_gold",
+      "expected": [
+        "USE_SCHEMA",
+        "CREATE_TABLE",
+        "SELECT",
+        "MODIFY"
+      ],
+      "observed": [
+        "CREATE_TABLE",
+        "MODIFY",
+        "SELECT",
+        "USE_SCHEMA"
+      ],
+      "receipt": {
+        "privilege_assignments": [
+          {
+            "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+            "privileges": [
+              {
+                "privilege": "CREATE_TABLE"
+              },
+              {
+                "privilege": "MODIFY"
+              },
+              {
+                "privilege": "SELECT"
+              },
+              {
+                "privilege": "USE_SCHEMA"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "securable_type": "schema",
+      "name": "tmc_solutions_jvs.retailflow_test20261030a_ops",
+      "expected": [
+        "USE_SCHEMA",
+        "CREATE_TABLE",
+        "SELECT",
+        "MODIFY"
+      ],
+      "observed": [
+        "CREATE_TABLE",
+        "MODIFY",
+        "SELECT",
+        "USE_SCHEMA"
+      ],
+      "receipt": {
+        "privilege_assignments": [
+          {
+            "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+            "privileges": [
+              {
+                "privilege": "CREATE_TABLE"
+              },
+              {
+                "privilege": "MODIFY"
+              },
+              {
+                "privilege": "SELECT"
+              },
+              {
+                "privilege": "USE_SCHEMA"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "securable_type": "volume",
+      "name": "tmc_solutions_jvs.retailflow_bronze.fixtures",
+      "expected": [
+        "READ_VOLUME",
+        "WRITE_VOLUME"
+      ],
+      "observed": [
+        "READ_VOLUME",
+        "WRITE_VOLUME"
+      ],
+      "receipt": {
+        "privilege_assignments": [
+          {
+            "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+            "privileges": [
+              {
+                "privilege": "READ_VOLUME"
+              },
+              {
+                "privilege": "WRITE_VOLUME"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "securable_type": "volume",
+      "name": "tmc_solutions_jvs.retailflow_test20261030a_bronze.fixtures",
+      "expected": [
+        "READ_VOLUME",
+        "WRITE_VOLUME"
+      ],
+      "observed": [
+        "READ_VOLUME",
+        "WRITE_VOLUME"
+      ],
+      "receipt": {
+        "privilege_assignments": [
+          {
+            "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+            "privileges": [
+              {
+                "privilege": "READ_VOLUME"
+              },
+              {
+                "privilege": "WRITE_VOLUME"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

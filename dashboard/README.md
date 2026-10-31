@@ -1,6 +1,6 @@
 # RetailFlow dashboard specification
 
-Status: SQL and layout prepared; live SQL validation, dashboard creation/export and screenshots are pending Unity Catalog access. No fabricated .lvdash.json is included.
+Status, 30 October: all four SQL datasets and 12 assertions passed against registered publication `demo04`; the real dashboard was created and its server definition exported as [retailflow.lvdash.json](retailflow.lvdash.json). Browser-owner draft queries lack direct Gold SELECT. Publication using the approved service-principal publisher and the unchanged private audience awaits a separate credential-embedding publication approval. Rendered widget/filter checks, metric/rejection screenshots and recording remain incomplete. [Actual evidence](../evidence/release-20261030/README.md).
 
 Create a Databricks AI/BI dashboard using the existing serverless SQL warehouse. Set the dataset catalog and schema to the configured Gold namespace. Import each SQL file as one dataset. Resolve the current publication from publication.sql and bind one publication_id parameter to the three sales/rejection datasets (publication.sql supplies the selection list and has no parameter); refresh this parameter deliberately after a successful job. The supplied dataset SQL returns rows only for IDs atomically registered in the publication pointer; direct access to snapshot tables does not enforce that restriction. This prevents mixed versions across separate widget queries and keeps failed stage IDs out of the dashboard.
 
