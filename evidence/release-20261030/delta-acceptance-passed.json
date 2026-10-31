@@ -1,0 +1,139 @@
+{
+  "verified_at": "2026-10-31T00:28:31.349469+00:00",
+  "parent_run_id": 853846258218717,
+  "task_run_id": 833933180481456,
+  "parent_state": {
+    "life_cycle_state": "TERMINATED",
+    "result_state": "SUCCESS",
+    "state_message": "",
+    "user_cancelled_or_timedout": false
+  },
+  "task_state": {
+    "life_cycle_state": "TERMINATED",
+    "result_state": "SUCCESS",
+    "state_message": "",
+    "user_cancelled_or_timedout": false
+  },
+  "output_truncated": false,
+  "result": {
+    "status": "passed",
+    "checks": [
+      "batch1",
+      "batch1",
+      "exact_frozen_outcomes",
+      "batch2",
+      "batch2",
+      "replay",
+      "historical_publications_retained",
+      "rejection_history_and_explicit_replay",
+      "interrupted_rollback_resumes_all_three_tables",
+      "replay",
+      "reruns_and_rename",
+      "failed_gate_retains_last_good",
+      "immutable_batch_tampering"
+    ],
+    "metrics": [
+      {
+        "publication_id": "first",
+        "net_sales": "55.00",
+        "units": 4,
+        "orders": 2,
+        "lines": 3
+      },
+      {
+        "publication_id": "repeat",
+        "net_sales": "55.00",
+        "units": 4,
+        "orders": 2,
+        "lines": 3
+      },
+      {
+        "publication_id": "second",
+        "net_sales": "91.00",
+        "units": 7,
+        "orders": 4,
+        "lines": 5
+      },
+      {
+        "publication_id": "arrival",
+        "net_sales": "91.00",
+        "units": 7,
+        "orders": 4,
+        "lines": 5
+      },
+      {
+        "publication_id": "replay",
+        "net_sales": "98.00",
+        "units": 8,
+        "orders": 5,
+        "lines": 6
+      },
+      {
+        "publication_id": "afterrollback",
+        "net_sales": "98.00",
+        "units": 8,
+        "orders": 5,
+        "lines": 6
+      }
+    ],
+    "frozen_evidence": [
+      {
+        "evaluation": "second",
+        "entity": "customers",
+        "rows": 3,
+        "sha256": "b98c17cca9556bb02e4bcbd15eedd8a3be3a2fc5963b8d0498ea8939ebe813ba"
+      },
+      {
+        "evaluation": "second",
+        "entity": "customers",
+        "rows": 3,
+        "sha256": "b98c17cca9556bb02e4bcbd15eedd8a3be3a2fc5963b8d0498ea8939ebe813ba"
+      },
+      {
+        "evaluation": "second",
+        "entity": "all",
+        "rows": 20,
+        "sha256": "27a38f9bdc2c302ec3a2e7ea13b66e9cd2fd81d860ec417269fa3955848d4d6f"
+      },
+      {
+        "evaluation": "second",
+        "entity": "all",
+        "rows": 20,
+        "sha256": "27a38f9bdc2c302ec3a2e7ea13b66e9cd2fd81d860ec417269fa3955848d4d6f"
+      },
+      {
+        "evaluation": "second",
+        "entity": "all",
+        "rows": 20,
+        "sha256": "27a38f9bdc2c302ec3a2e7ea13b66e9cd2fd81d860ec417269fa3955848d4d6f"
+      },
+      {
+        "evaluation": "replay",
+        "entity": "all",
+        "rows": 21,
+        "sha256": "4eb259dbd5b0626fed51f59ae76852d02808dd5b415ba48446d5a92787a06ef2"
+      }
+    ],
+    "historical_totals": {
+      "first": "55.00",
+      "second": "91.00"
+    },
+    "namespace": "retailflow_test20261030a",
+    "catalog": "tmc_solutions_jvs",
+    "table_prefix": "attemptc_",
+    "fixture_directory": "/Volumes/tmc_solutions_jvs/retailflow_test20261030a_bronze/fixtures/attemptc",
+    "spark": "4.2.0"
+  },
+  "source": {
+    "test_script_sha256": "57385154112d71d618596d5bb801edd5d359cd097689b3acad51b4d9fe7c1a37",
+    "notebook_sha256": "d0e3492676b706a9dbf0c2a55540e5196ce531285de8294712cce7b8e683b24e",
+    "catalog": "tmc_solutions_jvs",
+    "schemas": "retailflow_test20261030a_{bronze,silver,gold,ops}",
+    "table_prefix": "attemptc_",
+    "fixture_directory": "/Volumes/tmc_solutions_jvs/retailflow_test20261030a_bronze/fixtures/attemptc",
+    "parent_run_id": 853846258218717,
+    "task_run_id": 833933180481456,
+    "prior_attempts_retained": true,
+    "new_grants": false
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "verified_at": "2026-10-30T23:20:08.0393879Z",
+  "base_commit": "32daf916e8af4cf0af4874c8c8ec5860de0a1481",
+  "python": "Python 3.12.10",
+  "pytest": {
+    "command": "python -m pytest -q -p no:cacheprovider",
+    "exit_code": 0,
+    "output": "28 passed, 2 subtests passed in 0.26s",
+    "scope": "Pure Python and mocked release guard rails; no Delta persistence"
+  },
+  "ruff": {
+    "command": "python -m ruff check retailflow tests scripts",
+    "exit_code": 0,
+    "output": "All checks passed!"
+  },
+  "build": {
+    "command": "python -m build --wheel --no-isolation",
+    "exit_code": 0,
+    "output": "Successfully built retailflow-0.1.0-py3-none-any.whl",
+    "sha256": "1747140c1ba1c090f53402de8da949c0abbcaef23963e6d320906cf35c7f1af2"
+  },
+  "delta_acceptance_sha256": "e9a48ec45cd3229eedc9709484b4543789201b7653a354ad1c7277e74982141b",
+  "delta_executed": false,
+  "dashboard_sql_executed": false
+}

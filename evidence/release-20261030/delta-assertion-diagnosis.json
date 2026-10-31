@@ -1,0 +1,91 @@
+{
+  "manifest": {
+    "chunks": [
+      {
+        "chunk_index": 0,
+        "row_count": 2,
+        "row_offset": 0
+      }
+    ],
+    "format": "JSON_ARRAY",
+    "schema": {
+      "column_count": 7,
+      "columns": [
+        {
+          "name": "occurrence_id",
+          "position": 0,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "business_key",
+          "position": 1,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "payload_json",
+          "position": 2,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "original_reasons",
+          "position": 3,
+          "type_name": "ARRAY",
+          "type_text": "ARRAY<STRING>"
+        },
+        {
+          "name": "disposition",
+          "position": 4,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "latest_reasons",
+          "position": 5,
+          "type_name": "ARRAY",
+          "type_text": "ARRAY<STRING>"
+        },
+        {
+          "name": "resolved",
+          "position": 6,
+          "type_name": "BOOLEAN",
+          "type_text": "BOOLEAN"
+        }
+      ]
+    },
+    "total_chunk_count": 1,
+    "total_row_count": 2,
+    "truncated": false
+  },
+  "result": {
+    "chunk_index": 0,
+    "data_array": [
+      [
+        "71dcba543d4887c27b6992e007bb2de7131baab06e4d5e784e78e57994f77bdb",
+        "[\"A4\",\"1\"]",
+        "{\"business_key\":\"[\\\"A4\\\",\\\"1\\\"]\",\"customer_id\":\"C9\",\"discount_amount\":\"0.00\",\"line_id\":\"1\",\"net_sales\":\"7.00\",\"order_date\":\"2026-01-01\",\"order_id\":\"A4\",\"payload_hash\":\"290301c56f488f31ae2e5975f31e2fae68071ed913322d39cca58e376d32fb1b\",\"product_id\":\"P1\",\"quantity\":1,\"sale_region\":\"WEST\",\"source_revision\":1,\"source_updated_at\":\"2026-01-01T00:00:00+00:00\",\"unit_price\":\"7.00\"}",
+        "[\"UNKNOWN_CUSTOMER\"]",
+        "accepted_winner",
+        "[]",
+        "true"
+      ],
+      [
+        "32493e9c3a7ca88703c5922b3ea9a035e5deb7e88907571d46a374cdd78b6a3c",
+        "[\"\",\"\"]",
+        "{\"business_key\":\"[\\\"\\\",\\\"\\\"]\",\"customer_id\":\"\",\"discount_amount\":\"\",\"line_id\":\"\",\"order_date\":\"\",\"order_id\":\"\",\"payload_hash\":\"c6b69eaf6ec5f7e597368bf911d5515a317b94f3ceac1e24d5d3d8944f783cbb\",\"product_id\":\"\",\"quantity\":null,\"sale_region\":\"\",\"source_revision\":null,\"source_updated_at\":\"\",\"unit_price\":\"\"}",
+        "[\"INVALID_CUSTOMER_ID\",\"INVALID_DISCOUNT_AMOUNT\",\"INVALID_LINE_ID\",\"INVALID_ORDER_DATE\",\"INVALID_ORDER_ID\",\"INVALID_PRODUCT_ID\",\"INVALID_QUANTITY\",\"INVALID_REVISION\",\"INVALID_SALE_REGION\",\"INVALID_SOURCE_UPDATED_AT\",\"INVALID_UNIT_PRICE\",\"MALFORMED_CSV\",\"MISSING_CUSTOMER_ID\",\"MISSING_DISCOUNT_AMOUNT\",\"MISSING_LINE_ID\",\"MISSING_ORDER_DATE\",\"MISSING_ORDER_ID\",\"MISSING_PRODUCT_ID\",\"MISSING_QUANTITY\",\"MISSING_SALE_REGION\",\"MISSING_SOURCE_REVISION\",\"MISSING_SOURCE_UPDATED_AT\",\"MISSING_UNIT_PRICE\",\"UNKNOWN_CUSTOMER\",\"UNKNOWN_PRODUCT\"]",
+        "invalid",
+        "[\"INVALID_CUSTOMER_ID\",\"INVALID_DISCOUNT_AMOUNT\",\"INVALID_LINE_ID\",\"INVALID_ORDER_DATE\",\"INVALID_ORDER_ID\",\"INVALID_PRODUCT_ID\",\"INVALID_QUANTITY\",\"INVALID_REVISION\",\"INVALID_SALE_REGION\",\"INVALID_SOURCE_UPDATED_AT\",\"INVALID_UNIT_PRICE\",\"MALFORMED_CSV\",\"MISSING_CUSTOMER_ID\",\"MISSING_DISCOUNT_AMOUNT\",\"MISSING_LINE_ID\",\"MISSING_ORDER_DATE\",\"MISSING_ORDER_ID\",\"MISSING_PRODUCT_ID\",\"MISSING_QUANTITY\",\"MISSING_SALE_REGION\",\"MISSING_SOURCE_REVISION\",\"MISSING_SOURCE_UPDATED_AT\",\"MISSING_UNIT_PRICE\",\"UNKNOWN_CUSTOMER\",\"UNKNOWN_PRODUCT\"]",
+        "false"
+      ]
+    ],
+    "row_count": 2,
+    "row_offset": 0
+  },
+  "statement_id": "01f1d4bc-89bf-1047-b6de-8cfb4369a1d9",
+  "status": {
+    "state": "SUCCEEDED"
+  }
+}

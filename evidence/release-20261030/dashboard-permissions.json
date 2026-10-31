@@ -1,0 +1,31 @@
+{
+  "access_control_list": [
+    {
+      "all_permissions": [
+        {
+          "inherited": true,
+          "inherited_from_object": [
+            "/directories/3092320365504071"
+          ],
+          "permission_level": "CAN_MANAGE"
+        }
+      ],
+      "display_name": "jarvis-cli-m2m",
+      "service_principal_name": "e92b585c-22cc-4813-b00e-b894ea680a37"
+    },
+    {
+      "all_permissions": [
+        {
+          "inherited": true,
+          "inherited_from_object": [
+            "/directories/"
+          ],
+          "permission_level": "CAN_MANAGE"
+        }
+      ],
+      "group_name": "admins"
+    }
+  ],
+  "object_id": "/dashboards/2960818838153930",
+  "object_type": "dashboard"
+}

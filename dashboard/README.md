@@ -1,6 +1,6 @@
 # RetailFlow dashboard specification
 
-Status: SQL and layout prepared; live SQL validation, dashboard creation/export and screenshots are pending Unity Catalog access. No fabricated .lvdash.json is included.
+Status, 30 October: all four SQL datasets and 12 assertions passed against registered publication `demo04`; the real dashboard was created and its server definition exported as [retailflow.lvdash.json](retailflow.lvdash.json). Browser-owner draft queries lack direct Gold SELECT. Publication using the approved service-principal publisher and the unchanged private audience awaits a separate credential-embedding publication approval. Rendered widget/filter checks, metric/rejection screenshots and recording remain incomplete. [Actual evidence](../evidence/release-20261030/README.md).
 
 Create a Databricks AI/BI dashboard using the existing serverless SQL warehouse. Set the dataset catalog and schema to the configured Gold namespace. Import each SQL file as one dataset. Resolve the current publication from publication.sql and bind one publication_id parameter to the three sales/rejection datasets (publication.sql supplies the selection list and has no parameter); refresh this parameter deliberately after a successful job. The supplied dataset SQL returns rows only for IDs atomically registered in the publication pointer; direct access to snapshot tables does not enforce that restriction. This prevents mixed versions across separate widget queries and keeps failed stage IDs out of the dashboard.
 
@@ -10,7 +10,7 @@ Create a Databricks AI/BI dashboard using the existing serverless SQL warehouse.
 | First row | Net sales / units / orders | sales_lines: SUM(net_sales), SUM(quantity), COUNT(DISTINCT order_id) |
 | Second row | Daily sales / top products | sales_lines: net sales by order_date / product_id and product_name, descending |
 | Third row | Regional sales / rejected records | sales_lines by sale_region / rejected_records COUNT(DISTINCT occurrence_id) where resolved=false |
-| Fourth row | Rejection reasons and batches | rejected_reasons, bars; label overlapping reason counts |
+| Fourth row | Rejection reasons and batches | rejected_reasons table; 26 observed reason codes make a full bar chart unreadable; counts overlap |
 | Last row | Inspect rejected records | rejected_records table: raw text, filename, record number, revision, reason list, resolved flag |
 
 Use date range, transaction region and product filters on the shared sales_lines dataset. Rejection batch/entity filters apply only to quality widgets; rejected rows can have invalid dates, so never imply the sales date filter scopes their count. Distinct orders are calculated at the active filter grain, never summed from daily/product groups. Dimensions show current Type 1 descriptions while line prices and region retain transaction meaning.

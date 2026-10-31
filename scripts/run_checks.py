@@ -14,6 +14,7 @@ def main():
     parser.add_argument("--kind", choices=["spark", "delta"], default="spark")
     parser.add_argument("--catalog")
     parser.add_argument("--test-suffix")
+    parser.add_argument("--attempt", default="", help="Fresh table/file namespace inside approved test schemas")
     args = parser.parse_args()
     if args.kind == "delta":
         if not args.catalog or not args.test_suffix:
@@ -62,7 +63,8 @@ def main():
             "--overwrite",
         )
         parameters.update(
-            catalog=args.catalog, test_suffix=args.test_suffix, expected_path=root + "/expected.json"
+            catalog=args.catalog, test_suffix=args.test_suffix, expected_path=root + "/expected.json",
+            attempt=args.attempt,
         )
     settings = cli("jobs", "get", str(state["job_id"]))["settings"]
     payload = {

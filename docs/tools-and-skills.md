@@ -6,7 +6,7 @@
 | GitHub plugin | Inspect repository/account access; review/publish when a target repo exists | Repository collaboration | Used to verify destination and access; Git CLI published source to RussypherIOIIOI/RretailfowR |
 | Git CLI / Git CMD installation | Local branching, diffs and commits | Reproducible source control | Git executable used directly; terminal UI automation is unnecessary |
 | Context7 | Before version-sensitive APIs and recovery operations | Retrieve current official documentation | Used for bundle/serverless configuration and Delta RESTORE |
-| Browser / computer-use | Inspect workspace or GitHub UI and capture real evidence when available | UI-only operations | GitHub repository page checked; browser is signed out |
+| Browser / computer-use | Inspect workspace UI and capture real evidence | UI-only operations | Existing Google SSO used; real successful-job screenshot captured; rendered dashboard access error retained |
 | GitHub Copilot | Optional editor suggestions or independent review when its app session is available | Supplemental coding assistance | Not required; Codex performs implementation and review |
 | Prompt Perfect | Before implementation, to refine requirements | Prompt preparation | Saved build prompt is the accepted execution specification |
 | test-driven-development | Before contract/transform changes | Failing behavior tests followed by implementation | Applied; red local and Spark evidence retained |
@@ -16,8 +16,8 @@
 | Databricks core/docs | Preflight and documentation checks | Auth, CLI and platform constraints | Used |
 | Databricks synthetic-data-gen | Fixture design/generation | Deterministic, business-relevant data | Used with the user's explicit small, standard-library fixture scope |
 | Databricks execution-compute | Read-only remote Spark checks | Verify real runtime behavior | Used; Spark 4.2.0, Python 3.12.3 |
-| Databricks jobs/dabs | Job definition and deployment | One serial serverless workflow | Used; CLI deployment succeeded, bundle validation environment-blocked |
-| Databricks dbsql/aibi-dashboards | Gold SQL and dashboard setup | Metric/filter correctness and real export | SQL/layout prepared; live dataset validation blocked |
+| Databricks jobs/dabs | Job definition and deployment | One serial serverless workflow | Five real six-task jobs passed; strict bundle validation zero warnings; bundle deployment itself not executed |
+| Databricks dbsql/aibi-dashboards | Gold SQL and dashboard setup | Metric/filter correctness and real export | Four datasets and 12 SQL checks passed against demo04; real server definition exported; publisher-mode approval pending |
 | Databricks python-sdk | API reference and authentication patterns | Supported programmatic access | Guidance consulted; deployment uses CLI |
 | doc-coauthoring | Before and during portfolio documentation | Ground claims in source/evidence, structure by reader needs, and test comprehension with a fresh reader | Applied to this documentation set |
 

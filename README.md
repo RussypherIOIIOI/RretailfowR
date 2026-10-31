@@ -4,7 +4,7 @@
 
 RetailFlow turns deliberately messy synthetic CSVs into a dimensional sales model. Its central demonstration is a second batch containing corrections, duplicates, conflicts and invalid records: valid corrections should update sales, duplicates should not inflate them, and rejected rows should remain explainable.
 
-**Release status · 15 October 2026:** implementation and documentation are available; **24 local tests and nine live Spark checks passed**. A six-task Lakeflow Job is deployed. **Persisted Delta behavior and the dashboard remain unverified** because Unity Catalog preflight denied CREATE SCHEMA. This is a partially verified portfolio build. [Evidence and remaining gates](docs/verification.md).
+**Release status · 31 October 2026:** scoped permissions are repaired, all five real six-task demo jobs succeeded, and full isolated Delta acceptance **passed**, including interrupted rollback and exact frozen outcomes. SQL verified persisted **55.00 → 91.00 → 91.00 → 98.00**, rejection history and rerun conservation. All four Gold datasets and 12 SQL checks passed; the actual dashboard definition is exported. Rendered dashboard checks and recording await approval for private publisher-mode publication. [Current evidence and exact remaining gate](evidence/release-20261030/README.md).
 
 **Stack:** Databricks · PySpark · SQL · Delta Lake · Unity Catalog · Lakeflow Jobs · Databricks AI/BI dashboard specification. Data workloads run in Databricks; local Python supports development and deployment. No separate frontend.
 
@@ -54,7 +54,7 @@ One serial job executes **preflight → bronze → silver → gold → quality �
 | Missing customer arrives, without replay | 91.00 | 7 | 4 | 5 |
 | Explicit replay of batch 2 | 98.00 | 8 | 5 | 6 |
 
-These are **hand-calculated expectations**, checked by local contract simulation; they are not observed persisted Gold results. [Independent oracle](fixtures/expected.json).
+These **hand-calculated expectations** now match actual registered Gold results from successful demo jobs. [Independent oracle](fixtures/expected.json) · [real SQL receipts and run IDs](evidence/release-20261030/demo-persisted.json).
 
 Batch 2 moves one corrected line to another product, date and region. An invalid newer correction cannot replace an existing valid line. Equal-revision disagreement is quarantined. Updating a product's current price does not reprice past order lines. Arrival of customer C9 alone does not replay an earlier rejection.
 
@@ -73,7 +73,7 @@ python -m build --wheel --no-isolation
 
 No Databricks credentials are needed for local checks. They do not test Delta persistence. See [Windows and POSIX commands](docs/quickstart.md).
 
-Deploy using the [runbook](docs/runbook.md) after arranging workspace access. The checked CLI path creates or updates one job without starting it. Optional bundle configuration is supplied; strict bundle validation was blocked in the authoring environment.
+Deploy using the [runbook](docs/runbook.md) after arranging workspace access. The checked CLI path creates or updates one job without starting it. Optional bundle configuration passes strict validation on CLI 1.16.1; bundle deployment itself has not been executed. Keep one deployment owner per namespace.
 
 ## Inspect the source
 
