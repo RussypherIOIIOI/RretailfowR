@@ -21,7 +21,7 @@ The second batch contains a valid correction moving a line across date/product/r
 | PySpark | Validation UDF, FK joins, grouped selection, typed projection | [Transforms](../retailflow/spark_transform.py); nine live checks passed |
 | Dimensional modeling | Order-line fact, Type 1 dimensions, daily aggregate | [Model](data-model.md); real registered Gold results match the independent oracle |
 | Data quality | Multiple reasons, exclusive dispositions, retained audit | [Real SQL receipts](../evidence/release-20261030/demo-persisted.json); 8 ever rejected, 7 unresolved, 1 resolved |
-| Reliability | Frozen decisions, snapshots, gated pointer and rollback | [Exact frozen-outcome comparison](../evidence/release-20261030/demo04-frozen-rerun-comparison.json); full corrected failure suite is running |
+| Reliability | Frozen decisions, snapshots, gated pointer and rollback | [Full successful Delta acceptance](../evidence/release-20261030/delta-acceptance-passed.json), including exact frozen outcomes and interrupted three-table rollback/resume |
 | Orchestration | Six tasks, retries, timeouts, one concurrent run | [Actual run IDs](../evidence/release-20261030/demo-persisted.json); all five demo jobs and all six tasks per job succeeded |
 | Analytics | Defined metrics, filter semantics and snapshot pinning | [Four real datasets and 12 SQL checks](../evidence/release-20261030/dashboard-sql.json); rendered publication remains approval-blocked |
 | Delivery discipline | Fixtures, tests, review fixes and evidence boundaries | [Testing](testing.md), [review](review.md), [verification](verification.md) |
@@ -45,7 +45,7 @@ Explain why each line changed, which rows were rejected, and why a rerun should 
 
 ## Portfolio copy accurate today
 
-**Project card:** "RetailFlow is a Databricks sales lakehouse for messy synthetic orders. Five six-task jobs and actual Gold SQL verify corrections, rerun conservation, explicit replay and retained rejection history. The real 55-to-91-to-98-dollar progression matches an independent oracle. Full recovery acceptance and rendered dashboard evidence are tracked separately."
+**Project card:** "RetailFlow is a Databricks sales lakehouse for messy synthetic orders. Five six-task jobs and actual Gold SQL verify corrections, rerun conservation, explicit replay and retained rejection history. The real 55-to-91-to-98-dollar progression matches an independent oracle, and full isolated Delta recovery acceptance passed. Rendered dashboard publication remains a separate approval gate."
 
 **Resume bullet:** "Implemented a PySpark/Delta Lake sales lakehouse with deterministic fixtures, revision-aware merges, quality quarantine and six-task orchestration; verified five real jobs, persisted correction/replay totals and rejection-history retention."
 

@@ -1,6 +1,6 @@
 # Two-minute portfolio walkthrough
 
-**Capture status: incomplete.** The five real demo jobs and persisted 55.00 → 91.00 → 91.00 → 98.00 results are verified. A [real successful-job screenshot](assets/lakeflow-baseline-success.jpg) is captured. Corrected Delta acceptance is running; rendered dashboard access requires a separate private publisher-mode publication approval. The two-minute video has not been recorded and no video URL is claimed. [Current evidence](../evidence/release-20261030/README.md).
+**Capture status: incomplete.** The five real demo jobs, persisted 55.00 → 91.00 → 91.00 → 98.00 results and full isolated Delta recovery acceptance passed. A [real successful-job screenshot](assets/lakeflow-baseline-success.jpg) is captured. Rendered dashboard access requires a separate private publisher-mode publication approval. The two-minute video has not been recorded and no video URL is claimed. [Current evidence](../evidence/release-20261030/README.md).
 
 ## Prepare the demonstration
 
@@ -33,7 +33,7 @@ Use statements about observed values and passed fault tests only after correspon
 | lakeflow-success.png | All six successful tasks | Same completed demo run |
 | acceptance-result.png | Actual Delta assertions and run ID | No expected-output substitution |
 
-Store finished images under docs/assets/ and the real dashboard export under dashboard/retailflow.lvdash.json. The actual dashboard export and successful-job screenshot now exist; metric/rejection captures and the video remain pending rendered access. Add image/video links only after actual capture; do not create placeholder success evidence.
+Store finished images under docs/assets/ and the real dashboard export under dashboard/retailflow.lvdash.json. The actual dashboard export, [successful-job screenshot](assets/lakeflow-baseline-success.jpg) and [full-acceptance screenshot](assets/delta-acceptance-success.jpg) now exist; metric/rejection captures and the video remain pending rendered access. Add image/video links only after actual capture; do not create placeholder success evidence.
 
 ## Hiring-viewer close
 

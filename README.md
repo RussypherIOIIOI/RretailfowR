@@ -4,7 +4,7 @@
 
 RetailFlow turns deliberately messy synthetic CSVs into a dimensional sales model. Its central demonstration is a second batch containing corrections, duplicates, conflicts and invalid records: valid corrections should update sales, duplicates should not inflate them, and rejected rows should remain explainable.
 
-**Release status · 30 October 2026:** scoped permissions are repaired, and all five real six-task demo jobs succeeded. SQL verified persisted **55.00 → 91.00 → 91.00 → 98.00** results, rejection history, replay, and rerun conservation. All four Gold datasets and 12 SQL checks passed; the actual dashboard definition is exported. Full corrected Delta recovery acceptance is running. Rendered dashboard checks and recording await approval for private publisher-mode publication. [Current evidence and exact remaining gate](evidence/release-20261030/README.md).
+**Release status · 31 October 2026:** scoped permissions are repaired, all five real six-task demo jobs succeeded, and full isolated Delta acceptance **passed**, including interrupted rollback and exact frozen outcomes. SQL verified persisted **55.00 → 91.00 → 91.00 → 98.00**, rejection history and rerun conservation. All four Gold datasets and 12 SQL checks passed; the actual dashboard definition is exported. Rendered dashboard checks and recording await approval for private publisher-mode publication. [Current evidence and exact remaining gate](evidence/release-20261030/README.md).
 
 **Stack:** Databricks · PySpark · SQL · Delta Lake · Unity Catalog · Lakeflow Jobs · Databricks AI/BI dashboard specification. Data workloads run in Databricks; local Python supports development and deployment. No separate frontend.
 

@@ -2,7 +2,7 @@
 
 ## Current release boundary
 
-Scoped permissions are repaired, and five real six-task jobs passed. Actual registered Gold results verify correction, arrival, replay, rerun conservation and rejection history. Four dashboard datasets and 12 SQL assertions passed, and the real dashboard definition was exported. Full corrected Delta acceptance is running; rendered dashboard publication requires a separate private publisher-mode approval. Metric/rejection captures and recording remain incomplete. Source is proposed in [draft PR #1](https://github.com/RussypherIOIIOI/RretailfowR/pull/1). See [current evidence](../evidence/release-20261030/README.md).
+Scoped permissions are repaired, and five real six-task jobs passed. Actual registered Gold results verify correction, arrival, replay, rerun conservation and rejection history. Full isolated Delta acceptance passed, including interrupted rollback, exact frozen outcomes, historical/last-good retention and immutable-batch tampering. Four dashboard datasets and 12 SQL assertions passed, and the real dashboard definition was exported. Rendered dashboard publication requires a separate private publisher-mode approval. Metric/rejection captures and recording remain incomplete. Source is proposed in [draft PR #1](https://github.com/RussypherIOIIOI/RretailfowR/pull/1). See [current evidence](../evidence/release-20261030/README.md).
 
 ## Deliberate v1 limits
 
@@ -22,9 +22,9 @@ Scoped permissions are repaired, and five real six-task jobs passed. Actual regi
 
 ## Prioritized next work
 
-1. **Finish acceptance:** retain a fully successful isolated Delta run after correcting the test's recoverable-row selection and unsupported append-mode file operation. Preserve failed attempts.
-2. **Retain recovery evidence:** exact frozen outcomes are verified in the real rerun; interrupted three-table rollback/resume ran in attempt B before a later fixture-file failure. A fresh full suite is running.
-3. **Validate consumption:** obtain the pending private publisher-mode decision, test rendered metric/filter behavior, and capture actual dashboard metrics/rejects. SQL checks and real export are already retained.
+1. **Obtain the remaining publication decision:** the exact private publisher-mode operation is pending; no broader table grants or audience changes are proposed.
+2. **Validate rendered consumption:** test the real date/product/region and separate quality controls, then capture actual dashboard metrics/rejects. SQL checks and the real export already pass/exist.
+3. **Retain completed implementation evidence:** full acceptance and all five demo jobs passed; preserve the actual successful output plus both earlier failed attempts and diagnoses.
 4. **Complete the portfolio evidence:** record the walkthrough, retain hosted CI results and update status links. Source and the owner-selected GPL-3.0 license are published.
 5. **Only then expand scope:** benchmark larger data, consider distributed ingestion/native window selection, retention, alerting, and richer source contracts.
 
