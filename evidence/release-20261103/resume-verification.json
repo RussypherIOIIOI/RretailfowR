@@ -1,0 +1,22 @@
+{
+  "checked_date": "2026-11-03",
+  "timezone": "America/Denver",
+  "base_candidate": "db158945f5c7cde1b6c9d8d21f481049ba40bfe8",
+  "scope": "Documentation continuation; no pipeline, dashboard, grants, writer or schedule changes.",
+  "execution": "Local Windows shell and GitHub repository integration",
+  "source_comparison": "All available non-documentation files match the candidate Git blob hashes. Three binary captures remain in the remote tree; not downloaded or visually reviewed in this continuation.",
+  "checks": {
+    "relative_link_targets_before_receipt_links": 224,
+    "missing_relative_targets": [],
+    "diagram_source_parity": {"architecture": true, "publication": true, "data-model": true},
+    "acceptance_script_and_notebook_hashes_match_retained_success": true,
+    "ruff": "passed",
+    "pytest_python314": "26 passed, 7 subtests passed, 4 failed with Windows temporary-directory access errors; not an all-pass result",
+    "wheel": "blocked by Windows temporary-directory access error",
+    "strict_bundle_validation": "blocked by session network proxy; configuration unchanged and retained October 30-31 pass preserved",
+    "reader_review": "No material contradictions; corrected dashboard URL to match saved resource URL",
+    "github_ci": "Check the workflow run attached to the resulting commit; this pre-commit receipt does not claim that result"
+  },
+  "limitations": "No fresh Databricks state/ACL inspection, UI verification, new screenshots, video or public media review. External link routing and Mermaid visual rendering were not checked.",
+  "release_complete": false
+}

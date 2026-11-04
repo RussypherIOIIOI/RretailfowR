@@ -1,5 +1,9 @@
 # Verification report
 
+## Documentation continuation - 2026-11-03 (America/Denver)
+
+Documentation now reflects the retained pipeline results and the remaining dashboard gates. The local check found 224 valid relative link targets before adding this receipt's two links, matching sources for all three embedded diagrams, and unchanged acceptance-script/notebook hashes. A fresh-reader review found no material inconsistency. Ruff passed. Local Python 3.14 ran 26 tests and seven subtests successfully; four tests and the wheel build were blocked by Windows temporary-directory access errors. Fresh bundle validation could not reach Databricks through the session's blocked network proxy. These are not fresh all-pass runtime results; [the verification receipt](../evidence/release-20261103/resume-verification.json) separates them from retained success. Final-commit GitHub CI must pass before release.
+
 ## Latest execution - 2026-10-31
 
 The exact scoped grants were approved, applied and verified. The existing job now targets `tmc_solutions_jvs`; all five six-task demo runs succeeded. Actual Gold SQL matches 55.00 / 91.00 / 91.00 / 98.00 and confirms rerun conservation, resolved rejection history and exact frozen outcomes. **Full isolated Delta acceptance passed** in run `853846258218717`, task `833933180481456`, including interrupted three-table restoration/resumption, historical and last-good retention, and immutable-batch rejection. [Complete successful output](../evidence/release-20261030/delta-acceptance-passed.json). Both preceding test failures and their source/diagnoses are preserved. Four dashboard datasets and 12 SQL assertions passed against `demo04`; the real dashboard definition is exported. Rendered queries, metric/rejection captures and recording still require the separate private publisher-mode publication approval. [Current checklist and exact remaining gate](../evidence/release-20261030/README.md).
@@ -25,7 +29,7 @@ The following table records the historical October 15 build, not the current bun
 
 Actual deployed job: https://dbc-9d765ae8-3bb9.cloud.databricks.com/jobs/1055508848756404
 
-The current artifact is a reviewed implementation with partial live verification. It is not represented as a finished, end-to-end validated portfolio release. The local contract oracle confirms expected totals 55.00 → 91.00 → 98.00; persisted Gold results remain to be proven.
+At this historical checkpoint, persisted Gold was unverified. The October 30-31 evidence above supersedes that limitation: actual Gold totals and isolated recovery acceptance passed. Dashboard UI, media and the final merge remain release gates.
 
 ## Acceptance coverage
 
@@ -33,6 +37,6 @@ The executable Delta suite specifies same-evaluation retry, a new evaluation of 
 
 No failed or unexecuted check is counted as passed. Hosted CI passed on implementation/publication commit 37cf3da: [run 38928719727](https://github.com/RussypherIOIIOI/RretailfowR/actions/runs/38928719727), [recorded evidence](../evidence/github-ci.json). This covers local tests, lint and wheel build, not Databricks integration.
 
-## Documentation revision
+## Historical documentation revision
 
 The portfolio documentation was expanded after the recorded implementation checks. This revision changes documentation only; it does not upgrade any blocked runtime result. See [documentation verification](../evidence/documentation-verification.json) for link/source-parity checks and fresh-reader review. Full Mermaid visual rendering was not tested in this environment; editable sources and GitHub-renderable blocks are supplied.

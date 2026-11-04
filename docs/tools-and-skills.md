@@ -12,7 +12,7 @@
 | test-driven-development | Before contract/transform changes | Failing behavior tests followed by implementation | Applied; red local and Spark evidence retained |
 | diagnosing-bugs | On reproducible failures | Find the cause before fixing | Applied to timestamp, CSV and environment failures |
 | requesting-code-review | After major behavior changes | Independent review of correctness and recovery | Reviewer found timestamp, CSV and failed-evaluation defects; fixes reviewed |
-| verification-before-completion | Before any pass/deployed claim | Fresh command and remote-result evidence | Applied; blocked Delta work remains clearly labeled |
+| verification-before-completion | Before any pass/deployed claim | Fresh command and remote-result evidence | Applied; retained Delta success and remaining dashboard gates are distinguished |
 | Databricks core/docs | Preflight and documentation checks | Auth, CLI and platform constraints | Used |
 | Databricks synthetic-data-gen | Fixture design/generation | Deterministic, business-relevant data | Used with the user's explicit small, standard-library fixture scope |
 | Databricks execution-compute | Read-only remote Spark checks | Verify real runtime behavior | Used; Spark 4.2.0, Python 3.12.3 |

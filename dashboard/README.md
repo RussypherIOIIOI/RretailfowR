@@ -2,7 +2,7 @@
 
 Status, 30 October: all four SQL datasets and 12 assertions passed against registered publication `demo04`; the real dashboard was created and its server definition exported as [retailflow.lvdash.json](retailflow.lvdash.json). Browser-owner draft queries lack direct Gold SELECT. Publication using the approved service-principal publisher and the unchanged private audience awaits a separate credential-embedding publication approval. Rendered widget/filter checks, metric/rejection screenshots and recording remain incomplete. [Actual evidence](../evidence/release-20261030/README.md).
 
-Create a Databricks AI/BI dashboard using the existing serverless SQL warehouse. Set the dataset catalog and schema to the configured Gold namespace. Import each SQL file as one dataset. Resolve the current publication from publication.sql and bind one publication_id parameter to the three sales/rejection datasets (publication.sql supplies the selection list and has no parameter); refresh this parameter deliberately after a successful job. The supplied dataset SQL returns rows only for IDs atomically registered in the publication pointer; direct access to snapshot tables does not enforce that restriction. This prevents mixed versions across separate widget queries and keeps failed stage IDs out of the dashboard.
+The existing dashboard is 01f1d4bd43b6157d96bdf99719c7f0c3 on warehouse ec9f4c81bc387245. Use [the remaining release procedure](../docs/release-resume.md) for this instance. The following layout and dataset instructions also describe how to reproduce it in a separately authorized installation. Set the dataset catalog and schema to the configured Gold namespace. Import each SQL file as one dataset. Resolve the current publication from publication.sql and bind one publication_id parameter to the three sales/rejection datasets (publication.sql supplies the selection list and has no parameter); refresh this parameter deliberately after a successful job. The supplied dataset SQL returns rows only for IDs atomically registered in the publication pointer; direct access to snapshot tables does not enforce that restriction. This prevents mixed versions across separate widget queries and keeps failed stage IDs out of the dashboard.
 
 | Position | Widget | Dataset and calculation |
 |---|---|---|
@@ -17,7 +17,7 @@ Use date range, transaction region and product filters on the shared sales_lines
 
 Use a 12-column layout, 3 KPI cards of width 4 and height 3, paired charts of width 6 and height 5, and a full-width evidence table. Use a white background, navy text, teal sales and orange reject indicators, with labels as well as colors. The tiny fixture intentionally explains corrections; it is not evidence of realistic commercial trends.
 
-Before publishing: execute all datasets with a real registered publication ID; verify 55.00 baseline, 91.00 corrected, and 98.00 after dimension replay; test each filter; export the actual dashboard to dashboard/retailflow.lvdash.json; capture real screenshots.
+Dataset execution, persisted progression and the actual export are complete. After the exact publication approval and live state recheck, test the published dashboard filters and capture real screenshots. Re-export dashboard/retailflow.lvdash.json only if the live definition changes.
 
 ## Snapshot and metric checks
 

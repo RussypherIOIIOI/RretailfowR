@@ -35,6 +35,9 @@ Updated: 2026-10-31. [Latest evidence and pending dashboard approval](../evidenc
 - [x] Run hosted CI: [successful source run](https://github.com/RussypherIOIIOI/RretailfowR/actions/runs/41150023703).
 - [x] Preserve the owner's selected [GPL-3.0 license](../LICENSE).
 - [ ] Complete final media review. Current job/acceptance captures and retained logs were inspected; dashboard media remains uncaptured.
-- [ ] Replace dated status text with evidence from the completed release.
+- [x] Reconcile documentation with retained October 30-31 evidence and explicitly separate historical blockers.
+- [ ] Finalize documentation and public media links after dashboard verification.
+- [ ] Required review and CI pass for the final PR commit.
+- [ ] Merge PR #1 and verify CI and links on the resulting main commit.
 
 Do not check an execution item merely because its script exists. [Evidence index](../evidence/README.md).

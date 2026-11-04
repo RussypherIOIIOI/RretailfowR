@@ -2,9 +2,9 @@
 
 ## Current destination and release attempt — 2026-10-30
 
-The former `workspace` catalog no longer exists. The exact approved schema/volume grants were applied in `tmc_solutions_jvs`, and existing job `1055508848756404` was updated to that catalog while retaining M2M principal `jarvis-cli-m2m` and concurrency one. All five demo runs succeeded, including the identical rerun. Do not blindly repeat the historical commands below. Strict bundle validation passes without warnings; bundle deployment remains unexecuted.
+The former `workspace` catalog no longer exists. The exact approved schema/volume grants were applied in `tmc_solutions_jvs`, and existing job `1055508848756404` was updated to that catalog while retaining M2M principal `jarvis-cli-m2m` and concurrency one. All five demo runs succeeded, including the identical rerun. Use the current catalog in the operational examples below. Review existing state before any submission. Strict bundle validation passes without warnings; bundle deployment remains unexecuted.
 
-Use the [current status, actual run IDs and remaining approval](../evidence/release-20261030/README.md). SQL dataset checks passed and the real dashboard export exists. Full corrected acceptance passed; do not duplicate its successful run. The next approval is private publisher-mode dashboard publication, not broader catalog grants. Do not switch the job to the admin identity. The remaining sections preserve historical deployment/recovery context.
+Use the [current status, actual run IDs and remaining approval](../evidence/release-20261030/README.md). SQL dataset checks passed and the real dashboard export exists. Full corrected acceptance passed; do not duplicate its successful run. The next approval is private publisher-mode dashboard publication, not broader catalog grants. Do not switch the job to the admin identity. The sections below describe current operation; original failures remain in the historical evidence.
 
 ## Actual deployment
 
@@ -16,22 +16,22 @@ Use the [current status, actual run IDs and remaining approval](../evidence/rele
 - SQL warehouse: ec9f4c81bc387245.
 - Job has six ordered tasks, maximum one concurrent run, one retry per task, bounded timeouts, no schedule.
 
-The job exists but has not completed the table pipeline. Preflight returned PERMISSION_DENIED: CREATE SCHEMA on catalog workspace. No project data schemas or dashboard were created.
+Five complete six-task demonstration runs succeeded, and the real dashboard exists. The original October 15 preflight failed on the former workspace catalog; that failure is retained in evidence/workspace-preflight.json as history, not a current provisioning blocker.
 
 ## Required permissions
 
-An administrator can either grant CREATE SCHEMA on the chosen catalog to the execution principal, or provision the four project schemas and a managed fixture volume, then grant the principal the required scoped privileges. Do not create a new catalog.
+Existing release provisioning is complete: eight named demo/test schemas and two fixture volumes have the approved scoped permissions. Do not rerun grants or expand access for this release. For a separate installation, an administrator must provision its namespaces and required privileges deliberately. No new catalog is required.
 
 The principal needs USE CATALOG; USE SCHEMA and CREATE TABLE in each project schema; CREATE VOLUME on Bronze if the volume is not preprovisioned; READ VOLUME and WRITE VOLUME on fixtures; SELECT and MODIFY on tables it operates. Objects created by the principal are owned by it. Delta rollback additionally needs MODIFY and retained data files. Dashboard viewers require access appropriate to the chosen dashboard credential mode.
 
-The requested namespace is:
-- workspace.retailflow_bronze
-- workspace.retailflow_silver
-- workspace.retailflow_gold
-- workspace.retailflow_ops
-- /Volumes/workspace/retailflow_bronze/fixtures
+The deployed demonstration namespace is:
+- tmc_solutions_jvs.retailflow_bronze
+- tmc_solutions_jvs.retailflow_silver
+- tmc_solutions_jvs.retailflow_gold
+- tmc_solutions_jvs.retailflow_ops
+- /Volumes/tmc_solutions_jvs/retailflow_bronze/fixtures
 
-This build does not grant privileges or switch to another identity to evade the denial.
+The recorded permission repair used the approved scoped plan. Runtime operations remain under jarvis-cli-m2m; dashboard access must not be repaired by silently expanding grants or changing identity.
 
 ## Deploy from a normal development shell
 
@@ -40,7 +40,7 @@ Install the dependencies in README and use existing Databricks authentication. I
 The supported fallback used here:
 
 ```text
-python -m scripts.deploy --profile M2M --catalog workspace --workspace-root /Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow
+python -m scripts.deploy --profile M2M --catalog tmc_solutions_jvs --workspace-root /Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow
 ```
 
 The deployment state is local and ignored by Git. Subsequent calls update the same owned job. Wheels are stored under a content-hash path so revised code cannot reuse a stale library cache key.
@@ -50,29 +50,29 @@ Do not deploy a second bundle-managed writer for the same namespace. If choosing
 databricks bundle validate --strict --profile YOUR_PROFILE --var catalog=YOUR_CATALOG,warehouse_id=YOUR_WAREHOUSE
 ```
 
-The actual environment blocked this command because the CLI could not resolve its global Git home configuration. Direct job creation and API retrieval succeeded.
+The initial October 15 validation was blocked by shell configuration. The later strict validation passed on CLI 1.16.1 without warnings; see evidence/release-20261030/bundle-validation-current.json. Bundle deployment itself has not been executed.
 
-## Run the demonstration after permission repair
+## Inspect or reproduce the demonstration
 
-Create a JSON request file with the job ID and parameters, then invoke:
+The existing namespace already contains demo01 through demo04. For portfolio recording, inspect these retained snapshots and completed runs; do not rerun batch1 expecting a reset.
+
+| Stage | Registered publication | Completed run ID | Verified USD |
+|---|---|---|---:|
+| Baseline | demo01 | 165301235945373 | 55.00 |
+| Correction | demo02 | 157203734280731 | 91.00 |
+| Customer arrival | demo03 | 260330560109801 | 91.00 |
+| Explicit replay | demo04 | 451352689364258 | 98.00 |
+| Identical replay rerun | demo04 | 772106039108256 | 98.00 |
+
+Read an existing run without starting work:
 
 ```text
-databricks jobs run-now --profile M2M --json "@run.json" --no-wait
+databricks jobs get-run 165301235945373 --profile M2M -o json
 ```
 
-Run these in order, waiting for SUCCESS before proceeding:
+The source receipts are in [demo-persisted.json](../evidence/release-20261030/demo-persisted.json). Historical dashboard selections must show their own snapshot time; the current publication pointer remains demo04.
 
-| Step | batch_id | evaluation_id | replay_batches | Expected USD |
-|---|---|---|---|---:|
-| Baseline | batch1 | demo01 | empty string | 55.00 |
-| Correction | batch2 | demo02 | empty string | 91.00 |
-| Customer arrival | arrival | demo03 | empty string | 91.00 |
-| Explicit replay | arrival | demo04 | batch2 | 98.00 |
-
-Example run.json:
-```json
-{"job_id":1055508848756404,"job_parameters":{"batch_id":"batch1","evaluation_id":"demo01","replay_batches":""}}
-```
+Reproduction in a separate namespace is not needed for this release. If separately authorized, provision an unused namespace and assign exactly one owned writer configured for it. Confirm the actual job's catalog and schema_prefix before submitting batch1, batch2, arrival, then arrival with replay_batches=batch2, using new evaluation IDs and waiting for SUCCESS between steps. Do not submit that sequence to the existing demonstration job expecting it to reset data.
 
 Preflight generates the fixture set inside the managed volume only when batch1/manifest.json is absent; see the partial-fixture-tree warning in the configuration reference below. It does not download outside data. Use a new evaluation ID for deliberate re-evaluation; use the same ID and identical scope to resume failed work. Do not change a batch's bytes or manifest after first ingestion.
 
@@ -89,9 +89,9 @@ Real Spark, no persisted tables:
 python -m scripts.run_checks --kind spark
 ```
 
-Real Delta, after catalog permission repair, using a new isolated namespace:
+Full isolated acceptance already passed; do not repeat it for documentation or recording. If a relevant behavior change requires a new run, first arrange an explicitly authorized unused test namespace, then submit, for example:
 ```text
-python -m scripts.run_checks --kind delta --catalog workspace --test-suffix acceptance01
+python -m scripts.run_checks --kind delta --catalog tmc_solutions_jvs --test-suffix acceptance01
 ```
 
 The latter creates retailflow_testacceptance01_* schemas. The execution principal needs CREATE SCHEMA on the selected catalog, or the administrator must preprovision the four matching test schemas and their Bronze fixture volume with the same scoped privileges. Grants limited to the four demonstration schemas do not authorize this separate namespace. It deliberately injects failures and mutates test-only data. Do not reuse a previous test suffix; the test preserves its evidence rather than resetting it.
@@ -114,7 +114,7 @@ For a permanently failed evaluation, choose explicit rollback in a trusted noteb
 ```python
 from retailflow.config import Config
 from retailflow.pipeline import Lakehouse
-lake = Lakehouse(spark, Config("workspace"))
+lake = Lakehouse(spark, Config("tmc_solutions_jvs"))
 lake.abandon("FAILED_EVALUATION_ID", confirm=True)
 ```
 
@@ -128,7 +128,7 @@ The Gold rejected_records view includes each ever-rejected occurrence once with 
 
 ## Finish dashboard and portfolio evidence
 
-Follow dashboard/README.md. Execute all four SQL datasets with a real registered publication ID before creating the dashboard. Pin that same ID across widgets. Export the actual dashboard definition and capture screenshots only after correct results appear. Record the two-minute script in docs/walkthrough.md.
+The dashboard and real export already exist, and all four SQL datasets passed against demo04. Follow [the remaining release procedure](release-resume.md) to recheck access, obtain the exact private publication approval if still absent, verify rendered widgets and filters, and capture authentic media. Keep the live definition and committed export synchronized.
 
 Source was published on 2026-10-16 to [RussypherIOIIOI/RretailfowR](https://github.com/RussypherIOIIOI/RretailfowR), preserving its initial commit and owner-selected GPL-3.0 license. The local main branch tracks origin/main. Credentials and local deployment state remain excluded.
 
@@ -175,21 +175,21 @@ After tables exist, select the configured catalog and schema or qualify names as
 
 ```sql
 SELECT entity, disposition, COUNT(*) AS occurrences
-FROM workspace.retailflow_ops.evaluations
+FROM tmc_solutions_jvs.retailflow_ops.evaluations
 WHERE evaluation_id = 'demo02' AND kind = 'row'
 GROUP BY entity, disposition;
 
 SELECT publication_id, passed, checked_at, report_json
-FROM workspace.retailflow_ops.gates
+FROM tmc_solutions_jvs.retailflow_ops.gates
 WHERE publication_id = 'demo02';
 
 SELECT publication_id, sequence, published_at
-FROM workspace.retailflow_gold.publication;
+FROM tmc_solutions_jvs.retailflow_gold.publication;
 
 SELECT r.occurrence_id, r.filename, r.record_index, r.raw_record,
        e.evaluation_id, e.disposition, e.reasons
-FROM workspace.retailflow_bronze.records r
-JOIN workspace.retailflow_ops.evaluations e
+FROM tmc_solutions_jvs.retailflow_bronze.records r
+JOIN tmc_solutions_jvs.retailflow_ops.evaluations e
   ON r.occurrence_id = e.occurrence_id
 WHERE e.kind = 'row' AND e.evaluation_id = 'demo02'
   AND e.disposition IN ('invalid', 'conflict');

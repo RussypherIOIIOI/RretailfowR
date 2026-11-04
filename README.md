@@ -40,14 +40,14 @@ flowchart TD
     GOLD --> GATE["Quality: keys, amounts and reconciliation"]
     GATE -->|"pass"| POINTER["Atomic publication pointer"]
     GATE -->|"fail"| HOLD["Keep previous publication"]
-    POINTER --> BI["Planned dashboard: one pinned publication"]
+    POINTER --> BI["Dashboard: one pinned publication"]
 ```
 
 One serial job executes **preflight → bronze → silver → gold → quality → publish**. It permits one concurrent run; the operator must prevent any second writer to the same namespace. See [architecture and diagrams](docs/architecture.md).
 
 ## The correction demonstration
 
-| Stage | Expected net sales (USD) | Units | Distinct orders | Order lines |
+| Stage | Verified net sales (USD) | Units | Distinct orders | Order lines |
 |---|---:|---:|---:|---:|
 | Batch 1 | 55.00 | 4 | 2 | 3 |
 | Batch 2: corrections and imperfect records | 91.00 | 7 | 4 | 5 |
@@ -94,4 +94,4 @@ V1 uses USD, Type 1 dimensions, full Gold recomputation, no deletes/returns and 
 
 Source: [RussypherIOIIOI/RretailfowR](https://github.com/RussypherIOIIOI/RretailfowR). The repository preserves the owner-selected [GPL-3.0 license](LICENSE).
 
-Next: resolve scoped catalog access, execute Delta acceptance, validate dashboard SQL, and capture genuine dashboard/video evidence. [Release checklist](docs/release-checklist.md) · [limits and roadmap](docs/limitations-and-roadmap.md) · [contributing](CONTRIBUTING.md).
+Next: approve the private dashboard publication, verify rendered widgets and filters, capture dashboard/video evidence, then complete PR review and merge. The pipeline and SQL gates already have retained passing evidence. [Release checklist](docs/release-checklist.md) · [limits and roadmap](docs/limitations-and-roadmap.md) · [contributing](CONTRIBUTING.md).

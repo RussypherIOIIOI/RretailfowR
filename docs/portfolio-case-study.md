@@ -49,7 +49,7 @@ Explain why each line changed, which rows were rejected, and why a rerun should 
 
 **Resume bullet:** "Implemented a PySpark/Delta Lake sales lakehouse with deterministic fixtures, revision-aware merges, quality quarantine and six-task orchestration; verified five real jobs, persisted correction/replay totals and rejection-history retention."
 
-Do not describe the dashboard as launched or recovery as proven until those gates pass. Update dated counts with fresh evidence. No throughput, uptime or financial-impact claim is supported.
+Recovery is verified within the retained isolated acceptance scope. Do not describe the dashboard as launched until publication and rendered checks pass. Update dated counts with fresh evidence. No throughput, uptime or financial-impact claim is supported.
 
 ## Portfolio placement
 

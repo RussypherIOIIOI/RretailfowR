@@ -1,0 +1,62 @@
+{
+  "checked_date": "2026-11-03",
+  "timezone": "America/Denver",
+  "candidate_source_commit": "db158945f5c7cde1b6c9d8d21f481049ba40bfe8",
+  "scope": "Documentation reconciliation only; no runtime source, dashboard definition, grants, publication or job changes.",
+  "local_snapshot": "Candidate text files retrieved through GitHub and checked against Git blob hashes; binary assets verified as existing entries in the candidate Git tree, not visually re-reviewed.",
+  "checks": {
+    "documentation": {
+      "relative_targets": 234,
+      "missing": [],
+      "diagram_source_parity": [
+        "architecture",
+        "publication",
+        "data-model"
+      ],
+      "limitations": "No external link/anchor or Mermaid visual check."
+    },
+    "provenance": {
+      "delta_test_sha256": "57385154112d71d618596d5bb801edd5d359cd097689b3acad51b4d9fe7c1a37",
+      "notebook_sha256": "d0e3492676b706a9dbf0c2a55540e5196ce531285de8294712cce7b8e683b24e",
+      "matches_retained_acceptance": true
+    },
+    "ruff": {
+      "command": "python -m ruff check retailflow tests scripts",
+      "status": "passed"
+    },
+    "local_python314": {
+      "pytest": "26 passed, 7 subtests passed, 4 failed due to temporary-directory access denial; not an all-pass result",
+      "wheel": "blocked by the same temporary-directory permission failure"
+    },
+    "diagnostic_python310": {
+      "pytest": "30 passed, 7 subtests passed",
+      "wheel": "built retailflow-0.1.0-py3-none-any.whl",
+      "limitations": "Used existing pure-Python development dependencies through PYTHONPATH. Python 3.10 is below documented >=3.11; this diagnostic does not replace supported-runtime CI."
+    },
+    "bundle_validation": {
+      "status": "blocked_in_current_session",
+      "reason": "Network restriction prevented M2M OAuth endpoint access",
+      "retained_success": "../release-20261030/bundle-validation-current.json",
+      "configuration_changed": false
+    },
+    "live_databricks": {
+      "status": "unavailable",
+      "reason": "CLI network denied; remote desktop offline; no browser capture capability available"
+    },
+    "reader_review": {
+      "findings": [
+        "Fresh-namespace instructions still pointed at the existing job",
+        "Baseline scene called demo01 current while pointer was demo04"
+      ],
+      "resolution": "Removed existing-job run-now example; list completed runs and read-only inspection. Walkthrough explicitly selects demo01, demo02, demo03, demo04."
+    }
+  },
+  "remaining": [
+    "Specific private publisher-credential approval and live state/ACL verification",
+    "Rendered dashboard checks",
+    "Authentic metric/rejection captures and two-minute video",
+    "Final public-link and media review",
+    "Final-commit supported-runtime CI, required review, merge and main CI"
+  ],
+  "full_delta_rerun": "Not required: documentation-only changes and source provenance still matches."
+}

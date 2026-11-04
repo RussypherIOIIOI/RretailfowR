@@ -1,6 +1,6 @@
 # Diagrams
 
-These diagrams describe implemented design, not a completed deployment. Persisted Delta behavior and the dashboard remain unverified. No diagram is a dashboard screenshot.
+These diagrams describe the implemented design. Persisted Delta acceptance and dashboard SQL checks passed; rendered dashboard checks remain pending. See [verification](../verification.md). No diagram is a dashboard screenshot.
 
 | Source | Rendered in | Use |
 |---|---|---|
