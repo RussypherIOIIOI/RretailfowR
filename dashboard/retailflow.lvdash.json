@@ -1,0 +1,1302 @@
+{
+  "datasets": [
+    {
+      "name": "publication",
+      "displayName": "Publication",
+      "queryLines": [
+        "SELECT publication_id AS latest_publication_id, published_at AS latest_published_at,\n",
+        "       explode(publication_ids) AS available_publication_id\n",
+        "FROM publication\n"
+      ],
+      "catalog": "tmc_solutions_jvs",
+      "schema": "retailflow_gold"
+    },
+    {
+      "name": "sales_lines",
+      "displayName": "Sales Lines",
+      "queryLines": [
+        "-- Bind publication_id once for every dataset on the dashboard.\n",
+        "SELECT f.publication_id, f.order_id, f.line_id, f.order_date, f.sale_region,\n",
+        "       f.customer_id, f.product_id, d.product_name, d.category,\n",
+        "       concat(f.product_id, ' / ', d.product_name) AS product_label,\n",
+        "       f.quantity, f.unit_price, f.discount_amount, f.net_sales,\n",
+        "       f.snapshot_created_at\n",
+        "FROM fact_order_line_snapshots f\n",
+        "JOIN dim_product_snapshots d\n",
+        "  ON f.product_id = d.product_id AND f.publication_id = d.publication_id\n",
+        "JOIN publication p ON array_contains(p.publication_ids, f.publication_id)\n",
+        "WHERE f.publication_id = :publication_id\n"
+      ],
+      "parameters": [
+        {
+          "displayName": "Registered publication",
+          "keyword": "publication_id",
+          "dataType": "STRING",
+          "defaultSelection": {
+            "values": {
+              "dataType": "STRING",
+              "values": [
+                {
+                  "value": "demo04"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "catalog": "tmc_solutions_jvs",
+      "schema": "retailflow_gold"
+    },
+    {
+      "name": "rejected_records",
+      "displayName": "Rejected Records",
+      "queryLines": [
+        "SELECT r.publication_id, r.occurrence_id, r.batch_id, r.entity, r.filename,\n",
+        "       r.record_index, r.raw_record, r.business_key, r.source_revision,\n",
+        "       r.disposition, r.reasons, r.resolved, r.ruleset,\n",
+        "       CASE WHEN NOT r.resolved THEN r.occurrence_id END AS unresolved_occurrence_id,\n",
+        "       CASE WHEN r.resolved THEN r.occurrence_id END AS resolved_occurrence_id,\n",
+        "       r.first_rejected_at, r.last_rejected_at, r.evaluated_at\n",
+        "FROM rejected_records_snapshots r\n",
+        "JOIN publication p ON array_contains(p.publication_ids, r.publication_id)\n",
+        "WHERE r.publication_id = :publication_id\n"
+      ],
+      "parameters": [
+        {
+          "displayName": "Registered publication",
+          "keyword": "publication_id",
+          "dataType": "STRING",
+          "defaultSelection": {
+            "values": {
+              "dataType": "STRING",
+              "values": [
+                {
+                  "value": "demo04"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "catalog": "tmc_solutions_jvs",
+      "schema": "retailflow_gold"
+    },
+    {
+      "name": "rejected_reasons",
+      "displayName": "Rejected Reasons",
+      "queryLines": [
+        "-- Reason counts overlap: one physical record can have several reasons.\n",
+        "SELECT r.publication_id, r.batch_id, r.entity, reason,\n",
+        "       count(DISTINCT r.occurrence_id) AS rejected_records\n",
+        "FROM rejected_records_snapshots r\n",
+        "JOIN publication p ON array_contains(p.publication_ids, r.publication_id)\n",
+        "LATERAL VIEW explode(r.reasons) reasons AS reason\n",
+        "WHERE r.publication_id = :publication_id AND NOT r.resolved\n",
+        "GROUP BY r.publication_id, r.batch_id, r.entity, reason\n",
+        "ORDER BY rejected_records DESC, reason\n"
+      ],
+      "parameters": [
+        {
+          "displayName": "Registered publication",
+          "keyword": "publication_id",
+          "dataType": "STRING",
+          "defaultSelection": {
+            "values": {
+              "dataType": "STRING",
+              "values": [
+                {
+                  "value": "demo04"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "catalog": "tmc_solutions_jvs",
+      "schema": "retailflow_gold"
+    }
+  ],
+  "pages": [
+    {
+      "name": "sales",
+      "displayName": "Sales",
+      "layout": [
+        {
+          "widget": {
+            "name": "sales-heading",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# RetailFlow / trustworthy sales\n",
+                "\n",
+                "USD \u00c2\u00b7 synthetic fixtures \u00c2\u00b7 one registered snapshot across all datasets. 55 baseline \u00e2\u2020\u2019 91 corrected \u00e2\u2020\u2019 98 after explicit replay. Sales filters affect this page only."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "sales-date",
+            "queries": [
+              {
+                "name": "sales_lines_sales-date",
+                "query": {
+                  "datasetName": "sales_lines",
+                  "fields": [
+                    {
+                      "name": "order_date",
+                      "expression": "`order_date`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-date-range-picker",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "order_date",
+                    "queryName": "sales_lines_sales-date",
+                    "displayName": "Transaction date"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Transaction date"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 4,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "sales-product",
+            "queries": [
+              {
+                "name": "sales_lines_sales-product",
+                "query": {
+                  "datasetName": "sales_lines",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "expression": "`product_id`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "product_id",
+                    "queryName": "sales_lines_sales-product",
+                    "displayName": "Product"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Product"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 2,
+            "width": 4,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "sales-region",
+            "queries": [
+              {
+                "name": "sales_lines_sales-region",
+                "query": {
+                  "datasetName": "sales_lines",
+                  "fields": [
+                    {
+                      "name": "sale_region",
+                      "expression": "`sale_region`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "sale_region",
+                    "queryName": "sales_lines_sales-region",
+                    "displayName": "Transaction region"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Transaction region"
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 2,
+            "width": 4,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "net-sales",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "sales_lines",
+                  "fields": [
+                    {
+                      "name": "net-sales",
+                      "expression": "SUM(`net_sales`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "net-sales",
+                  "displayName": "Net sales (USD)",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "USD",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 2
+                    }
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Net sales (USD)"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "units",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "sales_lines",
+                  "fields": [
+                    {
+                      "name": "units",
+                      "expression": "SUM(`quantity`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "units",
+                  "displayName": "Units"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Units"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 4,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "orders",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "sales_lines",
+                  "fields": [
+                    {
+                      "name": "orders",
+                      "expression": "COUNT(DISTINCT `order_id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "orders",
+                  "displayName": "Distinct orders"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Distinct orders"
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 4,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "daily-sales",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "sales_lines",
+                  "fields": [
+                    {
+                      "name": "order_date",
+                      "expression": "`order_date`"
+                    },
+                    {
+                      "name": "value",
+                      "expression": "SUM(`net_sales`)"
+                    }
+                  ],
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "ASC",
+                      "expression": "`order_date`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "order_date",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "value",
+                  "displayName": "USD",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Daily sales (USD)"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 7,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "product-sales",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "sales_lines",
+                  "fields": [
+                    {
+                      "name": "product_label",
+                      "expression": "`product_label`"
+                    },
+                    {
+                      "name": "value",
+                      "expression": "SUM(`net_sales`)"
+                    }
+                  ],
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "SUM(`net_sales`)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "product_label",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "value",
+                  "displayName": "USD",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Products \u00c2\u00b7 transaction sales"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 7,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "regional-sales",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "sales_lines",
+                  "fields": [
+                    {
+                      "name": "sale_region",
+                      "expression": "`sale_region`"
+                    },
+                    {
+                      "name": "value",
+                      "expression": "SUM(`net_sales`)"
+                    }
+                  ],
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "SUM(`net_sales`)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "sale_region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "value",
+                  "displayName": "USD",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Transaction region \u00c2\u00b7 sales (USD)"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 12,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "active-snapshot",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "sales_lines",
+                  "fields": [
+                    {
+                      "name": "publication_id",
+                      "expression": "`publication_id`"
+                    },
+                    {
+                      "name": "snapshot_created_at",
+                      "expression": "`snapshot_created_at`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "publication_id",
+                    "displayName": "Publication Id"
+                  },
+                  {
+                    "fieldName": "snapshot_created_at",
+                    "displayName": "Snapshot Created At"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Selected snapshot provenance"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 17,
+            "width": 12,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "line-evidence",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "sales_lines",
+                  "fields": [
+                    {
+                      "name": "order_id",
+                      "expression": "`order_id`"
+                    },
+                    {
+                      "name": "line_id",
+                      "expression": "`line_id`"
+                    },
+                    {
+                      "name": "product_label",
+                      "expression": "`product_label`"
+                    },
+                    {
+                      "name": "order_date",
+                      "expression": "`order_date`"
+                    },
+                    {
+                      "name": "sale_region",
+                      "expression": "`sale_region`"
+                    },
+                    {
+                      "name": "quantity",
+                      "expression": "`quantity`"
+                    },
+                    {
+                      "name": "net_sales",
+                      "expression": "`net_sales`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "order_id",
+                    "displayName": "Order Id"
+                  },
+                  {
+                    "fieldName": "line_id",
+                    "displayName": "Line Id"
+                  },
+                  {
+                    "fieldName": "product_label",
+                    "displayName": "Product Label"
+                  },
+                  {
+                    "fieldName": "order_date",
+                    "displayName": "Order Date"
+                  },
+                  {
+                    "fieldName": "sale_region",
+                    "displayName": "Sale Region"
+                  },
+                  {
+                    "fieldName": "quantity",
+                    "displayName": "Quantity"
+                  },
+                  {
+                    "fieldName": "net_sales",
+                    "displayName": "Net Sales"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Published order lines"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 20,
+            "width": 12,
+            "height": 5
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "quality",
+      "displayName": "Data quality",
+      "layout": [
+        {
+          "widget": {
+            "name": "quality-heading",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# Data quality / retained rejection history\n",
+                "\n",
+                "Unique source occurrences, including resolved history. Quality batch/entity filters never scope sales. Reason counts overlap; invalid dates remain inspectable."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "quality-batch",
+            "queries": [
+              {
+                "name": "rejected_records_quality-batch",
+                "query": {
+                  "datasetName": "rejected_records",
+                  "fields": [
+                    {
+                      "name": "batch_id",
+                      "expression": "`batch_id`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "rejected_reasons_quality-batch",
+                "query": {
+                  "datasetName": "rejected_reasons",
+                  "fields": [
+                    {
+                      "name": "batch_id",
+                      "expression": "`batch_id`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "batch_id",
+                    "queryName": "rejected_records_quality-batch",
+                    "displayName": "Quality batch"
+                  },
+                  {
+                    "fieldName": "batch_id",
+                    "queryName": "rejected_reasons_quality-batch",
+                    "displayName": "Quality batch"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Quality batch"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 6,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "quality-entity",
+            "queries": [
+              {
+                "name": "rejected_records_quality-entity",
+                "query": {
+                  "datasetName": "rejected_records",
+                  "fields": [
+                    {
+                      "name": "entity",
+                      "expression": "`entity`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "rejected_reasons_quality-entity",
+                "query": {
+                  "datasetName": "rejected_reasons",
+                  "fields": [
+                    {
+                      "name": "entity",
+                      "expression": "`entity`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-text-entry",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "entity",
+                    "queryName": "rejected_records_quality-entity",
+                    "displayName": "Quality entity (exact)"
+                  },
+                  {
+                    "fieldName": "entity",
+                    "queryName": "rejected_reasons_quality-entity",
+                    "displayName": "Quality entity (exact)"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Quality entity (exact)"
+              },
+              "matchMode": "exact-match",
+              "isCaseSensitive": false
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 2,
+            "width": 6,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "unresolved",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "rejected_records",
+                  "fields": [
+                    {
+                      "name": "unresolved",
+                      "expression": "COUNT(DISTINCT `unresolved_occurrence_id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "unresolved",
+                  "displayName": "Unresolved occurrences"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Unresolved occurrences"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "resolved",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "rejected_records",
+                  "fields": [
+                    {
+                      "name": "resolved",
+                      "expression": "COUNT(DISTINCT `resolved_occurrence_id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "resolved",
+                  "displayName": "Resolved occurrences"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Resolved occurrences"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 4,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "ever-rejected",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "rejected_records",
+                  "fields": [
+                    {
+                      "name": "ever-rejected",
+                      "expression": "COUNT(DISTINCT `occurrence_id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "ever-rejected",
+                  "displayName": "Ever rejected \u00c2\u00b7 unique"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Ever rejected \u00c2\u00b7 unique"
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 4,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "reasons",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "rejected_reasons",
+                  "fields": [
+                    {
+                      "name": "reason",
+                      "expression": "`reason`"
+                    },
+                    {
+                      "name": "rejected_records",
+                      "expression": "`rejected_records`"
+                    },
+                    {
+                      "name": "batch_id",
+                      "expression": "`batch_id`"
+                    },
+                    {
+                      "name": "entity",
+                      "expression": "`entity`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "reason",
+                    "displayName": "Reason"
+                  },
+                  {
+                    "fieldName": "rejected_records",
+                    "displayName": "Rejected Records"
+                  },
+                  {
+                    "fieldName": "batch_id",
+                    "displayName": "Batch Id"
+                  },
+                  {
+                    "fieldName": "entity",
+                    "displayName": "Entity"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Rejection reasons \u00c2\u00b7 overlapping counts by batch/entity"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 7,
+            "width": 12,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "reject-evidence",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "rejected_records",
+                  "fields": [
+                    {
+                      "name": "batch_id",
+                      "expression": "`batch_id`"
+                    },
+                    {
+                      "name": "filename",
+                      "expression": "`filename`"
+                    },
+                    {
+                      "name": "record_index",
+                      "expression": "`record_index`"
+                    },
+                    {
+                      "name": "business_key",
+                      "expression": "`business_key`"
+                    },
+                    {
+                      "name": "disposition",
+                      "expression": "`disposition`"
+                    },
+                    {
+                      "name": "reasons",
+                      "expression": "`reasons`"
+                    },
+                    {
+                      "name": "resolved",
+                      "expression": "`resolved`"
+                    },
+                    {
+                      "name": "raw_record",
+                      "expression": "`raw_record`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "batch_id",
+                    "displayName": "Batch Id"
+                  },
+                  {
+                    "fieldName": "filename",
+                    "displayName": "Filename"
+                  },
+                  {
+                    "fieldName": "record_index",
+                    "displayName": "Record Index"
+                  },
+                  {
+                    "fieldName": "business_key",
+                    "displayName": "Business Key"
+                  },
+                  {
+                    "fieldName": "disposition",
+                    "displayName": "Disposition"
+                  },
+                  {
+                    "fieldName": "reasons",
+                    "displayName": "Reasons"
+                  },
+                  {
+                    "fieldName": "resolved",
+                    "displayName": "Resolved"
+                  },
+                  {
+                    "fieldName": "raw_record",
+                    "displayName": "Raw Record"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Rejected source records \u00c2\u00b7 original bytes and latest disposition"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 14,
+            "width": 12,
+            "height": 8
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "publication",
+      "displayName": "Publication",
+      "layout": [
+        {
+          "widget": {
+            "name": "publication-selector",
+            "queries": [
+              {
+                "name": "publication_publication-selector",
+                "query": {
+                  "datasetName": "publication",
+                  "fields": [
+                    {
+                      "name": "available_publication_id",
+                      "expression": "`available_publication_id`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "sales_lines_publication",
+                "query": {
+                  "datasetName": "sales_lines",
+                  "parameters": [
+                    {
+                      "name": "publication_id",
+                      "keyword": "publication_id"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "rejected_records_publication",
+                "query": {
+                  "datasetName": "rejected_records",
+                  "parameters": [
+                    {
+                      "name": "publication_id",
+                      "keyword": "publication_id"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "rejected_reasons_publication",
+                "query": {
+                  "datasetName": "rejected_reasons",
+                  "parameters": [
+                    {
+                      "name": "publication_id",
+                      "keyword": "publication_id"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "available_publication_id",
+                    "queryName": "publication_publication-selector",
+                    "displayName": "Registered publication (all pages)"
+                  },
+                  {
+                    "parameterName": "publication_id",
+                    "queryName": "sales_lines_publication"
+                  },
+                  {
+                    "parameterName": "publication_id",
+                    "queryName": "rejected_records_publication"
+                  },
+                  {
+                    "parameterName": "publication_id",
+                    "queryName": "rejected_reasons_publication"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Registered publication (all pages)"
+              },
+              "selection": {
+                "defaultSelection": {
+                  "values": {
+                    "dataType": "STRING",
+                    "values": [
+                      {
+                        "value": "demo04"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "canvasBackgroundColor": {
+        "light": "#F3F6F8",
+        "dark": "#15212D"
+      },
+      "widgetBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#1B2C3A"
+      },
+      "widgetBorderColor": {
+        "light": "#FFFFFF",
+        "dark": "#1B2C3A"
+      },
+      "fontColor": {
+        "light": "#153047",
+        "dark": "#EDF4F7"
+      },
+      "selectionColor": {
+        "light": "#147D92",
+        "dark": "#65CBD2"
+      },
+      "visualizationColors": [
+        "#157F86",
+        "#E38D31",
+        "#406A9E",
+        "#9273B3",
+        "#A64B67",
+        "#6B8F71"
+      ],
+      "widgetHeaderAlignment": "LEFT"
+    }
+  }
+}

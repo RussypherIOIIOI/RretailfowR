@@ -1,0 +1,13 @@
+{
+  "dashboard_id": "01f1d4bd43b6157d96bdf99719c7f0c3",
+  "action": "lakeview publish with embed_credentials=true",
+  "publisher": "e92b585c-22cc-4813-b00e-b894ea680a37",
+  "audience": "unchanged: creator service principal and workspace admins",
+  "automatic_review": "rejected",
+  "execution": "not executed",
+  "user_approval": "pending",
+  "reason": "Creation/export authorization did not include credential-embedding publication.",
+  "rendered_error": "Browser owner lacks SELECT on tmc_solutions_jvs.retailflow_gold.fact_order_line_snapshots",
+  "catalog_or_table_grants_added_for_dashboard": false,
+  "audience_changed": false
+}

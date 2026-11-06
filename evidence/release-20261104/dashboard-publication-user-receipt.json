@@ -1,0 +1,22 @@
+{
+  "provenance": "Exact command and JSON response supplied by the user from their local PowerShell. Not independently retrieved by the agent.",
+  "dashboard_id": "01f1d4bd43b6157d96bdf99719c7f0c3",
+  "command": "databricks lakeview publish 01f1d4bd43b6157d96bdf99719c7f0c3 --embed-credentials --warehouse-id ec9f4c81bc387245 --profile M2M",
+  "response": {
+    "display_name": "RetailFlow — Trustworthy Sales",
+    "embed_credentials": true,
+    "revision_create_time": "2026-11-04T16:54:24.466Z",
+    "warehouse_id": "ec9f4c81bc387245"
+  },
+  "authorization": "User explicitly approved the specified private publication using jarvis-cli-m2m, with existing creator/admin audience unchanged and no additional grants or viewers.",
+  "publication_status": "Succeeded according to supplied CLI response",
+  "independently_verified_publisher_identity": false,
+  "post_publication_acl_verified": false,
+  "rendered_dashboard_verified": false,
+  "remaining": [
+    "Verify published metadata, publisher identity and unchanged ACL",
+    "Verify rendered metrics, filters, publication identity, refresh and reopen",
+    "Capture authentic dashboard/rejection screenshots and walkthrough",
+    "Reconcile final documentation, review and CI; merge and verify main"
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "cleanup_duration": 0,
+  "creator_user_name": "e92b585c-22cc-4813-b00e-b894ea680a37",
+  "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+  "end_time": 1793404051763,
+  "execution_duration": 0,
+  "job_id": 1042857975360699,
+  "job_run_id": 806119123199987,
+  "number_in_job": 806119123199987,
+  "run_duration": 964605,
+  "run_id": 806119123199987,
+  "run_name": "RetailFlow delta acceptance",
+  "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/1042857975360699/run/806119123199987",
+  "run_type": "SUBMIT_RUN",
+  "setup_duration": 0,
+  "start_time": 1793403087158,
+  "state": {
+    "life_cycle_state": "INTERNAL_ERROR",
+    "result_state": "FAILED",
+    "state_message": "Task checks failed with message: Workload failed, see run output for details.",
+    "user_cancelled_or_timedout": false
+  },
+  "status": {
+    "state": "TERMINATED",
+    "termination_details": {
+      "code": "RUN_EXECUTION_ERROR",
+      "message": "Task checks failed with message: Workload failed, see run output for details.",
+      "type": "CLIENT_ERROR"
+    }
+  },
+  "tasks": [
+    {
+      "attempt_number": 0,
+      "cleanup_duration": 0,
+      "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+      "end_time": 1793404016439,
+      "environment_key": "default",
+      "execution_duration": 926000,
+      "notebook_task": {
+        "base_parameters": {
+          "catalog": "tmc_solutions_jvs",
+          "check_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/delta_acceptance.py",
+          "expected_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/expected.json",
+          "test_suffix": "20261030a"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/delta_checks",
+        "source": "WORKSPACE"
+      },
+      "run_id": 1116104186911172,
+      "run_if": "ALL_SUCCESS",
+      "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/1042857975360699/run/1116104186911172",
+      "setup_duration": 3000,
+      "start_time": 1793403087188,
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "FAILED",
+        "state_message": "Workload failed, see run output for details",
+        "user_cancelled_or_timedout": false
+      },
+      "status": {
+        "state": "TERMINATED",
+        "termination_details": {
+          "code": "RUN_EXECUTION_ERROR",
+          "message": "Workload failed, see run output for details",
+          "type": "CLIENT_ERROR"
+        }
+      },
+      "task_key": "checks"
+    },
+    {
+      "attempt_number": 1,
+      "cleanup_duration": 0,
+      "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+      "end_time": 1793404051365,
+      "environment_key": "default",
+      "execution_duration": 24000,
+      "notebook_task": {
+        "base_parameters": {
+          "catalog": "tmc_solutions_jvs",
+          "check_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/delta_acceptance.py",
+          "expected_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/expected.json",
+          "test_suffix": "20261030a"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/delta_checks",
+        "source": "WORKSPACE"
+      },
+      "run_id": 229525438722578,
+      "run_if": "ALL_SUCCESS",
+      "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/1042857975360699/run/229525438722578",
+      "setup_duration": 3000,
+      "start_time": 1793404023341,
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "FAILED",
+        "state_message": "Workload failed, see run output for details",
+        "user_cancelled_or_timedout": false
+      },
+      "status": {
+        "state": "TERMINATED",
+        "termination_details": {
+          "code": "RUN_EXECUTION_ERROR",
+          "message": "Workload failed, see run output for details",
+          "type": "CLIENT_ERROR"
+        }
+      },
+      "task_key": "checks"
+    }
+  ]
+}

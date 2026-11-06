@@ -232,3 +232,4 @@ dist/
 .pytest_cache/
 .ruff_cache/
 *.local.json
+docs/assets/walkthrough-source/

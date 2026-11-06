@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "cleanup_duration": 0,
+    "creator_user_name": "e92b585c-22cc-4813-b00e-b894ea680a37",
+    "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+    "end_time": 0,
+    "execution_duration": 0,
+    "job_id": 1055508848756404,
+    "job_parameters": [
+      {
+        "default": "tmc_solutions_jvs",
+        "name": "catalog",
+        "value": "tmc_solutions_jvs"
+      },
+      {
+        "default": "retailflow",
+        "name": "schema_prefix",
+        "value": "retailflow"
+      },
+      {
+        "default": "batch1",
+        "name": "batch_id",
+        "value": "arrival"
+      },
+      {
+        "default": "{{job.run_id}}",
+        "name": "evaluation_id",
+        "value": "demo04"
+      },
+      {
+        "default": "",
+        "name": "replay_batches",
+        "value": "batch2"
+      },
+      {
+        "default": "1.0",
+        "name": "max_reject_fraction"
+      }
+    ],
+    "job_run_id": 451352689364258,
+    "number_in_job": 839771316233118,
+    "original_attempt_run_id": 839771316233118,
+    "run_id": 839771316233118,
+    "run_name": "publish",
+    "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/1055508848756404/run/839771316233118",
+    "run_type": "JOB_RUN",
+    "setup_duration": 1000,
+    "start_time": 1793404050517,
+    "state": {
+      "life_cycle_state": "RUNNING",
+      "state_message": "In run",
+      "user_cancelled_or_timedout": false
+    },
+    "status": {
+      "state": "RUNNING"
+    },
+    "tasks": [
+      {
+        "attempt_number": 0,
+        "cleanup_duration": 0,
+        "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+        "end_time": 0,
+        "environment_key": "default",
+        "execution_duration": 0,
+        "notebook_task": {
+          "base_parameters": {
+            "stage": "publish"
+          },
+          "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+          "source": "WORKSPACE"
+        },
+        "run_id": 839771316233118,
+        "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/1055508848756404/run/839771316233118",
+        "setup_duration": 1000,
+        "start_time": 1793404050517,
+        "state": {
+          "life_cycle_state": "RUNNING",
+          "state_message": "In run",
+          "user_cancelled_or_timedout": false
+        },
+        "status": {
+          "state": "RUNNING"
+        },
+        "task_key": "publish"
+      }
+    ],
+    "trigger": "ONE_TIME"
+  },
+  "notebook_output": {}
+}

@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "purpose": "Synthetic two-second codec/font smoke check only; not a walkthrough or runtime pipeline evidence",
+  "ffmpeg_version": "7.1-essentials_build-www.gyan.dev",
+  "metadata": {
+    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "fps": 1.0,
+    "source_size": [
+      320,
+      240
+    ],
+    "size": [
+      320,
+      240
+    ],
+    "rotate": 0,
+    "duration": 2.0
+  },
+  "decoded_frames": 2,
+  "font": "Segoe UI 25px",
+  "actual_walkthrough_recorded": false
+}

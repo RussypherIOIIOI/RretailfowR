@@ -4,7 +4,7 @@
 
 RetailFlow turns deliberately messy synthetic CSVs into a dimensional sales model. Its central demonstration is a second batch containing corrections, duplicates, conflicts and invalid records: valid corrections should update sales, duplicates should not inflate them, and rejected rows should remain explainable.
 
-**Release status · 15 October 2026:** implementation and documentation are available; **24 local tests and nine live Spark checks passed**. A six-task Lakeflow Job is deployed. **Persisted Delta behavior and the dashboard remain unverified** because Unity Catalog preflight denied CREATE SCHEMA. This is a partially verified portfolio build. [Evidence and remaining gates](docs/verification.md).
+**Release verification · 6 November 2026:** the existing six-task job and private published dashboard are verified. Live APIs confirm the approved publisher/warehouse, unchanged creator/admin audience, single writer and retained successful runs. Rendered sales/quality controls, historical 55 → 91 → 91 → 98 results, provenance, reset and refresh passed. [Launch evidence](evidence/release-20261106/README.md) includes genuine captures and the [2:10 silent snapshot walkthrough](docs/assets/retailflow-walkthrough.mp4). Final source-publication receipts are linked from that report.
 
 **Stack:** Databricks · PySpark · SQL · Delta Lake · Unity Catalog · Lakeflow Jobs · Databricks AI/BI dashboard specification. Data workloads run in Databricks; local Python supports development and deployment. No separate frontend.
 
@@ -40,21 +40,21 @@ flowchart TD
     GOLD --> GATE["Quality: keys, amounts and reconciliation"]
     GATE -->|"pass"| POINTER["Atomic publication pointer"]
     GATE -->|"fail"| HOLD["Keep previous publication"]
-    POINTER --> BI["Planned dashboard: one pinned publication"]
+    POINTER --> BI["Dashboard: one pinned publication"]
 ```
 
 One serial job executes **preflight → bronze → silver → gold → quality → publish**. It permits one concurrent run; the operator must prevent any second writer to the same namespace. See [architecture and diagrams](docs/architecture.md).
 
 ## The correction demonstration
 
-| Stage | Expected net sales (USD) | Units | Distinct orders | Order lines |
+| Stage | Verified net sales (USD) | Units | Distinct orders | Order lines |
 |---|---:|---:|---:|---:|
 | Batch 1 | 55.00 | 4 | 2 | 3 |
 | Batch 2: corrections and imperfect records | 91.00 | 7 | 4 | 5 |
 | Missing customer arrives, without replay | 91.00 | 7 | 4 | 5 |
 | Explicit replay of batch 2 | 98.00 | 8 | 5 | 6 |
 
-These are **hand-calculated expectations**, checked by local contract simulation; they are not observed persisted Gold results. [Independent oracle](fixtures/expected.json).
+These **hand-calculated expectations** now match actual registered Gold results from successful demo jobs. [Independent oracle](fixtures/expected.json) · [real SQL receipts and run IDs](evidence/release-20261030/demo-persisted.json).
 
 Batch 2 moves one corrected line to another product, date and region. An invalid newer correction cannot replace an existing valid line. Equal-revision disagreement is quarantined. Updating a product's current price does not reprice past order lines. Arrival of customer C9 alone does not replay an earlier rejection.
 
@@ -73,7 +73,7 @@ python -m build --wheel --no-isolation
 
 No Databricks credentials are needed for local checks. They do not test Delta persistence. See [Windows and POSIX commands](docs/quickstart.md).
 
-Deploy using the [runbook](docs/runbook.md) after arranging workspace access. The checked CLI path creates or updates one job without starting it. Optional bundle configuration is supplied; strict bundle validation was blocked in the authoring environment.
+Deploy using the [runbook](docs/runbook.md) after arranging workspace access. The checked CLI path creates or updates one job without starting it. Optional bundle configuration passes strict validation on CLI 1.16.1; bundle deployment itself has not been executed. Keep one deployment owner per namespace.
 
 ## Inspect the source
 
@@ -94,4 +94,4 @@ V1 uses USD, Type 1 dimensions, full Gold recomputation, no deletes/returns and 
 
 Source: [RussypherIOIIOI/RretailfowR](https://github.com/RussypherIOIIOI/RretailfowR). The repository preserves the owner-selected [GPL-3.0 license](LICENSE).
 
-Next: resolve scoped catalog access, execute Delta acceptance, validate dashboard SQL, and capture genuine dashboard/video evidence. [Release checklist](docs/release-checklist.md) · [limits and roadmap](docs/limitations-and-roadmap.md) · [contributing](CONTRIBUTING.md).
+The bounded synthetic-data installation is available privately; public screenshots and the silent walkthrough require no workspace access. [Release receipts](https://github.com/RussypherIOIIOI/RretailfowR/releases) track final PR/main CI and public media verification. [Release checklist](docs/release-checklist.md) · [limits and roadmap](docs/limitations-and-roadmap.md) · [contributing](CONTRIBUTING.md).

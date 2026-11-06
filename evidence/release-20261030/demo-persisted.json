@@ -1,0 +1,622 @@
+{
+  "status": "passed",
+  "job_runs": {
+    "baseline": 165301235945373,
+    "correction": 157203734280731,
+    "arrival": 260330560109801,
+    "replay": 451352689364258,
+    "rerun": 772106039108256
+  },
+  "queries": {
+    "registered_metrics": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 4,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 5,
+          "columns": [
+            {
+              "name": "publication_id",
+              "position": 0,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "net_sales",
+              "position": 1,
+              "type_name": "DECIMAL",
+              "type_precision": 28,
+              "type_scale": 2,
+              "type_text": "DECIMAL(28,2)"
+            },
+            {
+              "name": "units",
+              "position": 2,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "orders",
+              "position": 3,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "lines",
+              "position": 4,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 4,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "demo01",
+            "55.00",
+            "4",
+            "2",
+            "3"
+          ],
+          [
+            "demo02",
+            "91.00",
+            "7",
+            "4",
+            "5"
+          ],
+          [
+            "demo03",
+            "91.00",
+            "7",
+            "4",
+            "5"
+          ],
+          [
+            "demo04",
+            "98.00",
+            "8",
+            "5",
+            "6"
+          ]
+        ],
+        "row_count": 4,
+        "row_offset": 0
+      },
+      "statement_id": "01f1d4bd-be35-12b4-93f4-b43409f890e9",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    },
+    "publication": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 1,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 3,
+          "columns": [
+            {
+              "name": "publication_id",
+              "position": 0,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "sequence",
+              "position": 1,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "publication_ids",
+              "position": 2,
+              "type_name": "ARRAY",
+              "type_text": "ARRAY<STRING>"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 1,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "demo04",
+            "4",
+            "[\"demo01\",\"demo02\",\"demo03\",\"demo04\"]"
+          ]
+        ],
+        "row_count": 1,
+        "row_offset": 0
+      },
+      "statement_id": "01f1d4bd-bed2-171a-849e-4e1b69e727c5",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    },
+    "final_lines": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 6,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 4,
+          "columns": [
+            {
+              "name": "order_id",
+              "position": 0,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "line_id",
+              "position": 1,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "source_revision",
+              "position": 2,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "net_sales",
+              "position": 3,
+              "type_name": "DECIMAL",
+              "type_precision": 18,
+              "type_scale": 2,
+              "type_text": "DECIMAL(18,2)"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 6,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "A1",
+            "1",
+            "2",
+            "35.00"
+          ],
+          [
+            "A2",
+            "1",
+            "1",
+            "25.00"
+          ],
+          [
+            "A2",
+            "2",
+            "1",
+            "10.00"
+          ],
+          [
+            "A3",
+            "1",
+            "3",
+            "15.00"
+          ],
+          [
+            "A4",
+            "1",
+            "1",
+            "7.00"
+          ],
+          [
+            "A5",
+            "1",
+            "1",
+            "6.00"
+          ]
+        ],
+        "row_count": 6,
+        "row_offset": 0
+      },
+      "statement_id": "01f1d4bd-bfd8-1870-991c-2685a510e980",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    },
+    "bronze_rerun_conservation": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 1,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 2,
+          "columns": [
+            {
+              "name": "occurrences",
+              "position": 0,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "unique_occurrences",
+              "position": 1,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 1,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "27",
+            "27"
+          ]
+        ],
+        "row_count": 1,
+        "row_offset": 0
+      },
+      "statement_id": "01f1d4bd-c0f5-12c9-a3cb-3bf2a4c2ddb8",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    },
+    "evaluation_rerun_conservation": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 4,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 2,
+          "columns": [
+            {
+              "name": "evaluation_id",
+              "position": 0,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "sequence",
+              "position": 1,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 4,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "demo01",
+            "1"
+          ],
+          [
+            "demo02",
+            "2"
+          ],
+          [
+            "demo03",
+            "3"
+          ],
+          [
+            "demo04",
+            "4"
+          ]
+        ],
+        "row_count": 4,
+        "row_offset": 0
+      },
+      "statement_id": "01f1d4bd-c1ed-1cd8-ba14-41e8d53dc3b2",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    },
+    "gates": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 4,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 3,
+          "columns": [
+            {
+              "name": "publication_id",
+              "position": 0,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "passed",
+              "position": 1,
+              "type_name": "BOOLEAN",
+              "type_text": "BOOLEAN"
+            },
+            {
+              "name": "report_json",
+              "position": 2,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 4,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "demo01",
+            "true",
+            "{\"conservation\":true,\"customer_id_fk\":true,\"daily_sales_nonnull_keys\":true,\"daily_sales_unique\":true,\"dim_customer_nonnull_keys\":true,\"dim_customer_unique\":true,\"dim_product_nonnull_keys\":true,\"dim_product_unique\":true,\"fact_order_line_nonnull_keys\":true,\"fact_order_line_unique\":true,\"group_reconciliation\":true,\"product_id_fk\":true,\"reconciliation\":true,\"reject_threshold\":true,\"three_entities\":true,\"valid_money\":true}"
+          ],
+          [
+            "demo02",
+            "true",
+            "{\"conservation\":true,\"customer_id_fk\":true,\"daily_sales_nonnull_keys\":true,\"daily_sales_unique\":true,\"dim_customer_nonnull_keys\":true,\"dim_customer_unique\":true,\"dim_product_nonnull_keys\":true,\"dim_product_unique\":true,\"fact_order_line_nonnull_keys\":true,\"fact_order_line_unique\":true,\"group_reconciliation\":true,\"product_id_fk\":true,\"reconciliation\":true,\"reject_threshold\":true,\"three_entities\":true,\"valid_money\":true}"
+          ],
+          [
+            "demo03",
+            "true",
+            "{\"conservation\":true,\"customer_id_fk\":true,\"daily_sales_nonnull_keys\":true,\"daily_sales_unique\":true,\"dim_customer_nonnull_keys\":true,\"dim_customer_unique\":true,\"dim_product_nonnull_keys\":true,\"dim_product_unique\":true,\"fact_order_line_nonnull_keys\":true,\"fact_order_line_unique\":true,\"group_reconciliation\":true,\"product_id_fk\":true,\"reconciliation\":true,\"reject_threshold\":true,\"three_entities\":true,\"valid_money\":true}"
+          ],
+          [
+            "demo04",
+            "true",
+            "{\"conservation\":true,\"customer_id_fk\":true,\"daily_sales_nonnull_keys\":true,\"daily_sales_unique\":true,\"dim_customer_nonnull_keys\":true,\"dim_customer_unique\":true,\"dim_product_nonnull_keys\":true,\"dim_product_unique\":true,\"fact_order_line_nonnull_keys\":true,\"fact_order_line_unique\":true,\"group_reconciliation\":true,\"product_id_fk\":true,\"reconciliation\":true,\"reject_threshold\":true,\"three_entities\":true,\"valid_money\":true}"
+          ]
+        ],
+        "row_count": 4,
+        "row_offset": 0
+      },
+      "statement_id": "01f1d4bd-c2df-12ae-9b40-e0821a5a081a",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    },
+    "resolved_rejection_history": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 1,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 6,
+          "columns": [
+            {
+              "name": "occurrence_id",
+              "position": 0,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "evaluation_id",
+              "position": 1,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "original_disposition",
+              "position": 2,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "original_reasons",
+              "position": 3,
+              "type_name": "ARRAY",
+              "type_text": "ARRAY<STRING>"
+            },
+            {
+              "name": "latest_disposition",
+              "position": 4,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "resolved",
+              "position": 5,
+              "type_name": "BOOLEAN",
+              "type_text": "BOOLEAN"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 1,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "71dcba543d4887c27b6992e007bb2de7131baab06e4d5e784e78e57994f77bdb",
+            "demo02",
+            "invalid",
+            "[\"UNKNOWN_CUSTOMER\"]",
+            "accepted_winner",
+            "true"
+          ]
+        ],
+        "row_count": 1,
+        "row_offset": 0
+      },
+      "statement_id": "01f1d4bd-c3c6-1805-9cb2-69a99421033a",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    },
+    "quality_counts": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 1,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 3,
+          "columns": [
+            {
+              "name": "ever_rejected",
+              "position": 0,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "unresolved",
+              "position": 1,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "resolved",
+              "position": 2,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 1,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "8",
+            "7",
+            "1"
+          ]
+        ],
+        "row_count": 1,
+        "row_offset": 0
+      },
+      "statement_id": "01f1d4bd-c559-18a8-986a-018c21b3ea1a",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    }
+  },
+  "progression": [
+    {
+      "publication_id": "demo01",
+      "net_sales": "55.00",
+      "units": "4",
+      "orders": "2",
+      "lines": "3"
+    },
+    {
+      "publication_id": "demo02",
+      "net_sales": "91.00",
+      "units": "7",
+      "orders": "4",
+      "lines": "5"
+    },
+    {
+      "publication_id": "demo03",
+      "net_sales": "91.00",
+      "units": "7",
+      "orders": "4",
+      "lines": "5"
+    },
+    {
+      "publication_id": "demo04",
+      "net_sales": "98.00",
+      "units": "8",
+      "orders": "5",
+      "lines": "6"
+    }
+  ],
+  "final_lines": [
+    [
+      "A1",
+      "1",
+      2,
+      "35.00"
+    ],
+    [
+      "A2",
+      "1",
+      1,
+      "25.00"
+    ],
+    [
+      "A2",
+      "2",
+      1,
+      "10.00"
+    ],
+    [
+      "A3",
+      "1",
+      3,
+      "15.00"
+    ],
+    [
+      "A4",
+      "1",
+      1,
+      "7.00"
+    ],
+    [
+      "A5",
+      "1",
+      1,
+      "6.00"
+    ]
+  ]
+}

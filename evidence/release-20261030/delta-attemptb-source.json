@@ -1,0 +1,10 @@
+{
+  "test_script_sha256": "92c5e7bcc81238e5b0df010721b9244f25c634449a3c84c6083cf7fcbe0d5e87",
+  "notebook_sha256": "d0e3492676b706a9dbf0c2a55540e5196ce531285de8294712cce7b8e683b24e",
+  "catalog": "tmc_solutions_jvs",
+  "schemas": "retailflow_test20261030a_{bronze,silver,gold,ops}",
+  "table_prefix": "attemptb_",
+  "fixture_directory": "/Volumes/tmc_solutions_jvs/retailflow_test20261030a_bronze/fixtures/attemptb",
+  "parent_run_id": 323634755760496,
+  "task_run_id": 448001746680440
+}

@@ -2,7 +2,7 @@
 
 ## Current release boundary
 
-The code is implemented and partially verified. Local tests, lint/build and nine live Spark checks passed. The job is deployed. CREATE SCHEMA denial blocked table initialization, so Delta acceptance, actual Gold data, dashboard SQL/export and recording remain unfinished. Source is published at [RussypherIOIIOI/RretailfowR](https://github.com/RussypherIOIIOI/RretailfowR); consult the Actions page for hosted CI results. See [verification](verification.md).
+The bounded synthetic-data lakehouse and private published dashboard are verified. Five retained demo jobs and full isolated Delta recovery acceptance passed; November 6 APIs revalidated those runs, the single writer, publisher identity, unchanged ACL and export parity. SQL and rendered controls, historical snapshots and provenance passed. Genuine dashboard images and a 2:10 silent snapshot walkthrough are public repository artifacts. [Current evidence](../evidence/release-20261106/README.md). Final source-publication receipts are in [GitHub releases](https://github.com/RussypherIOIIOI/RretailfowR/releases).
 
 ## Deliberate v1 limits
 
@@ -20,15 +20,9 @@ The code is implemented and partially verified. Local tests, lint/build and nine
 | Reject threshold defaults to 1.0 | Permissive dirty-data demo, not an SLA | Before any real feed |
 | No row/column security design for real customer data | Synthetic-only scope | Before handling sensitive source data |
 
-## Prioritized next work
+## Work beyond this release
 
-1. **Finish evidence:** resolve catalog grants through the administrator, run isolated Delta acceptance, fix any real failures, and record actual output.
-2. **Close recovery gaps:** add interruption-mid-rollback and exact frozen-outcome preservation assertions, then run them.
-3. **Validate consumption:** execute all SQL datasets with registered IDs, test metric/filter behavior, create/export the real dashboard and capture screenshots.
-4. **Complete the portfolio evidence:** record the walkthrough, retain hosted CI results and update status links. Source and the owner-selected GPL-3.0 license are published.
-5. **Only then expand scope:** benchmark larger data, consider distributed ingestion/native window selection, retention, alerting, and richer source contracts.
-
-These are ordered milestones, not delivery-date promises. The original four-day estimate assumed a working workspace and PySpark/SQL familiarity; permission blockers prevent treating that estimate as an achieved schedule.
+Before sustained unattended operation, define a real-feed contract and owner, alert routing, retention and measured freshness/cost objectives. Benchmark representative larger data before changing ingestion or candidate selection. Multiple writers, sensitive customer data, returns/deletes and enterprise availability require new design and evidence. These are future scope, not features claimed by this release.
 
 ## Definition of the first portfolio release
 

@@ -1,6 +1,8 @@
 # Documentation index
 
-The authoritative status is [verification](verification.md); expected sales are in [expected.json](../fixtures/expected.json). Last documentation review: 2026-10-15.
+Current launch: [November 6 verification](../evidence/release-20261106/README.md), [dashboard captures and 2:10 video](walkthrough.md), [final source-publication receipts](https://github.com/RussypherIOIIOI/RretailfowR/releases).
+
+The authoritative status is [November 6 launch evidence](../evidence/release-20261106/README.md) and [verification](verification.md); [October 30-31 evidence](../evidence/release-20261030/README.md) retains the original pipeline acceptance. Expected sales are in [expected.json](../fixtures/expected.json). Last documentation update: 2026-11-06.
 
 | Reader | Suggested path |
 |---|---|

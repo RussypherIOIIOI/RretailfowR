@@ -1,0 +1,79 @@
+{
+  "manifest": {
+    "chunks": [
+      {
+        "chunk_index": 0,
+        "row_count": 6,
+        "row_offset": 0
+      }
+    ],
+    "format": "JSON_ARRAY",
+    "schema": {
+      "column_count": 3,
+      "columns": [
+        {
+          "name": "evaluation_id",
+          "position": 0,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        },
+        {
+          "name": "sequence",
+          "position": 1,
+          "type_name": "LONG",
+          "type_text": "BIGINT"
+        },
+        {
+          "name": "status",
+          "position": 2,
+          "type_name": "STRING",
+          "type_text": "STRING"
+        }
+      ]
+    },
+    "total_chunk_count": 1,
+    "total_row_count": 6,
+    "truncated": false
+  },
+  "result": {
+    "chunk_index": 0,
+    "data_array": [
+      [
+        "first",
+        "1",
+        "silver_complete"
+      ],
+      [
+        "repeat",
+        "2",
+        "silver_complete"
+      ],
+      [
+        "renamed",
+        "3",
+        "silver_complete"
+      ],
+      [
+        "second",
+        "4",
+        "silver_complete"
+      ],
+      [
+        "arrival",
+        "5",
+        "silver_complete"
+      ],
+      [
+        "replay",
+        "6",
+        "silver_complete"
+      ]
+    ],
+    "row_count": 6,
+    "row_offset": 0
+  },
+  "statement_id": "01f1d4bc-1a4d-1804-bd3a-fbf8647c9fa7",
+  "status": {
+    "state": "SUCCEEDED"
+  }
+}

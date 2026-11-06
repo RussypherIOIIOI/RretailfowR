@@ -20,9 +20,6 @@ artifacts:
 
 sync:
   exclude:
-    - .venv/**
-    - build/**
-    - '*.egg-info/**'
     - evidence/**
 
 targets:

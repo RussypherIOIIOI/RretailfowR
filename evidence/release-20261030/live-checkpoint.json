@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-31T00:28:31.350469+00:00",
+  "demo_status": "five jobs succeeded; persisted progression verified",
+  "acceptance_run": 853846258218717,
+  "acceptance_state": {
+    "life_cycle_state": "TERMINATED",
+    "result_state": "SUCCESS",
+    "state_message": "",
+    "user_cancelled_or_timedout": false
+  },
+  "acceptance_result": "passed",
+  "dashboard_id": "01f1d4bd43b6157d96bdf99719c7f0c3",
+  "publisher_approval": "pending",
+  "publisher_operation_executed": false,
+  "video_recorded": false
+}

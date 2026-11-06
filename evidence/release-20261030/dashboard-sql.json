@@ -1,0 +1,984 @@
+{
+  "verified_at": "2026-10-30T23:53:27.840071+00:00",
+  "catalog": "tmc_solutions_jvs",
+  "schema": "retailflow_gold",
+  "publication_id": "demo04",
+  "datasets": {
+    "publication": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 4,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 3,
+          "columns": [
+            {
+              "name": "latest_publication_id",
+              "position": 0,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "latest_published_at",
+              "position": 1,
+              "type_name": "TIMESTAMP",
+              "type_text": "TIMESTAMP"
+            },
+            {
+              "name": "available_publication_id",
+              "position": 2,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 4,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "demo04",
+            "2026-10-30T23:52:43.228Z",
+            "demo01"
+          ],
+          [
+            "demo04",
+            "2026-10-30T23:52:43.228Z",
+            "demo02"
+          ],
+          [
+            "demo04",
+            "2026-10-30T23:52:43.228Z",
+            "demo03"
+          ],
+          [
+            "demo04",
+            "2026-10-30T23:52:43.228Z",
+            "demo04"
+          ]
+        ],
+        "row_count": 4,
+        "row_offset": 0
+      },
+      "statement_id": "01f1d4bd-1a77-1b72-b6ef-369b4494a1c4",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    },
+    "sales_lines": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 6,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 15,
+          "columns": [
+            {
+              "name": "publication_id",
+              "position": 0,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "order_id",
+              "position": 1,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "line_id",
+              "position": 2,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "order_date",
+              "position": 3,
+              "type_name": "DATE",
+              "type_text": "DATE"
+            },
+            {
+              "name": "sale_region",
+              "position": 4,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "customer_id",
+              "position": 5,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "product_id",
+              "position": 6,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "product_name",
+              "position": 7,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "category",
+              "position": 8,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "product_label",
+              "position": 9,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "quantity",
+              "position": 10,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "unit_price",
+              "position": 11,
+              "type_name": "DECIMAL",
+              "type_precision": 18,
+              "type_scale": 2,
+              "type_text": "DECIMAL(18,2)"
+            },
+            {
+              "name": "discount_amount",
+              "position": 12,
+              "type_name": "DECIMAL",
+              "type_precision": 18,
+              "type_scale": 2,
+              "type_text": "DECIMAL(18,2)"
+            },
+            {
+              "name": "net_sales",
+              "position": 13,
+              "type_name": "DECIMAL",
+              "type_precision": 18,
+              "type_scale": 2,
+              "type_text": "DECIMAL(18,2)"
+            },
+            {
+              "name": "snapshot_created_at",
+              "position": 14,
+              "type_name": "TIMESTAMP",
+              "type_text": "TIMESTAMP"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 6,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "demo04",
+            "A2",
+            "1",
+            "2026-01-01",
+            "EAST",
+            "C2",
+            "P2",
+            "Kettle Plus",
+            "Home",
+            "P2 / Kettle Plus",
+            "1",
+            "30.00",
+            "5.00",
+            "25.00",
+            "2026-10-30T23:46:35.959Z"
+          ],
+          [
+            "demo04",
+            "A2",
+            "2",
+            "2026-01-01",
+            "EAST",
+            "C2",
+            "P1",
+            "Mug",
+            "Home",
+            "P1 / Mug",
+            "1",
+            "10.00",
+            "0.00",
+            "10.00",
+            "2026-10-30T23:46:35.959Z"
+          ],
+          [
+            "demo04",
+            "A1",
+            "1",
+            "2026-01-02",
+            "EAST",
+            "C1",
+            "P2",
+            "Kettle Plus",
+            "Home",
+            "P2 / Kettle Plus",
+            "3",
+            "12.00",
+            "1.00",
+            "35.00",
+            "2026-10-30T23:46:35.959Z"
+          ],
+          [
+            "demo04",
+            "A5",
+            "1",
+            "2026-01-01",
+            "WEST",
+            "C1",
+            "P1",
+            "Mug",
+            "Home",
+            "P1 / Mug",
+            "1",
+            "6.00",
+            "0.00",
+            "6.00",
+            "2026-10-30T23:46:35.959Z"
+          ],
+          [
+            "demo04",
+            "A3",
+            "1",
+            "2026-01-01",
+            "WEST",
+            "C1",
+            "P1",
+            "Mug",
+            "Home",
+            "P1 / Mug",
+            "1",
+            "15.00",
+            "0.00",
+            "15.00",
+            "2026-10-30T23:46:35.959Z"
+          ],
+          [
+            "demo04",
+            "A4",
+            "1",
+            "2026-01-01",
+            "WEST",
+            "C9",
+            "P1",
+            "Mug",
+            "Home",
+            "P1 / Mug",
+            "1",
+            "7.00",
+            "0.00",
+            "7.00",
+            "2026-10-30T23:46:35.959Z"
+          ]
+        ],
+        "row_count": 6,
+        "row_offset": 0
+      },
+      "statement_id": "01f1d4bd-1b4b-13c7-a409-c8c0be4b2135",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    },
+    "rejected_records": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 8,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 18,
+          "columns": [
+            {
+              "name": "publication_id",
+              "position": 0,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "occurrence_id",
+              "position": 1,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "batch_id",
+              "position": 2,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "entity",
+              "position": 3,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "filename",
+              "position": 4,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "record_index",
+              "position": 5,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "raw_record",
+              "position": 6,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "business_key",
+              "position": 7,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "source_revision",
+              "position": 8,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "disposition",
+              "position": 9,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "reasons",
+              "position": 10,
+              "type_name": "ARRAY",
+              "type_text": "ARRAY<STRING>"
+            },
+            {
+              "name": "resolved",
+              "position": 11,
+              "type_name": "BOOLEAN",
+              "type_text": "BOOLEAN"
+            },
+            {
+              "name": "ruleset",
+              "position": 12,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "unresolved_occurrence_id",
+              "position": 13,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "resolved_occurrence_id",
+              "position": 14,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "first_rejected_at",
+              "position": 15,
+              "type_name": "TIMESTAMP",
+              "type_text": "TIMESTAMP"
+            },
+            {
+              "name": "last_rejected_at",
+              "position": 16,
+              "type_name": "TIMESTAMP",
+              "type_text": "TIMESTAMP"
+            },
+            {
+              "name": "evaluated_at",
+              "position": 17,
+              "type_name": "TIMESTAMP",
+              "type_text": "TIMESTAMP"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 8,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "demo04",
+            "29b12dec27aae4baa06692cce09033b8ab3b81be8344b5e08c5f2756a48dc8d9",
+            "batch2",
+            "orders",
+            "orders.csv",
+            "3",
+            "BROKEN,1,C1,P1,2026-02-30,WEST,0,oops,0.00,1,2026-01-01T00:00:00Z",
+            "[\"BROKEN\",\"1\"]",
+            "1",
+            "invalid",
+            "[\"INVALID_ORDER_DATE\",\"INVALID_QUANTITY\",\"INVALID_UNIT_PRICE\"]",
+            "false",
+            "retailflow-v1",
+            "29b12dec27aae4baa06692cce09033b8ab3b81be8344b5e08c5f2756a48dc8d9",
+            null,
+            "2026-10-30T23:38:42.748Z",
+            "2026-10-30T23:46:00.545Z",
+            "2026-10-30T23:46:00.545Z"
+          ],
+          [
+            "demo04",
+            "32493e9c3a7ca88703c5922b3ea9a035e5deb7e88907571d46a374cdd78b6a3c",
+            "batch2",
+            "orders",
+            "orders.csv",
+            "15",
+            "MALFORMED,\"unterminated",
+            "[\"\",\"\"]",
+            null,
+            "invalid",
+            "[\"INVALID_CUSTOMER_ID\",\"INVALID_DISCOUNT_AMOUNT\",\"INVALID_LINE_ID\",\"INVALID_ORDER_DATE\",\"INVALID_ORDER_ID\",\"INVALID_PRODUCT_ID\",\"INVALID_QUANTITY\",\"INVALID_REVISION\",\"INVALID_SALE_REGION\",\"INVALID_SOURCE_UPDATED_AT\",\"INVALID_UNIT_PRICE\",\"MALFORMED_CSV\",\"MISSING_CUSTOMER_ID\",\"MISSING_DISCOUNT_AMOUNT\",\"MISSING_LINE_ID\",\"MISSING_ORDER_DATE\",\"MISSING_ORDER_ID\",\"MISSING_PRODUCT_ID\",\"MISSING_QUANTITY\",\"MISSING_SALE_REGION\",\"MISSING_SOURCE_REVISION\",\"MISSING_SOURCE_UPDATED_AT\",\"MISSING_UNIT_PRICE\",\"UNKNOWN_CUSTOMER\",\"UNKNOWN_PRODUCT\"]",
+            "false",
+            "retailflow-v1",
+            "32493e9c3a7ca88703c5922b3ea9a035e5deb7e88907571d46a374cdd78b6a3c",
+            null,
+            "2026-10-30T23:38:42.748Z",
+            "2026-10-30T23:46:00.545Z",
+            "2026-10-30T23:46:00.545Z"
+          ],
+          [
+            "demo04",
+            "3dcf3fa6888d9ab960fbdf4296e7195b5677b2751eadb52059e2e2c9352c2f15",
+            "batch2",
+            "orders",
+            "orders.csv",
+            "7",
+            "A5,1,C1,P1,2026-01-01,WEST,1,8.00,0.00,2,2026-01-01T00:00:00Z",
+            "[\"A5\",\"1\"]",
+            "2",
+            "conflict",
+            "[\"REVISION_CONFLICT\"]",
+            "false",
+            "retailflow-v1",
+            "3dcf3fa6888d9ab960fbdf4296e7195b5677b2751eadb52059e2e2c9352c2f15",
+            null,
+            "2026-10-30T23:38:42.748Z",
+            "2026-10-30T23:46:00.545Z",
+            "2026-10-30T23:46:00.545Z"
+          ],
+          [
+            "demo04",
+            "71dcba543d4887c27b6992e007bb2de7131baab06e4d5e784e78e57994f77bdb",
+            "batch2",
+            "orders",
+            "orders.csv",
+            "2",
+            "A4,1,C9,P1,2026-01-01,WEST,1,7.00,0.00,1,2026-01-01T00:00:00Z",
+            "[\"A4\",\"1\"]",
+            "1",
+            "accepted_winner",
+            "[]",
+            "true",
+            "retailflow-v1",
+            null,
+            "71dcba543d4887c27b6992e007bb2de7131baab06e4d5e784e78e57994f77bdb",
+            "2026-10-30T23:38:42.748Z",
+            "2026-10-30T23:38:42.748Z",
+            "2026-10-30T23:46:00.545Z"
+          ],
+          [
+            "demo04",
+            "784f3d775d41dcd714e338c763be1bb9f240ba7e96dab80f4f92da88dea54bf8",
+            "batch2",
+            "orders",
+            "orders.csv",
+            "10",
+            "A2,2,C2,P1,2026-01-01,EAST,1,11.00,0.00,1,2026-01-01T00:00:00Z",
+            "[\"A2\",\"2\"]",
+            "1",
+            "conflict",
+            "[\"REVISION_CONFLICT\"]",
+            "false",
+            "retailflow-v1",
+            "784f3d775d41dcd714e338c763be1bb9f240ba7e96dab80f4f92da88dea54bf8",
+            null,
+            "2026-10-30T23:38:42.748Z",
+            "2026-10-30T23:46:00.545Z",
+            "2026-10-30T23:46:00.545Z"
+          ],
+          [
+            "demo04",
+            "c93cf232a18a101010db43df19a731955f665ce2e69dd056af17c0509a5d4478",
+            "batch2",
+            "orders",
+            "orders.csv",
+            "13",
+            "A2,1,C2,P2,2026-01-01,EAST,0,30.00,0.00,2,2026-01-01T00:00:00Z",
+            "[\"A2\",\"1\"]",
+            "2",
+            "invalid",
+            "[\"INVALID_QUANTITY\"]",
+            "false",
+            "retailflow-v1",
+            "c93cf232a18a101010db43df19a731955f665ce2e69dd056af17c0509a5d4478",
+            null,
+            "2026-10-30T23:38:42.748Z",
+            "2026-10-30T23:46:00.545Z",
+            "2026-10-30T23:46:00.545Z"
+          ],
+          [
+            "demo04",
+            "d034f1b82208579c35bd76091d969b39fa357909e4a175ed3756f6464a000d04",
+            "batch1",
+            "orders",
+            "orders.csv",
+            "5",
+            "BAD,1,C1,P1,2026-01-01,WEST,0,10.00,0.00,1,2026-01-01T00:00:00Z",
+            "[\"BAD\",\"1\"]",
+            "1",
+            "invalid",
+            "[\"INVALID_QUANTITY\"]",
+            "false",
+            "retailflow-v1",
+            "d034f1b82208579c35bd76091d969b39fa357909e4a175ed3756f6464a000d04",
+            null,
+            "2026-10-30T23:34:31.439Z",
+            "2026-10-30T23:34:31.439Z",
+            "2026-10-30T23:34:31.439Z"
+          ],
+          [
+            "demo04",
+            "f38ce59b1c741e9ada6ace98ce58d226a2cf27ca1095e4ee4f804c2d6434837c",
+            "batch2",
+            "orders",
+            "orders.csv",
+            "11",
+            "A5,1,C1,P1,2026-01-01,WEST,1,9.00,0.00,2,2026-01-01T00:00:00Z",
+            "[\"A5\",\"1\"]",
+            "2",
+            "conflict",
+            "[\"REVISION_CONFLICT\"]",
+            "false",
+            "retailflow-v1",
+            "f38ce59b1c741e9ada6ace98ce58d226a2cf27ca1095e4ee4f804c2d6434837c",
+            null,
+            "2026-10-30T23:38:42.748Z",
+            "2026-10-30T23:46:00.545Z",
+            "2026-10-30T23:46:00.545Z"
+          ]
+        ],
+        "row_count": 8,
+        "row_offset": 0
+      },
+      "statement_id": "01f1d4bd-1c8d-1ed0-809e-a42a3f2c6351",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    },
+    "rejected_reasons": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 27,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 5,
+          "columns": [
+            {
+              "name": "publication_id",
+              "position": 0,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "batch_id",
+              "position": 1,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "entity",
+              "position": 2,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "reason",
+              "position": 3,
+              "type_name": "STRING",
+              "type_text": "STRING"
+            },
+            {
+              "name": "rejected_records",
+              "position": 4,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 27,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "INVALID_QUANTITY",
+            "3"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "REVISION_CONFLICT",
+            "3"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "INVALID_ORDER_DATE",
+            "2"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "INVALID_UNIT_PRICE",
+            "2"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "INVALID_CUSTOMER_ID",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "INVALID_DISCOUNT_AMOUNT",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "INVALID_LINE_ID",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "INVALID_ORDER_ID",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "INVALID_PRODUCT_ID",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch1",
+            "orders",
+            "INVALID_QUANTITY",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "INVALID_REVISION",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "INVALID_SALE_REGION",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "INVALID_SOURCE_UPDATED_AT",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "MALFORMED_CSV",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "MISSING_CUSTOMER_ID",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "MISSING_DISCOUNT_AMOUNT",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "MISSING_LINE_ID",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "MISSING_ORDER_DATE",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "MISSING_ORDER_ID",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "MISSING_PRODUCT_ID",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "MISSING_QUANTITY",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "MISSING_SALE_REGION",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "MISSING_SOURCE_REVISION",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "MISSING_SOURCE_UPDATED_AT",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "MISSING_UNIT_PRICE",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "UNKNOWN_CUSTOMER",
+            "1"
+          ],
+          [
+            "demo04",
+            "batch2",
+            "orders",
+            "UNKNOWN_PRODUCT",
+            "1"
+          ]
+        ],
+        "row_count": 27,
+        "row_offset": 0
+      },
+      "statement_id": "01f1d4bd-1d92-10c4-9cdc-d0af0abccd6a",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    }
+  },
+  "checks": [
+    {
+      "name": "reset_sales",
+      "statement_id": "01f1d4bd-1e87-1dc2-a7da-a65401c5613f",
+      "observed": {
+        "usd": "98.00",
+        "units": "8",
+        "orders": "5"
+      },
+      "expected": {
+        "usd": "98.00",
+        "units": "8",
+        "orders": "5"
+      }
+    },
+    {
+      "name": "date_only",
+      "statement_id": "01f1d4bd-1f8a-14bc-910f-c83f6b6f746d",
+      "observed": {
+        "usd": "63.00",
+        "units": "5",
+        "orders": "4"
+      },
+      "expected": {
+        "usd": "63.00",
+        "units": "5",
+        "orders": "4"
+      }
+    },
+    {
+      "name": "product_only",
+      "statement_id": "01f1d4bd-2094-158c-865c-eec921361326",
+      "observed": {
+        "usd": "38.00",
+        "units": "4",
+        "orders": "4"
+      },
+      "expected": {
+        "usd": "38.00",
+        "units": "4",
+        "orders": "4"
+      }
+    },
+    {
+      "name": "region_only",
+      "statement_id": "01f1d4bd-21ce-1486-a537-bc27fbe9e58b",
+      "observed": {
+        "usd": "28.00",
+        "units": "3",
+        "orders": "3"
+      },
+      "expected": {
+        "usd": "28.00",
+        "units": "3",
+        "orders": "3"
+      }
+    },
+    {
+      "name": "combined_sales",
+      "statement_id": "01f1d4bd-22c5-16d1-8f5f-b1dae851d8c2",
+      "observed": {
+        "usd": "28.00",
+        "units": "3",
+        "orders": "3"
+      },
+      "expected": {
+        "usd": "28.00",
+        "units": "3",
+        "orders": "3"
+      }
+    },
+    {
+      "name": "unresolved_quality",
+      "statement_id": "01f1d4bd-23c6-1e7d-b57f-758ac837f05a",
+      "observed": {
+        "rejects": "7"
+      },
+      "expected": {
+        "rejects": "7"
+      }
+    },
+    {
+      "name": "batch_quality",
+      "statement_id": "01f1d4bd-2497-1cb0-97b3-83e2f633d42c",
+      "observed": {
+        "rejects": "6"
+      },
+      "expected": {
+        "rejects": "6"
+      }
+    },
+    {
+      "name": "entity_quality",
+      "statement_id": "01f1d4bd-2578-13d1-af11-eefe26413c6a",
+      "observed": {
+        "rejects": "0"
+      },
+      "expected": {
+        "rejects": "0"
+      }
+    },
+    {
+      "name": "resolved_history",
+      "statement_id": "01f1d4bd-263a-15cf-85b7-cc4744b6aea2",
+      "observed": {
+        "rejects": "1"
+      },
+      "expected": {
+        "rejects": "1"
+      }
+    },
+    {
+      "name": "sales_lines_unregistered",
+      "statement_id": "01f1d4bd-2710-1384-b843-1d3ada8c2c7e",
+      "observed_rows": 0
+    },
+    {
+      "name": "rejected_records_unregistered",
+      "statement_id": "01f1d4bd-27a1-1555-a632-830d604815c4",
+      "observed_rows": 0
+    },
+    {
+      "name": "rejected_reasons_unregistered",
+      "statement_id": "01f1d4bd-2825-1df5-a210-21a8453b44f4",
+      "observed_rows": 0
+    }
+  ],
+  "status": "passed_sql_only",
+  "widget_ui_verified": false
+}

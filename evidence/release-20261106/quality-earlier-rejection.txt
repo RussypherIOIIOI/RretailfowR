@@ -1,0 +1,650 @@
+- main:
+  - generic: RetailFlow — Trustworthy Sales
+  - button "Favorite":
+  - button "Edit draft":
+    - generic: Edit draft
+  - button "Open dashboard actions menu":
+  - button "Bookmarks":
+  - 'button "Refresh (Updated: 5 minutes ago)"':
+  - button "Schedule":
+  - button "Share":
+  - button:
+  - tablist "Dashboard pages":
+    - tab "Sales":
+      - generic "Sales"
+    - tab "Data quality" [selected]:
+      - generic "Data quality"
+  - button:
+  - button "Open global filters panel" [active]:
+    - text: Global filters
+  - status:
+    - generic: "Registered publication (all pages):"
+    - generic: demo02
+    - button "Clear the Registered publication (all pages) filter":
+  - button "Reset all to default":
+    - generic: Reset all to default
+  - article:
+    - heading "Data quality / retained rejection history" [level=1]
+    - generic: Unique source occurrences, including resolved history. Quality batch/entity filters never scope sales. Reason counts overlap; invalid dates remain inspectable.
+  - article:
+    - generic: Quality batch
+  - status:
+    - generic: All
+  - combobox
+  - article:
+    - generic: Quality entity (exact)
+  - textbox "Exactly matches"
+  - article:
+    - generic: Unresolved occurrences
+  - generic "8"
+  - article:
+    - generic: Resolved occurrences
+  - generic "0"
+  - article:
+    - generic: Ever rejected · unique
+  - generic "8"
+  - article:
+    - generic: Rejection reasons · overlapping counts by batch/entity
+  - table:
+    - rowgroup:
+      - row "Reason caret-up caret-down Rejected Records caret-up caret-down Batch Id caret-up caret-down Entity caret-up caret-down":
+        - columnheader "Reason caret-up caret-down":
+          - generic "Reason"
+          - img "caret-up":
+          - img "caret-down":
+        - columnheader "Rejected Records caret-up caret-down":
+          - generic "Rejected Records"
+          - img "caret-up":
+          - img "caret-down":
+        - columnheader "Batch Id caret-up caret-down":
+          - generic "Batch Id"
+          - img "caret-up":
+          - img "caret-down":
+        - columnheader "Entity caret-up caret-down":
+          - generic "Entity"
+          - img "caret-up":
+          - img "caret-down":
+    - rowgroup:
+      - row "INVALID_QUANTITY 3 batch2 orders":
+        - cell "INVALID_QUANTITY":
+          - generic "INVALID_QUANTITY":
+            - generic: INVALID_QUANTITY
+        - cell "3":
+          - generic "3":
+            - generic: "3"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "REVISION_CONFLICT 3 batch2 orders":
+        - cell "REVISION_CONFLICT":
+          - generic "REVISION_CONFLICT":
+            - generic: REVISION_CONFLICT
+        - cell "3":
+          - generic "3":
+            - generic: "3"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "INVALID_ORDER_DATE 2 batch2 orders":
+        - cell "INVALID_ORDER_DATE":
+          - generic "INVALID_ORDER_DATE":
+            - generic: INVALID_ORDER_DATE
+        - cell "2":
+          - generic "2":
+            - generic: "2"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "INVALID_UNIT_PRICE 2 batch2 orders":
+        - cell "INVALID_UNIT_PRICE":
+          - generic "INVALID_UNIT_PRICE":
+            - generic: INVALID_UNIT_PRICE
+        - cell "2":
+          - generic "2":
+            - generic: "2"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "UNKNOWN_CUSTOMER 2 batch2 orders":
+        - cell "UNKNOWN_CUSTOMER":
+          - generic "UNKNOWN_CUSTOMER":
+            - generic: UNKNOWN_CUSTOMER
+        - cell "2":
+          - generic "2":
+            - generic: "2"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "INVALID_CUSTOMER_ID 1 batch2 orders":
+        - cell "INVALID_CUSTOMER_ID":
+          - generic "INVALID_CUSTOMER_ID":
+            - generic: INVALID_CUSTOMER_ID
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "INVALID_DISCOUNT_AMOUNT 1 batch2 orders":
+        - cell "INVALID_DISCOUNT_AMOUNT":
+          - generic "INVALID_DISCOUNT_AMOUNT":
+            - generic: INVALID_DISCOUNT_AMOUNT
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "INVALID_LINE_ID 1 batch2 orders":
+        - cell "INVALID_LINE_ID":
+          - generic "INVALID_LINE_ID":
+            - generic: INVALID_LINE_ID
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "INVALID_ORDER_ID 1 batch2 orders":
+        - cell "INVALID_ORDER_ID":
+          - generic "INVALID_ORDER_ID":
+            - generic: INVALID_ORDER_ID
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "INVALID_PRODUCT_ID 1 batch2 orders":
+        - cell "INVALID_PRODUCT_ID":
+          - generic "INVALID_PRODUCT_ID":
+            - generic: INVALID_PRODUCT_ID
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "INVALID_QUANTITY 1 batch1 orders":
+        - cell "INVALID_QUANTITY":
+          - generic "INVALID_QUANTITY":
+            - generic: INVALID_QUANTITY
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch1":
+          - generic "batch1":
+            - generic: batch1
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "INVALID_REVISION 1 batch2 orders":
+        - cell "INVALID_REVISION":
+          - generic "INVALID_REVISION":
+            - generic: INVALID_REVISION
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "INVALID_SALE_REGION 1 batch2 orders":
+        - cell "INVALID_SALE_REGION":
+          - generic "INVALID_SALE_REGION":
+            - generic: INVALID_SALE_REGION
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "INVALID_SOURCE_UPDATED_AT 1 batch2 orders":
+        - cell "INVALID_SOURCE_UPDATED_AT":
+          - generic "INVALID_SOURCE_UPDATED_AT":
+            - generic: INVALID_SOURCE_UPDATED_AT
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "MALFORMED_CSV 1 batch2 orders":
+        - cell "MALFORMED_CSV":
+          - generic "MALFORMED_CSV":
+            - generic: MALFORMED_CSV
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "MISSING_CUSTOMER_ID 1 batch2 orders":
+        - cell "MISSING_CUSTOMER_ID":
+          - generic "MISSING_CUSTOMER_ID":
+            - generic: MISSING_CUSTOMER_ID
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "MISSING_DISCOUNT_AMOUNT 1 batch2 orders":
+        - cell "MISSING_DISCOUNT_AMOUNT":
+          - generic "MISSING_DISCOUNT_AMOUNT":
+            - generic: MISSING_DISCOUNT_AMOUNT
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "MISSING_LINE_ID 1 batch2 orders":
+        - cell "MISSING_LINE_ID":
+          - generic "MISSING_LINE_ID":
+            - generic: MISSING_LINE_ID
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "MISSING_ORDER_DATE 1 batch2 orders":
+        - cell "MISSING_ORDER_DATE":
+          - generic "MISSING_ORDER_DATE":
+            - generic: MISSING_ORDER_DATE
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "MISSING_ORDER_ID 1 batch2 orders":
+        - cell "MISSING_ORDER_ID":
+          - generic "MISSING_ORDER_ID":
+            - generic: MISSING_ORDER_ID
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "MISSING_PRODUCT_ID 1 batch2 orders":
+        - cell "MISSING_PRODUCT_ID":
+          - generic "MISSING_PRODUCT_ID":
+            - generic: MISSING_PRODUCT_ID
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "MISSING_QUANTITY 1 batch2 orders":
+        - cell "MISSING_QUANTITY":
+          - generic "MISSING_QUANTITY":
+            - generic: MISSING_QUANTITY
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "MISSING_SALE_REGION 1 batch2 orders":
+        - cell "MISSING_SALE_REGION":
+          - generic "MISSING_SALE_REGION":
+            - generic: MISSING_SALE_REGION
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "MISSING_SOURCE_REVISION 1 batch2 orders":
+        - cell "MISSING_SOURCE_REVISION":
+          - generic "MISSING_SOURCE_REVISION":
+            - generic: MISSING_SOURCE_REVISION
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+      - row "MISSING_SOURCE_UPDATED_AT 1 batch2 orders":
+        - cell "MISSING_SOURCE_UPDATED_AT":
+          - generic "MISSING_SOURCE_UPDATED_AT":
+            - generic: MISSING_SOURCE_UPDATED_AT
+        - cell "1":
+          - generic "1":
+            - generic: "1"
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders":
+          - generic "orders":
+            - generic: orders
+  - list:
+    - listitem "Previous Page":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "2":
+      - generic: "2"
+    - listitem "Next Page":
+      - button "right":
+        - img "right":
+  - article:
+    - generic: Rejected source records · original bytes and latest disposition
+  - button "Ask Genie":
+  - button:
+  - table:
+    - rowgroup:
+      - row "Batch Id caret-up caret-down Filename caret-up caret-down Record Index caret-up caret-down Business Key caret-up caret-down Disposition caret-up caret-down Reasons caret-up caret-down Resolved caret-up caret-down Raw Record caret-up caret-down":
+        - columnheader "Batch Id caret-up caret-down":
+          - generic "Batch Id"
+          - img "caret-up":
+          - img "caret-down":
+        - columnheader "Filename caret-up caret-down":
+          - generic "Filename"
+          - img "caret-up":
+          - img "caret-down":
+        - columnheader "Record Index caret-up caret-down":
+          - generic "Record Index"
+          - img "caret-up":
+          - img "caret-down":
+        - columnheader "Business Key caret-up caret-down":
+          - generic "Business Key"
+          - img "caret-up":
+          - img "caret-down":
+        - columnheader "Disposition caret-up caret-down":
+          - generic "Disposition"
+          - img "caret-up":
+          - img "caret-down":
+        - columnheader "Reasons caret-up caret-down":
+          - generic "Reasons"
+          - img "caret-up":
+          - img "caret-down":
+        - columnheader "Resolved caret-up caret-down":
+          - generic "Resolved"
+          - img "caret-up":
+          - img "caret-down":
+        - columnheader "Raw Record caret-up caret-down":
+          - generic "Raw Record"
+          - img "caret-up":
+          - img "caret-down":
+    - rowgroup:
+      - row "batch2 orders.csv 3 [\"BROKEN\",\"1\"] invalid [\"INVALID_ORDER_DATE\",\"INVALID_QUANTITY\",\"INVALID_UNIT_PRICE\"] false BROKEN,1,C1,P1,2026-02-30,WEST,0,oops,0.00,1,2026-01-01T00:00:00Z":
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders.csv":
+          - generic "orders.csv":
+            - generic: orders.csv
+        - cell "3":
+          - generic "3":
+            - generic: "3"
+        - cell "[\"BROKEN\",\"1\"]":
+          - generic "[\"BROKEN\",\"1\"]":
+            - generic: "[\"BROKEN\",\"1\"]"
+        - cell "invalid":
+          - generic "invalid":
+            - generic: invalid
+        - cell "[\"INVALID_ORDER_DATE\",\"INVALID_QUANTITY\",\"INVALID_UNIT_PRICE\"]":
+          - generic "[\"INVALID_ORDER_DATE\",\"INVALID_QUANTITY\",\"INVALID_UNIT_PRICE\"]":
+            - generic: "[\"INVALID_ORDER_DATE\",\"INVALID_QUANTITY\",\"INVALID_UNIT_PRICE\"]"
+        - cell "false":
+          - generic "false":
+            - generic: "false"
+        - cell "BROKEN,1,C1,P1,2026-02-30,WEST,0,oops,0.00,1,2026-01-01T00:00:00Z":
+          - generic "BROKEN,1,C1,P1,2026-02-30,WEST,0,oops,0.00,1,2026-01-01T00:00:00Z":
+            - generic: BROKEN,1,C1,P1,2026-02-30,WEST,0,oops,0.00,1,2026-01-01T00:00:00Z
+      - row "batch2 orders.csv 15 [\"\",\"\"] invalid [\"INVALID_CUSTOMER_ID\",\"INVALID_DISCOUNT_AMOUNT\",\"INVALID_LINE_ID\",\"INVALID_ORDER_DATE\",\"INVALID_ORDER_ID\",\"INVALID_PRODUCT_ID\",\"INVALID_QUANTITY\",\"INVALID_REVISION\",\"INVALID_SALE_REGION\",\"INVALID_SOURCE_UPDATED_AT\",\"INVALID_UNIT_PRICE\",\"MALFORMED_CSV\",\"MISSING_CUSTOMER_ID\",\"MISSING_DISCOUNT_AMOUNT\",\"MISSING_LINE_ID\",\"MISSING_ORDER_DATE\",\"MISSING_ORDER_ID\",\"MISSING_PRODUCT_ID\",\"MISSING_QUANTITY\",\"MISSING_SALE_REGION\",\"MISSING_SOURCE_REVISION\",\"MISSING_SOURCE_UPDATED_AT\",\"MISSING_UNIT_PRICE\",\"UNKNOWN_CUSTOMER\",\"UNKNOWN_PRODUCT\"] false MALFORMED,\"unterminated":
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders.csv":
+          - generic "orders.csv":
+            - generic: orders.csv
+        - cell "15":
+          - generic "15":
+            - generic: "15"
+        - cell "[\"\",\"\"]":
+          - generic "[\"\",\"\"]":
+            - generic: "[\"\",\"\"]"
+        - cell "invalid":
+          - generic "invalid":
+            - generic: invalid
+        - cell "[\"INVALID_CUSTOMER_ID\",\"INVALID_DISCOUNT_AMOUNT\",\"INVALID_LINE_ID\",\"INVALID_ORDER_DATE\",\"INVALID_ORDER_ID\",\"INVALID_PRODUCT_ID\",\"INVALID_QUANTITY\",\"INVALID_REVISION\",\"INVALID_SALE_REGION\",\"INVALID_SOURCE_UPDATED_AT\",\"INVALID_UNIT_PRICE\",\"MALFORMED_CSV\",\"MISSING_CUSTOMER_ID\",\"MISSING_DISCOUNT_AMOUNT\",\"MISSING_LINE_ID\",\"MISSING_ORDER_DATE\",\"MISSING_ORDER_ID\",\"MISSING_PRODUCT_ID\",\"MISSING_QUANTITY\",\"MISSING_SALE_REGION\",\"MISSING_SOURCE_REVISION\",\"MISSING_SOURCE_UPDATED_AT\",\"MISSING_UNIT_PRICE\",\"UNKNOWN_CUSTOMER\",\"UNKNOWN_PRODUCT\"]":
+          - generic "[\"INVALID_CUSTOMER_ID\",\"INVALID_DISCOUNT_AMOUNT\",\"INVALID_LINE_ID\",\"INVALID_ORDER_DATE\",\"INVALID_ORDER_ID\",\"INVALID_PRODUCT_ID\",\"INVALID_QUANTITY\",\"INVALID_REVISION\",\"INVALID_SALE_REGION\",\"INVALID_SOURCE_UPDATED_AT\",\"INVALID_UNIT_PRICE\",\"MALFORMED_CSV\",\"MISSING_CUSTOMER_ID\",\"MISSING_DISCOUNT_AMOUNT\",\"MISSING_LINE_ID\",\"MISSING_ORDER_DATE\",\"MISSING_ORDER_ID\",\"MISSING_PRODUCT_ID\",\"MISSING_QUANTITY\",\"MISSING_SALE_REGION\",\"MISSING_SOURCE_REVISION\",\"MISSING_SOURCE_UPDATED_AT\",\"MISSING_UNIT_PRICE\",\"UNKNOWN_CUSTOMER\",\"UNKNOWN_PRODUCT\"]":
+            - text: "[\"INVALID_CUSTOMER_ID\",\"INVALID_DISCOUNT_AMOUNT\",\"INVALID_LINE_ID\",\"INVALID_ORDER_DATE\",\"INVALID_ORDER_ID\",\"INVALID_PRODUCT_ID\",\"INVALID_QUANTITY\",\"INVALID_REVISION\",\"INVALID_SALE_REGION\",\"INVALID_SOURCE_UPDATED_AT\",\"INVALID_UNIT_PRICE\",\"MALFORMED_CSV\",\"MISSING_CUSTOMER_ID\",\"MISSING_DISCOUNT_AMOUNT\",\"MISSING_LINE_ID\",\"MISSING_ORDER_DATE\",\"MISSING_ORDER_ID\",\"MISSING_PRODUCT_ID\",\"MISSING_QUANTITY\",\"MISSING_SALE_REGION\",\"MISSING_SOURCE_REVISION\",\"MISSING_SOURCE_UPDATED_AT\",\"MISSING_UNIT_PRICE\",\"UNKNOWN_CUSTOMER\",\"UNKNOWN_PRODUCT\"]"
+        - cell "false":
+          - generic "false":
+            - generic: "false"
+        - cell "MALFORMED,\"unterminated":
+          - generic "MALFORMED,\"unterminated":
+            - generic: MALFORMED,"unterminated
+      - row "batch2 orders.csv 7 [\"A5\",\"1\"] conflict [\"REVISION_CONFLICT\"] false A5,1,C1,P1,2026-01-01,WEST,1,8.00,0.00,2,2026-01-01T00:00:00Z":
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders.csv":
+          - generic "orders.csv":
+            - generic: orders.csv
+        - cell "7":
+          - generic "7":
+            - generic: "7"
+        - cell "[\"A5\",\"1\"]":
+          - generic "[\"A5\",\"1\"]":
+            - generic: "[\"A5\",\"1\"]"
+        - cell "conflict":
+          - generic "conflict":
+            - generic: conflict
+        - cell "[\"REVISION_CONFLICT\"]":
+          - generic "[\"REVISION_CONFLICT\"]":
+            - generic: "[\"REVISION_CONFLICT\"]"
+        - cell "false":
+          - generic "false":
+            - generic: "false"
+        - cell "A5,1,C1,P1,2026-01-01,WEST,1,8.00,0.00,2,2026-01-01T00:00:00Z":
+          - generic "A5,1,C1,P1,2026-01-01,WEST,1,8.00,0.00,2,2026-01-01T00:00:00Z":
+            - generic: A5,1,C1,P1,2026-01-01,WEST,1,8.00,0.00,2,2026-01-01T00:00:00Z
+      - row "batch2 orders.csv 2 [\"A4\",\"1\"] invalid [\"UNKNOWN_CUSTOMER\"] false A4,1,C9,P1,2026-01-01,WEST,1,7.00,0.00,1,2026-01-01T00:00:00Z":
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders.csv":
+          - generic "orders.csv":
+            - generic: orders.csv
+        - cell "2":
+          - generic "2":
+            - generic: "2"
+        - cell "[\"A4\",\"1\"]":
+          - generic "[\"A4\",\"1\"]":
+            - generic: "[\"A4\",\"1\"]"
+        - cell "invalid":
+          - generic "invalid":
+            - generic: invalid
+        - cell "[\"UNKNOWN_CUSTOMER\"]":
+          - generic "[\"UNKNOWN_CUSTOMER\"]":
+            - generic: "[\"UNKNOWN_CUSTOMER\"]"
+        - cell "false":
+          - generic "false":
+            - generic: "false"
+        - cell "A4,1,C9,P1,2026-01-01,WEST,1,7.00,0.00,1,2026-01-01T00:00:00Z":
+          - generic "A4,1,C9,P1,2026-01-01,WEST,1,7.00,0.00,1,2026-01-01T00:00:00Z":
+            - generic: A4,1,C9,P1,2026-01-01,WEST,1,7.00,0.00,1,2026-01-01T00:00:00Z
+      - row "batch2 orders.csv 10 [\"A2\",\"2\"] conflict [\"REVISION_CONFLICT\"] false A2,2,C2,P1,2026-01-01,EAST,1,11.00,0.00,1,2026-01-01T00:00:00Z":
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders.csv":
+          - generic "orders.csv":
+            - generic: orders.csv
+        - cell "10":
+          - generic "10":
+            - generic: "10"
+        - cell "[\"A2\",\"2\"]":
+          - generic "[\"A2\",\"2\"]":
+            - generic: "[\"A2\",\"2\"]"
+        - cell "conflict":
+          - generic "conflict":
+            - generic: conflict
+        - cell "[\"REVISION_CONFLICT\"]":
+          - generic "[\"REVISION_CONFLICT\"]":
+            - generic: "[\"REVISION_CONFLICT\"]"
+        - cell "false":
+          - generic "false":
+            - generic: "false"
+        - cell "A2,2,C2,P1,2026-01-01,EAST,1,11.00,0.00,1,2026-01-01T00:00:00Z":
+          - generic "A2,2,C2,P1,2026-01-01,EAST,1,11.00,0.00,1,2026-01-01T00:00:00Z":
+            - generic: A2,2,C2,P1,2026-01-01,EAST,1,11.00,0.00,1,2026-01-01T00:00:00Z
+      - row "batch2 orders.csv 13 [\"A2\",\"1\"] invalid [\"INVALID_QUANTITY\"] false A2,1,C2,P2,2026-01-01,EAST,0,30.00,0.00,2,2026-01-01T00:00:00Z":
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders.csv":
+          - generic "orders.csv":
+            - generic: orders.csv
+        - cell "13":
+          - generic "13":
+            - generic: "13"
+        - cell "[\"A2\",\"1\"]":
+          - generic "[\"A2\",\"1\"]":
+            - generic: "[\"A2\",\"1\"]"
+        - cell "invalid":
+          - generic "invalid":
+            - generic: invalid
+        - cell "[\"INVALID_QUANTITY\"]":
+          - generic "[\"INVALID_QUANTITY\"]":
+            - generic: "[\"INVALID_QUANTITY\"]"
+        - cell "false":
+          - generic "false":
+            - generic: "false"
+        - cell "A2,1,C2,P2,2026-01-01,EAST,0,30.00,0.00,2,2026-01-01T00:00:00Z":
+          - generic "A2,1,C2,P2,2026-01-01,EAST,0,30.00,0.00,2,2026-01-01T00:00:00Z":
+            - generic: A2,1,C2,P2,2026-01-01,EAST,0,30.00,0.00,2,2026-01-01T00:00:00Z
+      - row "batch1 orders.csv 5 [\"BAD\",\"1\"] invalid [\"INVALID_QUANTITY\"] false BAD,1,C1,P1,2026-01-01,WEST,0,10.00,0.00,1,2026-01-01T00:00:00Z":
+        - cell "batch1":
+          - generic "batch1":
+            - generic: batch1
+        - cell "orders.csv":
+          - generic "orders.csv":
+            - generic: orders.csv
+        - cell "5":
+          - generic "5":
+            - generic: "5"
+        - cell "[\"BAD\",\"1\"]":
+          - generic "[\"BAD\",\"1\"]":
+            - generic: "[\"BAD\",\"1\"]"
+        - cell "invalid":
+          - generic "invalid":
+            - generic: invalid
+        - cell "[\"INVALID_QUANTITY\"]":
+          - generic "[\"INVALID_QUANTITY\"]":
+            - generic: "[\"INVALID_QUANTITY\"]"
+        - cell "false":
+          - generic "false":
+            - generic: "false"
+        - cell "BAD,1,C1,P1,2026-01-01,WEST,0,10.00,0.00,1,2026-01-01T00:00:00Z":
+          - generic "BAD,1,C1,P1,2026-01-01,WEST,0,10.00,0.00,1,2026-01-01T00:00:00Z":
+            - generic: BAD,1,C1,P1,2026-01-01,WEST,0,10.00,0.00,1,2026-01-01T00:00:00Z
+      - row "batch2 orders.csv 11 [\"A5\",\"1\"] conflict [\"REVISION_CONFLICT\"] false A5,1,C1,P1,2026-01-01,WEST,1,9.00,0.00,2,2026-01-01T00:00:00Z":
+        - cell "batch2":
+          - generic "batch2":
+            - generic: batch2
+        - cell "orders.csv":
+          - generic "orders.csv":
+            - generic: orders.csv
+        - cell "11":
+          - generic "11":
+            - generic: "11"
+        - cell "[\"A5\",\"1\"]":
+          - generic "[\"A5\",\"1\"]":
+            - generic: "[\"A5\",\"1\"]"
+        - cell "conflict":
+          - generic "conflict":
+            - generic: conflict
+        - cell "[\"REVISION_CONFLICT\"]":
+          - generic "[\"REVISION_CONFLICT\"]":
+            - generic: "[\"REVISION_CONFLICT\"]"
+        - cell "false":
+          - generic "false":
+            - generic: "false"
+        - cell "A5,1,C1,P1,2026-01-01,WEST,1,9.00,0.00,2,2026-01-01T00:00:00Z":
+          - generic "A5,1,C1,P1,2026-01-01,WEST,1,9.00,0.00,2,2026-01-01T00:00:00Z":
+            - generic: A5,1,C1,P1,2026-01-01,WEST,1,9.00,0.00,2,2026-01-01T00:00:00Z
+  - button
+  - button "Expand input bar":
+  - region "Notifications (F8)":
+    - list
+- region "Notifications (F8)":
+  - list
+- status

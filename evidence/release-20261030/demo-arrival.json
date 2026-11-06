@@ -1,0 +1,301 @@
+{
+  "cleanup_duration": 0,
+  "creator_user_name": "e92b585c-22cc-4813-b00e-b894ea680a37",
+  "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+  "end_time": 1793403865510,
+  "execution_duration": 0,
+  "job_id": 1055508848756404,
+  "job_parameters": [
+    {
+      "default": "tmc_solutions_jvs",
+      "name": "catalog",
+      "value": "tmc_solutions_jvs"
+    },
+    {
+      "default": "retailflow",
+      "name": "schema_prefix",
+      "value": "retailflow"
+    },
+    {
+      "default": "batch1",
+      "name": "batch_id",
+      "value": "arrival"
+    },
+    {
+      "default": "{{job.run_id}}",
+      "name": "evaluation_id",
+      "value": "demo03"
+    },
+    {
+      "default": "",
+      "name": "replay_batches",
+      "value": ""
+    },
+    {
+      "default": "1.0",
+      "name": "max_reject_fraction"
+    }
+  ],
+  "job_run_id": 260330560109801,
+  "number_in_job": 260330560109801,
+  "original_attempt_run_id": 260330560109801,
+  "run_duration": 215219,
+  "run_id": 260330560109801,
+  "run_name": "RetailFlow \u00e2\u20ac\u201d Sales Lakehouse",
+  "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/1055508848756404/run/260330560109801",
+  "run_type": "JOB_RUN",
+  "setup_duration": 0,
+  "start_time": 1793403650291,
+  "state": {
+    "life_cycle_state": "TERMINATED",
+    "result_state": "SUCCESS",
+    "state_message": "",
+    "user_cancelled_or_timedout": false
+  },
+  "status": {
+    "state": "TERMINATED",
+    "termination_details": {
+      "code": "SUCCESS",
+      "message": "",
+      "type": "SUCCESS"
+    }
+  },
+  "tasks": [
+    {
+      "attempt_number": 0,
+      "cleanup_duration": 0,
+      "depends_on": [
+        {
+          "task_key": "quality"
+        }
+      ],
+      "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+      "end_time": 1793403865137,
+      "environment_key": "default",
+      "execution_duration": 20000,
+      "notebook_task": {
+        "base_parameters": {
+          "stage": "publish"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+        "source": "WORKSPACE"
+      },
+      "run_id": 202655149333626,
+      "run_if": "ALL_SUCCESS",
+      "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/1055508848756404/run/202655149333626",
+      "setup_duration": 1000,
+      "start_time": 1793403843132,
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "SUCCESS",
+        "state_message": "",
+        "user_cancelled_or_timedout": false
+      },
+      "status": {
+        "state": "TERMINATED",
+        "termination_details": {
+          "code": "SUCCESS",
+          "message": "",
+          "type": "SUCCESS"
+        }
+      },
+      "task_key": "publish"
+    },
+    {
+      "attempt_number": 0,
+      "cleanup_duration": 0,
+      "depends_on": [
+        {
+          "task_key": "bronze"
+        }
+      ],
+      "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+      "end_time": 1793403772539,
+      "environment_key": "default",
+      "execution_duration": 47000,
+      "notebook_task": {
+        "base_parameters": {
+          "stage": "silver"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+        "source": "WORKSPACE"
+      },
+      "run_id": 373202921847654,
+      "run_if": "ALL_SUCCESS",
+      "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/1055508848756404/run/373202921847654",
+      "setup_duration": 1000,
+      "start_time": 1793403723900,
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "SUCCESS",
+        "state_message": "",
+        "user_cancelled_or_timedout": false
+      },
+      "status": {
+        "state": "TERMINATED",
+        "termination_details": {
+          "code": "SUCCESS",
+          "message": "",
+          "type": "SUCCESS"
+        }
+      },
+      "task_key": "silver"
+    },
+    {
+      "attempt_number": 0,
+      "cleanup_duration": 0,
+      "depends_on": [
+        {
+          "task_key": "silver"
+        }
+      ],
+      "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+      "end_time": 1793403813844,
+      "environment_key": "default",
+      "execution_duration": 39000,
+      "notebook_task": {
+        "base_parameters": {
+          "stage": "gold"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+        "source": "WORKSPACE"
+      },
+      "run_id": 601941447659942,
+      "run_if": "ALL_SUCCESS",
+      "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/1055508848756404/run/601941447659942",
+      "setup_duration": 1000,
+      "start_time": 1793403772864,
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "SUCCESS",
+        "state_message": "",
+        "user_cancelled_or_timedout": false
+      },
+      "status": {
+        "state": "TERMINATED",
+        "termination_details": {
+          "code": "SUCCESS",
+          "message": "",
+          "type": "SUCCESS"
+        }
+      },
+      "task_key": "gold"
+    },
+    {
+      "attempt_number": 0,
+      "cleanup_duration": 1000,
+      "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+      "end_time": 1793403692379,
+      "environment_key": "default",
+      "execution_duration": 39000,
+      "notebook_task": {
+        "base_parameters": {
+          "stage": "preflight"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+        "source": "WORKSPACE"
+      },
+      "run_id": 192643657181147,
+      "run_if": "ALL_SUCCESS",
+      "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/1055508848756404/run/192643657181147",
+      "setup_duration": 2000,
+      "start_time": 1793403650331,
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "SUCCESS",
+        "state_message": "",
+        "user_cancelled_or_timedout": false
+      },
+      "status": {
+        "state": "TERMINATED",
+        "termination_details": {
+          "code": "SUCCESS",
+          "message": "",
+          "type": "SUCCESS"
+        }
+      },
+      "task_key": "preflight"
+    },
+    {
+      "attempt_number": 0,
+      "cleanup_duration": 0,
+      "depends_on": [
+        {
+          "task_key": "gold"
+        }
+      ],
+      "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+      "end_time": 1793403842769,
+      "environment_key": "default",
+      "execution_duration": 27000,
+      "notebook_task": {
+        "base_parameters": {
+          "stage": "quality"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+        "source": "WORKSPACE"
+      },
+      "run_id": 1070727250552808,
+      "run_if": "ALL_SUCCESS",
+      "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/1055508848756404/run/1070727250552808",
+      "setup_duration": 1000,
+      "start_time": 1793403814165,
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "SUCCESS",
+        "state_message": "",
+        "user_cancelled_or_timedout": false
+      },
+      "status": {
+        "state": "TERMINATED",
+        "termination_details": {
+          "code": "SUCCESS",
+          "message": "",
+          "type": "SUCCESS"
+        }
+      },
+      "task_key": "quality"
+    },
+    {
+      "attempt_number": 0,
+      "cleanup_duration": 0,
+      "depends_on": [
+        {
+          "task_key": "preflight"
+        }
+      ],
+      "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+      "end_time": 1793403723497,
+      "environment_key": "default",
+      "execution_duration": 28000,
+      "notebook_task": {
+        "base_parameters": {
+          "stage": "bronze"
+        },
+        "notebook_path": "/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/retailflow/task",
+        "source": "WORKSPACE"
+      },
+      "run_id": 475064351523411,
+      "run_if": "ALL_SUCCESS",
+      "run_page_url": "https://dbc-9d765ae8-3bb9.cloud.databricks.com/?o=7474643955280495#job/1055508848756404/run/475064351523411",
+      "setup_duration": 2000,
+      "start_time": 1793403692786,
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "SUCCESS",
+        "state_message": "",
+        "user_cancelled_or_timedout": false
+      },
+      "status": {
+        "state": "TERMINATED",
+        "termination_details": {
+          "code": "SUCCESS",
+          "message": "",
+          "type": "SUCCESS"
+        }
+      },
+      "task_key": "bronze"
+    }
+  ],
+  "trigger": "ONE_TIME"
+}

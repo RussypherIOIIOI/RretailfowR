@@ -1,0 +1,29 @@
+{
+  "verified_at": "2026-10-30",
+  "workspace": "https://dbc-9d765ae8-3bb9.cloud.databricks.com",
+  "job_id": 1055508848756404,
+  "job_execution_principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+  "execution_display_name": "jarvis-cli-m2m",
+  "existing_job_catalog_parameter": "workspace",
+  "workspace_catalog_get_result": "Catalog 'workspace' does not exist.",
+  "existing_managed_catalog": "tmc_solutions_jvs",
+  "existing_catalog_effective_privilege": "USE_CATALOG (inherited workspace users)",
+  "retailflow_schemas_visible_to_m2m": [],
+  "existing_job_task_count": 6,
+  "existing_job_max_concurrent_runs": 1,
+  "recent_job_runs_returned": [],
+  "warehouse_id": "ec9f4c81bc387245",
+  "warehouse_observed_state": "STOPPED",
+  "grants_changed": false,
+  "deployment_changed": false,
+  "commands": [
+    "databricks jobs get 1055508848756404 --profile M2M -o json",
+    "databricks current-user me --profile M2M -o json",
+    "databricks catalogs get workspace --profile U2M -o json",
+    "databricks catalogs list --profile M2M -o json",
+    "databricks schemas list tmc_solutions_jvs --profile M2M -o json",
+    "databricks grants get-effective catalog tmc_solutions_jvs --principal e92b585c-22cc-4813-b00e-b894ea680a37 --profile U2M -o json",
+    "databricks jobs list-runs --job-id 1055508848756404 --limit 5 --expand-tasks --profile M2M -o json",
+    "databricks warehouses get ec9f4c81bc387245 --profile U2M -o json"
+  ]
+}

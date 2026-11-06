@@ -1,0 +1,8 @@
+{
+  "verified_at": "2026-10-31T00:01:59.5577243Z",
+  "command": "databricks bundle validate --strict --profile M2M --var catalog=tmc_solutions_jvs,warehouse_id=ec9f4c81bc387245 -o json",
+  "exit_code": 0,
+  "warning_count": 0,
+  "cli_version": "Databricks CLI v1.16.1",
+  "deployment_executed": false
+}

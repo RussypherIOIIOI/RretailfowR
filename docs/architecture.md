@@ -2,7 +2,7 @@
 
 ## Boundary and flow
 
-RetailFlow is a bounded batch workload inside Databricks. Local tooling generates development evidence and deploys code; Databricks handles fixture generation in the managed volume, Spark transforms, Delta writes and job execution. The dashboard is specified but not created. [Current verification](verification.md).
+RetailFlow is a bounded batch workload inside Databricks. Local tooling generates development evidence and deploys code; Databricks handles fixture generation in the managed volume, Spark transforms, Delta writes and job execution. The dashboard is created and exported; its SQL checks passed. Rendered publication, widget checks and media remain pending. [Current verification](verification.md).
 
 ```mermaid
 flowchart TD

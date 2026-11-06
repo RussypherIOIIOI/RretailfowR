@@ -1,5 +1,9 @@
 # Evidence index
 
+Current launch evidence: [6 November live API/UI, local checks, review and media receipts](release-20261106/README.md). Earlier permission/publication blockers below are historical.
+
+Retained pipeline acceptance: [October 30-31 release attempt](release-20261030/README.md), including applied scoped grants, five successful demo runs and full isolated Delta acceptance. The [November 6 launch evidence](release-20261106/README.md) adds fresh SQL, published identity/ACL, rendered checks and reviewed media. [Verification procedure](../docs/release-resume.md).
+
 Evidence is dated 2026-10-15 unless its contents say otherwise. These files record different stages of development; an earlier run is not the final verification result. [Verification summary](../docs/verification.md).
 
 | File | What it records | What it does not establish |
@@ -17,7 +21,7 @@ Evidence is dated 2026-10-15 unless its contents say otherwise. These files reco
 
 The earlier preflight trace reported a Python 3.11 environment. Final acceptance used serverless environment 5 and reported Python 3.12.3. These are different runs, not conflicting descriptions of one run.
 
-The fixture [expected.json](../fixtures/expected.json) is a manually calculated **oracle**, not execution evidence. Screenshots, dashboard export, recording and Delta output are not present yet. Hosted CI subsequently passed on 2026-10-16: [github-ci.json](github-ci.json).
+The fixture [expected.json](../fixtures/expected.json) is a manually calculated **oracle**, not execution evidence. The real dashboard export, job/acceptance screenshots and successful Delta output are retained in the October 30-31 evidence. Dashboard metric/rejection screenshots and the recording remain pending. Hosted CI subsequently passed on 2026-10-16: [github-ci.json](github-ci.json).
 
 ## Reproducing and updating evidence
 

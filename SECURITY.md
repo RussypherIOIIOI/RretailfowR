@@ -6,7 +6,7 @@ RetailFlow uses synthetic data only. It is a personal demonstration, not a revie
 
 Use supported external Databricks authentication profiles. Never place tokens, client secrets, browser cookies or credential configuration in source, notebooks, manifests, screenshots or evidence. Local deployment/request files are ignored by Git; an ignore rule alone does not sanitize a previously tracked secret.
 
-The execution principal needs the scoped privileges described in the [runbook](docs/runbook.md). The observed CREATE SCHEMA denial is an access blocker to resolve with an administrator. Do not switch identities or broaden grants to evade it. Keep consumer access scoped to appropriate published data and the dashboard's selected credential mode.
+The execution principal uses the exact owner-approved schema/volume privileges recorded in the [current evidence](evidence/release-20261030/README.md). No catalog-wide schema creation was granted. Do not switch identities or broaden grants to evade a denial. Dashboard creation/export does not itself authorize publication using embedded publisher access; that specific private publication decision is pending. Keep consumer access scoped to the approved data and credential mode.
 
 ## Input and operational boundaries
 

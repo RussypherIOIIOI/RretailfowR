@@ -1,0 +1,225 @@
+{
+  "plan": {
+    "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+    "catalog": "tmc_solutions_jvs",
+    "catalog_grants_added": [],
+    "schemas": [
+      {
+        "name": "retailflow_bronze",
+        "privileges": [
+          "USE_SCHEMA",
+          "CREATE_TABLE",
+          "SELECT",
+          "MODIFY"
+        ]
+      },
+      {
+        "name": "retailflow_silver",
+        "privileges": [
+          "USE_SCHEMA",
+          "CREATE_TABLE",
+          "SELECT",
+          "MODIFY"
+        ]
+      },
+      {
+        "name": "retailflow_gold",
+        "privileges": [
+          "USE_SCHEMA",
+          "CREATE_TABLE",
+          "SELECT",
+          "MODIFY"
+        ]
+      },
+      {
+        "name": "retailflow_ops",
+        "privileges": [
+          "USE_SCHEMA",
+          "CREATE_TABLE",
+          "SELECT",
+          "MODIFY"
+        ]
+      },
+      {
+        "name": "retailflow_test20261030a_bronze",
+        "privileges": [
+          "USE_SCHEMA",
+          "CREATE_TABLE",
+          "SELECT",
+          "MODIFY"
+        ]
+      },
+      {
+        "name": "retailflow_test20261030a_silver",
+        "privileges": [
+          "USE_SCHEMA",
+          "CREATE_TABLE",
+          "SELECT",
+          "MODIFY"
+        ]
+      },
+      {
+        "name": "retailflow_test20261030a_gold",
+        "privileges": [
+          "USE_SCHEMA",
+          "CREATE_TABLE",
+          "SELECT",
+          "MODIFY"
+        ]
+      },
+      {
+        "name": "retailflow_test20261030a_ops",
+        "privileges": [
+          "USE_SCHEMA",
+          "CREATE_TABLE",
+          "SELECT",
+          "MODIFY"
+        ]
+      }
+    ],
+    "volumes": [
+      {
+        "name": "tmc_solutions_jvs.retailflow_bronze.fixtures",
+        "privileges": [
+          "READ_VOLUME",
+          "WRITE_VOLUME"
+        ]
+      },
+      {
+        "name": "tmc_solutions_jvs.retailflow_test20261030a_bronze.fixtures",
+        "privileges": [
+          "READ_VOLUME",
+          "WRITE_VOLUME"
+        ]
+      }
+    ]
+  },
+  "results": [
+    {
+      "privilege_assignments": [
+        {
+          "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+          "privileges": [
+            "CREATE_TABLE",
+            "MODIFY",
+            "SELECT",
+            "USE_SCHEMA"
+          ]
+        }
+      ]
+    },
+    {
+      "privilege_assignments": [
+        {
+          "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+          "privileges": [
+            "CREATE_TABLE",
+            "MODIFY",
+            "SELECT",
+            "USE_SCHEMA"
+          ]
+        }
+      ]
+    },
+    {
+      "privilege_assignments": [
+        {
+          "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+          "privileges": [
+            "CREATE_TABLE",
+            "MODIFY",
+            "SELECT",
+            "USE_SCHEMA"
+          ]
+        }
+      ]
+    },
+    {
+      "privilege_assignments": [
+        {
+          "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+          "privileges": [
+            "CREATE_TABLE",
+            "MODIFY",
+            "SELECT",
+            "USE_SCHEMA"
+          ]
+        }
+      ]
+    },
+    {
+      "privilege_assignments": [
+        {
+          "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+          "privileges": [
+            "CREATE_TABLE",
+            "MODIFY",
+            "SELECT",
+            "USE_SCHEMA"
+          ]
+        }
+      ]
+    },
+    {
+      "privilege_assignments": [
+        {
+          "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+          "privileges": [
+            "CREATE_TABLE",
+            "MODIFY",
+            "SELECT",
+            "USE_SCHEMA"
+          ]
+        }
+      ]
+    },
+    {
+      "privilege_assignments": [
+        {
+          "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+          "privileges": [
+            "CREATE_TABLE",
+            "MODIFY",
+            "SELECT",
+            "USE_SCHEMA"
+          ]
+        }
+      ]
+    },
+    {
+      "privilege_assignments": [
+        {
+          "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+          "privileges": [
+            "CREATE_TABLE",
+            "MODIFY",
+            "SELECT",
+            "USE_SCHEMA"
+          ]
+        }
+      ]
+    },
+    {
+      "privilege_assignments": [
+        {
+          "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+          "privileges": [
+            "READ_VOLUME",
+            "WRITE_VOLUME"
+          ]
+        }
+      ]
+    },
+    {
+      "privilege_assignments": [
+        {
+          "principal": "e92b585c-22cc-4813-b00e-b894ea680a37",
+          "privileges": [
+            "READ_VOLUME",
+            "WRITE_VOLUME"
+          ]
+        }
+      ]
+    }
+  ]
+}
