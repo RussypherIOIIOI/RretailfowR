@@ -1,78 +1,47 @@
-# Remaining portfolio release procedure
+# Release verification and future operation
 
-This procedure resumes candidate `db158945f5c7cde1b6c9d8d21f481049ba40bfe8` in [PR #1](https://github.com/RussypherIOIIOI/RretailfowR/pull/1). Read current PR and live resource state before acting. This is a verified synthetic-data pipeline demonstration with unfinished dashboard/media gates, not an enterprise production-readiness claim.
+The former permission, publication and rendered-dashboard blockers are resolved. The user approved private M2M publication on November 4. November 6 APIs and the published Info panel independently confirmed the publisher, credential mode, warehouse and unchanged creator/admin ACL. [Launch evidence](../evidence/release-20261106/README.md).
 
-## Preserve completed work
-
-The [retained evidence](../evidence/release-20261030/README.md) records five successful six-task jobs, registered sales of USD 55.00 → 91.00 → 91.00 → 98.00, exact frozen outcomes, interrupted rollback/resumption and last-good retention. Full Delta acceptance succeeded in parent run 853846258218717, task 833933180481456, using `retailflow_test20261030a_*` schemas and fresh `attemptc_` tables. Preserve both earlier failed attempts. Documentation and recording do not require rerunning acceptance.
-
-| Resource | Existing target |
+| Resource | Verified target |
 |---|---|
 | Catalog | tmc_solutions_jvs |
-| Writer job | 1055508848756404; concurrency one; no schedule |
+| Writer | Job 1055508848756404; six tasks; concurrency one; no schedule |
 | Dashboard | 01f1d4bd43b6157d96bdf99719c7f0c3 |
 | SQL warehouse | ec9f4c81bc387245 |
-| CLI profile / publisher | M2M / jarvis-cli-m2m |
-| Last recorded audience | Creator service principal and workspace admins only |
-| Dashboard baseline publication | demo04 |
+| Publisher | M2M / jarvis-cli-m2m / e92b585c-22cc-4813-b00e-b894ea680a37 |
+| Audience | Existing creator service principal and inherited workspace admins only |
+| Default snapshot | demo04 |
 
-[Private dashboard](https://dbc-9d765ae8-3bb9.cloud.databricks.com/sql/dashboardsv3/01f1d4bd43b6157d96bdf99719c7f0c3). It is not a public portfolio link.
+[Published dashboard](https://dbc-9d765ae8-3bb9.cloud.databricks.com/dashboardsv3/01f1d4bd43b6157d96bdf99719c7f0c3/published). This is private; public evidence is available through [the walkthrough and captures](walkthrough.md).
 
-## Restore live inspection and obtain the publication decision
+## Observed rendered checks
 
-The November 3 (America/Denver) continuation can run commands locally and read/write the repository through the GitHub integration. Direct shell network connections to GitHub and Databricks are blocked in this session, preventing fresh Databricks authentication and bundle validation. No application settings change was identified. The previous remote-device offline result is historical; the current continuation uses local files and the repository. These are access limitations, not newly observed pipeline failures. See [the current verification receipt](../evidence/release-20261103/resume-verification.json).
+Use the published dashboard. The native calendar was operated with January 1, 2026 as both inclusive bounds. Text filters apply after their normal debounce. Wait for queries to settle before reading results.
 
-Use a connected, authorized execution session and existing authentication. Never paste secrets into chat. Read identity, draft, published state and ACL before any mutation:
+| Selection | Observed result |
+|---|---|
+| demo04; clear sales filters | USD 98; 8 units; 5 orders; 6 lines |
+| January 1 only | USD 63; 5 units; 4 orders |
+| Product P1 only | USD 38; 4 units; 4 orders |
+| WEST only | USD 28; 3 units; 3 orders |
+| January 1 + P1 + WEST | USD 28; 3 units; 3 orders |
+| Quality while combined sales filters remain | 7 unresolved; 1 resolved; 8 ever rejected |
+| Quality batch2 | 6 unresolved; 1 resolved; 7 ever rejected |
+| batch2; Ctrl-select its six rows with Resolved=false | 6 selected; counters 6 unresolved / 0 resolved / 6 ever rejected |
+| Clear; quality entity customers | No data in all quality widgets; zero matching occurrences |
+| Clear; select resolved A4/1 row | 1 selected; counters 0 unresolved / 1 resolved / 1 ever rejected |
+| Return to Sales with quality selection retained | Existing sales selection remains USD 28 / 3 / 3 |
+| Reset; refresh; reload | Default demo04 restores USD 98 / 8 / 5 |
+| Historical demo01 / demo02 / demo03 | USD 55 / 91 / 91; units 4 / 7 / 7; orders 2 / 4 / 4 |
 
-```powershell
-databricks current-user me --profile M2M -o json
-databricks lakeview get 01f1d4bd43b6157d96bdf99719c7f0c3 --profile M2M -o json
-databricks lakeview get-published 01f1d4bd43b6157d96bdf99719c7f0c3 --profile M2M -o json
-```
+There is no separate resolution-status dropdown. Native table row selection filters other widgets using rejected_records; its source table remains visible with selections highlighted. The separate rejected_reasons aggregate retains batch/entity scope and contains unresolved reasons only. Clear the selection chip to reset. Reason counts are not selected unique-row counts.
 
-An unpublished-dashboard response is different from an authentication failure. Inspect the current permissions using the resource's current dashboard permission object and compare with [the saved ACL](../evidence/release-20261030/dashboard-permissions.json); do not assume this dated ACL is still current.
+A4/1 is traceable to batch2, orders.csv, record 2 and its raw payload. In demo02 it is invalid with UNKNOWN_CUSTOMER; in demo04 it is accepted_winner with resolved=true. BROKEN/1 retains invalid date, quantity and price reasons. Snapshot provenance displays the selected historical ID and its own creation time. [Exact observations and captures](../evidence/release-20261106/dashboard-ui.json).
 
-The earlier [automatic approval rejection](../evidence/release-20261030/dashboard-publication-blocker.json) says creation/export authorization did not cover publication using publisher query credentials. That action did not execute. General permission to continue is not the specific approval required by the release instructions.
+## Preserve the verified installation
 
-If the exact approval remains absent, ask the owner to approve:
+Use [the runbook](runbook.md) for reads, controlled deployment and recovery. Do not recreate the writer, rerun the fixture sequence expecting a reset, expand grants, switch identity, or rerun successful acceptance for documentation. A behavior change requires proportionate fresh verification; retain one deployment owner per namespace.
 
-> I approve publishing RetailFlow dashboard 01f1d4bd43b6157d96bdf99719c7f0c3 using jarvis-cli-m2m's publisher query credentials on warehouse ec9f4c81bc387245, retaining only the existing creator/admin audience, with no added viewers or catalog/table grants.
+The public video is a silent annotated 129.52-second walkthrough of actual timestamped browser captures with original elapsed timing. It does not show a new pipeline execution. Source hashes, timestamps and captions are retained. [Walkthrough](walkthrough.md).
 
-Only after that approval and a matching live-state check, publish if still needed:
-
-```powershell
-databricks lakeview publish 01f1d4bd43b6157d96bdf99719c7f0c3 --embed-credentials --warehouse-id ec9f4c81bc387245 --profile M2M
-databricks lakeview get-published 01f1d4bd43b6157d96bdf99719c7f0c3 --profile M2M -o json
-```
-
-Verify publisher identity, credential mode, warehouse and unchanged audience. Do not work around a further rejection by changing identity, grants or sharing.
-
-## Rendered test record
-
-Use the published dashboard, clear all filters, and pin `demo04` in every data-bearing dataset. Baseline: USD 98.00, 8 units, 5 orders, 6 lines; 8 ever-rejected occurrences, 7 unresolved and 1 resolved. Check selected snapshot time against the selected snapshot, not the latest pointer time.
-
-The selections below come from [verify_dashboard.py](../scripts/verify_dashboard.py); expected values and actual SQL receipts are in [dashboard-sql.json](../evidence/release-20261030/dashboard-sql.json). The receipt records totals and check names, while the script supplies the exact predicates. These are SQL-verified expectations; every UI result is still unobserved.
-
-| UI selection (clear other filters first) | Expected sales / units / orders | Expected quality result | UI status |
-|---|---|---|---|
-| Reset all filters | 98.00 / 8 / 5 | 7 unresolved; 1 resolved | Pending |
-| Date: January 1, 2026 only, inclusive | 63.00 / 5 / 4 | Quality unaffected | Pending |
-| Product ID P1 | 38.00 / 4 / 4 | Quality unaffected | Pending |
-| Sale region WEST | 28.00 / 3 / 3 | Quality unaffected | Pending |
-| January 1 + P1 + WEST | 28.00 / 3 / 3 | Quality unaffected | Pending |
-| Quality batch batch2, unresolved only | Sales unaffected | 6 unresolved | Pending |
-| Quality entity customers | Sales unaffected | 0 occurrences | Pending |
-| Resolved records only | Sales unaffected | 1 resolved occurrence | Pending |
-| Reset; refresh; reopen | 98.00 / 8 / 5 | 7 unresolved; 1 resolved | Pending |
-
-Also compare daily, product and regional chart values against the retained sales dataset; inspect a raw unresolved record with filename, row number and reasons; inspect the resolved C9 order line A4/1 and its retained earlier rejection. Record observed values, timestamp, selected publication and pass/fail for every UI check. Never turn a SQL result into a UI pass.
-
-If the dashboard definition changes, re-export the actual definition to [retailflow.lvdash.json](../dashboard/retailflow.lvdash.json) and repeat affected checks.
-
-## Capture and release
-
-Follow [the walkthrough](walkthrough.md). Reuse retained job and acceptance captures. Capture baseline, charts, applied filters, unresolved provenance and resolved history from the real UI; remove unrelated personal information. A slideshow must be labeled a walkthrough of captured results. The current renderer expects at least 30 timestamped, equal-sized real screenshots with original elapsed timing; do not fabricate a capture manifest or stretch a few stills to satisfy it.
-
-Watch the final approximately two-minute video, check readability and timing, and make sanitized media accessible without Databricks access through the repository or release assets. Test public links before adding them to the README.
-
-Run pytest, Ruff, wheel build, documentation links and diagram-source consistency. Strict bundle validation must be reported separately from actual bundle deployment, which remains unexecuted. Inspect required reviews/checks, confirm CI on the final PR SHA, mark ready, and merge only after all gates pass. Verify main CI, public media links and live/export parity afterward. Keep the single writer and schedule settings unchanged.
+Final readiness, merge and main CI are evidenced by [PR #1](https://github.com/RussypherIOIIOI/RretailfowR/pull/1) and the [GitHub release receipt](https://github.com/RussypherIOIIOI/RretailfowR/releases). No enterprise availability or unattended-service claim is made.

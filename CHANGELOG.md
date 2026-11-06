@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0 release verification — 2026-11-06
+
+Verified the published private dashboard, actual publisher identity, unchanged ACL, export parity, rendered sales/quality filters, historical snapshot selection and reload. Captured and reviewed genuine dashboard images and a 129.52-second silent annotated walkthrough of retained results. Fresh local checks, strict bundle validation, four datasets and twelve SQL assertions passed. The writer, schedule, grants and pipeline behavior are unchanged. [Launch receipts](evidence/release-20261106/README.md) and [final GitHub publication records](https://github.com/RussypherIOIIOI/RretailfowR/releases).
+
 ## Release verification in progress — 2026-10-30/31
 
 - Applied and verified the exact owner-approved eight-schema/two-volume permissions; no catalog-wide grant.

@@ -1,0 +1,68 @@
+{
+  "verified_at": "2026-11-06T17:25:28.381501+00:00",
+  "python": "3.14.4 (tags/v3.14.4:23116f9, Apr  7 2026, 14:10:54) [MSC v.1944 64 bit (AMD64)]",
+  "checks": [
+    {
+      "command": [
+        "C:\\workspace\\retailflow\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stdout": "..............................                                    [100%]\n30 passed, 7 subtests passed in 0.17s\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\workspace\\retailflow\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "retailflow",
+        "tests",
+        "scripts"
+      ],
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\workspace\\retailflow\\.venv\\Scripts\\python.exe",
+        "-m",
+        "build",
+        "--wheel",
+        "--no-isolation"
+      ],
+      "exit_code": 0,
+      "stdout": "running egg_info\nwriting retailflow.egg-info\\PKG-INFO\nwriting dependency_links to retailflow.egg-info\\dependency_links.txt\nwriting top-level names to retailflow.egg-info\\top_level.txt\nreading manifest file 'retailflow.egg-info\\SOURCES.txt'\nadding license file 'LICENSE'\nwriting manifest file 'retailflow.egg-info\\SOURCES.txt'\nrunning bdist_wheel\nrunning build\nrunning build_py\nrunning egg_info\nwriting retailflow.egg-info\\PKG-INFO\nwriting dependency_links to retailflow.egg-info\\dependency_links.txt\nwriting top-level names to retailflow.egg-info\\top_level.txt\nreading manifest file 'retailflow.egg-info\\SOURCES.txt'\nadding license file 'LICENSE'\nwriting manifest file 'retailflow.egg-info\\SOURCES.txt'\ninstalling to build\\bdist.win-amd64\\wheel\nrunning install\nrunning install_lib\ncreating build\\bdist.win-amd64\\wheel\ncreating build\\bdist.win-amd64\\wheel\\retailflow\ncopying build\\lib\\retailflow\\config.py -> build\\bdist.win-amd64\\wheel\\.\\retailflow\ncopying build\\lib\\retailflow\\contracts.py -> build\\bdist.win-amd64\\wheel\\.\\retailflow\ncopying build\\lib\\retailflow\\fixtures.py -> build\\bdist.win-amd64\\wheel\\.\\retailflow\ncopying build\\lib\\retailflow\\lifecycle.py -> build\\bdist.win-amd64\\wheel\\.\\retailflow\ncopying build\\lib\\retailflow\\manifest.py -> build\\bdist.win-amd64\\wheel\\.\\retailflow\ncopying build\\lib\\retailflow\\pipeline.py -> build\\bdist.win-amd64\\wheel\\.\\retailflow\ncopying build\\lib\\retailflow\\spark_transform.py -> build\\bdist.win-amd64\\wheel\\.\\retailflow\ncopying build\\lib\\retailflow\\__init__.py -> build\\bdist.win-amd64\\wheel\\.\\retailflow\nrunning install_egg_info\nCopying retailflow.egg-info to build\\bdist.win-amd64\\wheel\\.\\retailflow-0.1.0-py3.14.egg-info\nrunning install_scripts\ncreating build\\bdist.win-amd64\\wheel\\retailflow-0.1.0.dist-info\\WHEEL\ncreating 'C:\\\\workspace\\\\retailflow\\\\dist\\\\.tmp-vkc15ghu\\\\retailflow-0.1.0-py3-none-any.whl' and adding 'build\\\\bdist.win-amd64\\\\wheel' to it\nadding 'retailflow/__init__.py'\nadding 'retailflow/config.py'\nadding 'retailflow/contracts.py'\nadding 'retailflow/fixtures.py'\nadding 'retailflow/lifecycle.py'\nadding 'retailflow/manifest.py'\nadding 'retailflow/pipeline.py'\nadding 'retailflow/spark_transform.py'\nadding 'retailflow-0.1.0.dist-info/licenses/LICENSE'\nadding 'retailflow-0.1.0.dist-info/METADATA'\nadding 'retailflow-0.1.0.dist-info/WHEEL'\nadding 'retailflow-0.1.0.dist-info/top_level.txt'\nadding 'retailflow-0.1.0.dist-info/RECORD'\nremoving build\\bdist.win-amd64\\wheel\nSuccessfully built retailflow-0.1.0-py3-none-any.whl\n",
+      "stderr": "* Getting build dependencies for wheel...\n* Building wheel...\n"
+    },
+    {
+      "command": [
+        "databricks",
+        "bundle",
+        "validate",
+        "--strict",
+        "--profile",
+        "M2M",
+        "--var",
+        "catalog=tmc_solutions_jvs,warehouse_id=ec9f4c81bc387245",
+        "-o",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"artifacts\": {\n    \"default\": {\n      \"build\": \"python -m build --wheel --no-isolation\",\n      \"files\": [\n        {\n          \"source\": \"C:\\\\workspace\\\\retailflow\\\\dist\\\\*.whl\"\n        }\n      ],\n      \"path\": \"C:/workspace/retailflow\",\n      \"type\": \"whl\"\n    }\n  },\n  \"bundle\": {\n    \"deployment\": {\n      \"lock\": {\n        \"enabled\": false\n      }\n    },\n    \"environment\": \"dev\",\n    \"git\": {\n      \"actual_branch\": \"codex/reviewed-docs-20261104094601\",\n      \"branch\": \"codex/reviewed-docs-20261104094601\",\n      \"bundle_root_path\": \".\",\n      \"commit\": \"301f0eeddfd2ce49c69707539030ae9721683c48\",\n      \"origin_url\": \"https://github.com/RussypherIOIIOI/RretailfowR.git\"\n    },\n    \"mode\": \"development\",\n    \"name\": \"retailflow\",\n    \"target\": \"dev\"\n  },\n  \"include\": [\n    \"resources\\\\retailflow.job.yml\"\n  ],\n  \"presets\": {\n    \"jobs_max_concurrent_runs\": 4,\n    \"name_prefix\": \"[dev jarvis_cli_m2m] \",\n    \"pipelines_development\": true,\n    \"tags\": {\n      \"dev\": \"jarvis_cli_m2m\"\n    },\n    \"trigger_pause_status\": \"PAUSED\"\n  },\n  \"resources\": {\n    \"jobs\": {\n      \"retailflow\": {\n        \"deployment\": {\n          \"kind\": \"BUNDLE\",\n          \"metadata_file_path\": \"/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/.bundle/retailflow/dev/state/metadata.json\"\n        },\n        \"edit_mode\": \"UI_LOCKED\",\n        \"environments\": [\n          {\n            \"environment_key\": \"default\",\n            \"spec\": {\n              \"dependencies\": [\n                \"./dist/*.whl\"\n              ],\n              \"environment_version\": \"5\"\n            }\n          }\n        ],\n        \"format\": \"MULTI_TASK\",\n        \"max_concurrent_runs\": 1,\n        \"name\": \"[dev jarvis_cli_m2m] RetailFlow \u00e2\u20ac\u201d Sales Lakehouse\",\n        \"parameters\": [\n          {\n            \"default\": \"tmc_solutions_jvs\",\n            \"name\": \"catalog\"\n          },\n          {\n            \"default\": \"retailflow\",\n            \"name\": \"schema_prefix\"\n          },\n          {\n            \"default\": \"batch1\",\n            \"name\": \"batch_id\"\n          },\n          {\n            \"default\": \"{{job.run_id}}\",\n            \"name\": \"evaluation_id\"\n          },\n          {\n            \"default\": \"\",\n            \"name\": \"replay_batches\"\n          },\n          {\n            \"default\": \"1.0\",\n            \"name\": \"max_reject_fraction\"\n          }\n        ],\n        \"queue\": {\n          \"enabled\": true\n        },\n        \"tags\": {\n          \"dev\": \"jarvis_cli_m2m\"\n        },\n        \"tasks\": [\n          {\n            \"depends_on\": [\n              {\n                \"task_key\": \"preflight\"\n              }\n            ],\n            \"environment_key\": \"default\",\n            \"max_retries\": 1,\n            \"min_retry_interval_millis\": 30000,\n            \"notebook_task\": {\n              \"base_parameters\": {\n                \"stage\": \"bronze\"\n              },\n              \"notebook_path\": \"/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/.bundle/retailflow/dev/files/notebooks/task\"\n            },\n            \"retry_on_timeout\": false,\n            \"task_key\": \"bronze\",\n            \"timeout_seconds\": 1200\n          },\n          {\n            \"depends_on\": [\n              {\n                \"task_key\": \"silver\"\n              }\n            ],\n            \"environment_key\": \"default\",\n            \"max_retries\": 1,\n            \"min_retry_interval_millis\": 30000,\n            \"notebook_task\": {\n              \"base_parameters\": {\n                \"stage\": \"gold\"\n              },\n              \"notebook_path\": \"/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/.bundle/retailflow/dev/files/notebooks/task\"\n            },\n            \"retry_on_timeout\": false,\n            \"task_key\": \"gold\",\n            \"timeout_seconds\": 1200\n          },\n          {\n            \"environment_key\": \"default\",\n            \"max_retries\": 1,\n            \"min_retry_interval_millis\": 30000,\n            \"notebook_task\": {\n              \"base_parameters\": {\n                \"stage\": \"preflight\"\n              },\n              \"notebook_path\": \"/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/.bundle/retailflow/dev/files/notebooks/task\"\n            },\n            \"retry_on_timeout\": false,\n            \"task_key\": \"preflight\",\n            \"timeout_seconds\": 1200\n          },\n          {\n            \"depends_on\": [\n              {\n                \"task_key\": \"quality\"\n              }\n            ],\n            \"environment_key\": \"default\",\n            \"max_retries\": 1,\n            \"min_retry_interval_millis\": 30000,\n            \"notebook_task\": {\n              \"base_parameters\": {\n                \"stage\": \"publish\"\n              },\n              \"notebook_path\": \"/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/.bundle/retailflow/dev/files/notebooks/task\"\n            },\n            \"retry_on_timeout\": false,\n            \"task_key\": \"publish\",\n            \"timeout_seconds\": 1200\n          },\n          {\n            \"depends_on\": [\n              {\n                \"task_key\": \"gold\"\n              }\n            ],\n            \"environment_key\": \"default\",\n            \"max_retries\": 1,\n            \"min_retry_interval_millis\": 30000,\n            \"notebook_task\": {\n              \"base_parameters\": {\n                \"stage\": \"quality\"\n              },\n              \"notebook_path\": \"/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/.bundle/retailflow/dev/files/notebooks/task\"\n            },\n            \"retry_on_timeout\": false,\n            \"task_key\": \"quality\",\n            \"timeout_seconds\": 1200\n          },\n          {\n            \"depends_on\": [\n              {\n                \"task_key\": \"bronze\"\n              }\n            ],\n            \"environment_key\": \"default\",\n            \"max_retries\": 1,\n            \"min_retry_interval_millis\": 30000,\n            \"notebook_task\": {\n              \"base_parameters\": {\n                \"stage\": \"silver\"\n              },\n              \"notebook_path\": \"/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/.bundle/retailflow/dev/files/notebooks/task\"\n            },\n            \"retry_on_timeout\": false,\n            \"task_key\": \"silver\",\n            \"timeout_seconds\": 1200\n          }\n        ],\n        \"timeout_seconds\": 7200\n      }\n    }\n  },\n  \"sync\": {\n    \"exclude\": [\n      \"evidence/**\"\n    ],\n    \"paths\": [\n      \".\"\n    ]\n  },\n  \"variables\": {\n    \"catalog\": {\n      \"description\": \"Existing writable Unity Catalog catalog\",\n      \"value\": \"tmc_solutions_jvs\"\n    },\n    \"schema_prefix\": {\n      \"default\": \"retailflow\",\n      \"value\": \"retailflow\"\n    },\n    \"warehouse_id\": {\n      \"description\": \"Existing SQL warehouse for dashboard validation\",\n      \"value\": \"ec9f4c81bc387245\"\n    }\n  },\n  \"workspace\": {\n    \"artifact_path\": \"/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/.bundle/retailflow/dev/artifacts\",\n    \"current_user\": {\n      \"active\": true,\n      \"displayName\": \"jarvis-cli-m2m\",\n      \"domain_friendly_name\": \"jarvis-cli-m2m\",\n      \"emails\": [\n        {\n          \"primary\": true,\n          \"type\": \"work\",\n          \"value\": \"e92b585c-22cc-4813-b00e-b894ea680a37\"\n        }\n      ],\n      \"entitlements\": [\n        {\n          \"value\": \"workspace-access\"\n        },\n        {\n          \"value\": \"databricks-sql-access\"\n        },\n        {\n          \"value\": \"workspace-consume\"\n        }\n      ],\n      \"groups\": [\n        {\n          \"$ref\": \"Groups/86807459207925\",\n          \"display\": \"users\",\n          \"type\": \"direct\",\n          \"value\": \"86807459207925\"\n        }\n      ],\n      \"id\": \"73688542028628\",\n      \"name\": {\n        \"givenName\": \"jarvis-cli-m2m\"\n      },\n      \"schemas\": [\n        \"urn:ietf:params:scim:schemas:core:2.0:User\",\n        \"urn:ietf:params:scim:schemas:extension:workspace:2.0:User\"\n      ],\n      \"short_name\": \"jarvis_cli_m2m\",\n      \"userName\": \"e92b585c-22cc-4813-b00e-b894ea680a37\"\n    },\n    \"file_path\": \"/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/.bundle/retailflow/dev/files\",\n    \"profile\": \"M2M\",\n    \"resource_path\": \"/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/.bundle/retailflow/dev/resources\",\n    \"root_path\": \"/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/.bundle/retailflow/dev\",\n    \"state_path\": \"/Workspace/Users/e92b585c-22cc-4813-b00e-b894ea680a37/.bundle/retailflow/dev/state\"\n  }\n}\n",
+      "stderr": ""
+    }
+  ],
+  "documentation": {
+    "relative_links_checked": 270,
+    "missing": [],
+    "matching_diagram_sources": 3
+  },
+  "bundle_deployment_executed": false,
+  "delta_source_sha256": "57385154112d71d618596d5bb801edd5d359cd097689b3acad51b4d9fe7c1a37",
+  "status": "passed"
+}

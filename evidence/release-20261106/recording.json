@@ -1,0 +1,159 @@
+{
+  "type": "real_browser_screenshots",
+  "playback_speed": 1,
+  "started_at": "2026-11-06T17:17:08.422Z",
+  "frames": [
+    {
+      "file": "frame-0000.jpg",
+      "t": 0.047
+    },
+    {
+      "file": "frame-0001.jpg",
+      "t": 3.086
+    },
+    {
+      "file": "frame-0002.jpg",
+      "t": 6.118
+    },
+    {
+      "file": "frame-0003.jpg",
+      "t": 9.154
+    },
+    {
+      "file": "frame-0004.jpg",
+      "t": 12.187
+    },
+    {
+      "file": "frame-0005.jpg",
+      "t": 25.317
+    },
+    {
+      "file": "frame-0006.jpg",
+      "t": 28.357
+    },
+    {
+      "file": "frame-0007.jpg",
+      "t": 31.395
+    },
+    {
+      "file": "frame-0008.jpg",
+      "t": 34.419
+    },
+    {
+      "file": "frame-0009.jpg",
+      "t": 37.446
+    },
+    {
+      "file": "frame-0010.jpg",
+      "t": 51.097
+    },
+    {
+      "file": "frame-0011.jpg",
+      "t": 54.123
+    },
+    {
+      "file": "frame-0012.jpg",
+      "t": 57.158
+    },
+    {
+      "file": "frame-0013.jpg",
+      "t": 60.182
+    },
+    {
+      "file": "frame-0014.jpg",
+      "t": 63.217
+    },
+    {
+      "file": "frame-0015.jpg",
+      "t": 69.428
+    },
+    {
+      "file": "frame-0016.jpg",
+      "t": 72.463
+    },
+    {
+      "file": "frame-0017.jpg",
+      "t": 75.501
+    },
+    {
+      "file": "frame-0018.jpg",
+      "t": 78.542
+    },
+    {
+      "file": "frame-0019.jpg",
+      "t": 81.574
+    },
+    {
+      "file": "frame-0020.jpg",
+      "t": 88.034
+    },
+    {
+      "file": "frame-0021.jpg",
+      "t": 91.068
+    },
+    {
+      "file": "frame-0022.jpg",
+      "t": 94.112
+    },
+    {
+      "file": "frame-0023.jpg",
+      "t": 97.148
+    },
+    {
+      "file": "frame-0024.jpg",
+      "t": 100.193
+    },
+    {
+      "file": "frame-0025.jpg",
+      "t": 117.376
+    },
+    {
+      "file": "frame-0026.jpg",
+      "t": 120.422
+    },
+    {
+      "file": "frame-0027.jpg",
+      "t": 123.45
+    },
+    {
+      "file": "frame-0028.jpg",
+      "t": 126.477
+    },
+    {
+      "file": "frame-0029.jpg",
+      "t": 129.507
+    }
+  ],
+  "annotations": [
+    {
+      "start": 0,
+      "end": 25.286,
+      "text": "Synthetic CSVs -> Bronze -> Silver -> gated Gold. Baseline: USD 55."
+    },
+    {
+      "start": 25.286,
+      "end": 51.059,
+      "text": "Valid corrections move sales to USD 91. Duplicates add no revenue."
+    },
+    {
+      "start": 51.059,
+      "end": 69.392,
+      "text": "Customer C9 arrives. Sales stay USD 91 until explicit replay."
+    },
+    {
+      "start": 69.392,
+      "end": 87.997,
+      "text": "Explicit replay admits the seven-dollar line: USD 98 / 8 units / 5 orders."
+    },
+    {
+      "start": 87.997,
+      "end": 117.349,
+      "text": "Eight historical rejects: seven unresolved, one resolved after replay."
+    },
+    {
+      "start": 117.349,
+      "end": 129.517,
+      "text": "Resolved A4/1 remains traceable to batch2, orders.csv, record 2."
+    }
+  ]
+}

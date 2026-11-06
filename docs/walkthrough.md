@@ -1,6 +1,12 @@
 # Two-minute portfolio walkthrough
 
-**Capture status: incomplete.** The five real demo jobs, persisted 55.00 → 91.00 → 91.00 → 98.00 results and full isolated Delta recovery acceptance passed. A [real successful-job screenshot](assets/lakeflow-baseline-success.jpg) is captured. Rendered dashboard access requires a separate private publisher-mode publication approval. The two-minute video has not been recorded and no video URL is claimed. [Current evidence](../evidence/release-20261030/README.md).
+**Capture status: verified on 6 November 2026.** [Watch the 2:10 silent annotated walkthrough](assets/retailflow-walkthrough.mp4). It uses 30 actual timestamped browser screenshots at original elapsed timing; it demonstrates retained snapshots, not a new or continuous pipeline run. Six segments show baseline, corrections, customer arrival, explicit replay, quality history and resolved source provenance. [Source timestamps](../evidence/release-20261106/recording.json) · [hashes/full decode](../evidence/release-20261106/video-manifest.json) · [review](../evidence/release-20261106/review.json).
+
+![Actual published replay dashboard](assets/release-20261106/dashboard-final.jpg)
+
+[Baseline](assets/release-20261106/dashboard-baseline.jpg) · [corrections](assets/release-20261106/dashboard-corrections.jpg) · [quality counts](assets/release-20261106/quality-baseline.jpg) · [source record](assets/release-20261106/rejected-record-detail.jpg) · [snapshot and fact lines](assets/release-20261106/snapshot-and-lines.jpg). The retained [successful job](assets/lakeflow-baseline-success.jpg) and [Delta acceptance](assets/delta-acceptance-success.jpg) are separate genuine captures.
+
+The original narration/capture outline below is retained as a guide for a future narrated version. The released video is silent and uses explanatory captions; it does not claim spoken narration or a continuous run.
 
 ## Prepare the demonstration
 
@@ -20,7 +26,7 @@ Prepare the source, fixture oracle, successful job run, dashboard, rejection det
 | 1:35–1:50 | Successful retry/fault-test evidence and pointer | “Retries reuse frozen decisions. The isolated acceptance test verifies that a failed publication gate leaves the last successful snapshot selected; this test result shows the observed behavior.” |
 | 1:50–2:00 | Source/tests and scope note | “The repository documents contracts, tests and recovery. This release is intentionally small: one writer, USD and Type 1 dimensions.” |
 
-Persisted totals and recovery have passed; cite the retained results. Rendered widgets remain unverified, so do not narrate a successful dashboard interaction until it is actually observed.
+Persisted totals, recovery and rendered widgets now have separate passing evidence. Cite the appropriate receipt for each; never substitute SQL output for an observed interaction.
 
 ## Screenshot shot list
 
@@ -33,7 +39,7 @@ Persisted totals and recovery have passed; cite the retained results. Rendered w
 | lakeflow-success.png | All six successful tasks | Same completed demo run |
 | acceptance-result.png | Actual Delta assertions and run ID | No expected-output substitution |
 
-Store finished images under docs/assets/ and the real dashboard export under dashboard/retailflow.lvdash.json. The actual dashboard export, [successful-job screenshot](assets/lakeflow-baseline-success.jpg) and [full-acceptance screenshot](assets/delta-acceptance-success.jpg) now exist; metric/rejection captures and the video remain pending rendered access. Add image/video links only after actual capture; do not create placeholder success evidence.
+Store finished images under docs/assets/ and the real dashboard export under dashboard/retailflow.lvdash.json. The actual dashboard export, [successful-job screenshot](assets/lakeflow-baseline-success.jpg) and [full-acceptance screenshot](assets/delta-acceptance-success.jpg) now exist; metric/rejection captures and the silent video are now in the links above. Add image/video links only after actual capture; do not create placeholder success evidence.
 
 ## Hiring-viewer close
 

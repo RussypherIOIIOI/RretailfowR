@@ -1,10 +1,14 @@
 # Verification report
 
-## Documentation continuation - 2026-11-03 (America/Denver)
+## Launch verification — 6 November 2026
+
+Fresh local checks pass: 30 tests and seven subtests, Ruff and wheel build. Strict bundle validation passes. Four datasets and twelve SQL assertions pass. Live APIs revalidated retained successful runs, single writer, approved credential mode/warehouse, unchanged ACL and export parity. Published UI verified historical snapshots, filters, quality independence, source history, reset, refresh and reload. A 129.52-second silent annotated snapshot walkthrough is captured and reviewed. [Full receipts](../evidence/release-20261106/README.md). Earlier dated failures below are historical; final PR/main CI and public-link receipts are tracked in the [GitHub release](https://github.com/RussypherIOIIOI/RretailfowR/releases).
+
+## Historical documentation continuation - 2026-11-03 (America/Denver)
 
 Documentation now reflects the retained pipeline results and the remaining dashboard gates. The local check found 224 valid relative link targets before adding this receipt's two links, matching sources for all three embedded diagrams, and unchanged acceptance-script/notebook hashes. A fresh-reader review found no material inconsistency. Ruff passed. Local Python 3.14 ran 26 tests and seven subtests successfully; four tests and the wheel build were blocked by Windows temporary-directory access errors. Fresh bundle validation could not reach Databricks through the session's blocked network proxy. These are not fresh all-pass runtime results; [the verification receipt](../evidence/release-20261103/resume-verification.json) separates them from retained success. Final-commit GitHub CI must pass before release.
 
-## Latest execution - 2026-10-31
+## Historical execution - 2026-10-31
 
 The exact scoped grants were approved, applied and verified. The existing job now targets `tmc_solutions_jvs`; all five six-task demo runs succeeded. Actual Gold SQL matches 55.00 / 91.00 / 91.00 / 98.00 and confirms rerun conservation, resolved rejection history and exact frozen outcomes. **Full isolated Delta acceptance passed** in run `853846258218717`, task `833933180481456`, including interrupted three-table restoration/resumption, historical and last-good retention, and immutable-batch rejection. [Complete successful output](../evidence/release-20261030/delta-acceptance-passed.json). Both preceding test failures and their source/diagnoses are preserved. Four dashboard datasets and 12 SQL assertions passed against `demo04`; the real dashboard definition is exported. Rendered queries, metric/rejection captures and recording still require the separate private publisher-mode publication approval. [Current checklist and exact remaining gate](../evidence/release-20261030/README.md).
 

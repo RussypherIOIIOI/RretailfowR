@@ -1,0 +1,192 @@
+{
+  "verified_at": "2026-11-06T17:23:30.275301+00:00",
+  "provenance": "Actual published dashboard interactions observed through cua_repl; values transcribed from visible DOM and screenshots, not SQL substituted for UI results.",
+  "publication": "demo04",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "reset_sales",
+      "sales_usd": "98",
+      "units": 8,
+      "orders": 5,
+      "lines": 6
+    },
+    {
+      "name": "date_only",
+      "selection": "Jan 1, 2026 inclusive calendar bounds",
+      "sales_usd": "63",
+      "units": 5,
+      "orders": 4
+    },
+    {
+      "name": "product_only",
+      "selection": "P1",
+      "sales_usd": "38",
+      "units": 4,
+      "orders": 4
+    },
+    {
+      "name": "region_only",
+      "selection": "WEST",
+      "sales_usd": "28",
+      "units": 3,
+      "orders": 3
+    },
+    {
+      "name": "combined",
+      "selection": "Jan 1 + P1 + WEST",
+      "sales_usd": "28",
+      "units": 3,
+      "orders": 3
+    },
+    {
+      "name": "quality_independent_of_sales",
+      "unresolved": 7,
+      "resolved": 1,
+      "ever_rejected": 8
+    },
+    {
+      "name": "quality_batch2",
+      "unresolved": 6,
+      "resolved": 1,
+      "ever_rejected": 7
+    },
+    {
+      "name": "quality_batch2_unresolved_selection",
+      "selection": "Ctrl-select six table rows with resolved=false",
+      "selected": 6,
+      "unresolved": 6,
+      "resolved": 0,
+      "ever_rejected": 6
+    },
+    {
+      "name": "quality_customers",
+      "display": "No data in all quality widgets",
+      "matching_occurrences": 0
+    },
+    {
+      "name": "resolved_row_selection",
+      "selection": "Native table row A4/1 with resolved=true",
+      "selected": 1,
+      "unresolved": 0,
+      "resolved": 1,
+      "ever_rejected": 1
+    },
+    {
+      "name": "quality_independent_of_sales_reverse",
+      "sales_usd": "28",
+      "units": 3,
+      "orders": 3,
+      "quality_selection_retained": true
+    },
+    {
+      "name": "reset_refresh_reload",
+      "sales_usd": "98",
+      "units": 8,
+      "orders": 5
+    },
+    {
+      "name": "historical_demo01",
+      "sales_usd": "55",
+      "units": 4,
+      "orders": 2,
+      "snapshot_display": "2026-10-30 11:35 PM"
+    },
+    {
+      "name": "historical_demo02",
+      "sales_usd": "91",
+      "units": 7,
+      "orders": 4
+    },
+    {
+      "name": "historical_demo03",
+      "sales_usd": "91",
+      "units": 7,
+      "orders": 4
+    },
+    {
+      "name": "replay_provenance",
+      "snapshot_display": "2026-10-30 11:46 PM",
+      "lines": 6,
+      "A4_line": "A4/1, P1, 2026-01-01, WEST, quantity 1, net 7.00"
+    },
+    {
+      "name": "historical_C9_rejection",
+      "publication": "demo02",
+      "batch": "batch2",
+      "filename": "orders.csv",
+      "record_index": 2,
+      "business_key": [
+        "A4",
+        "1"
+      ],
+      "disposition": "invalid",
+      "reasons": [
+        "UNKNOWN_CUSTOMER"
+      ],
+      "resolved": false
+    },
+    {
+      "name": "resolved_C9_history",
+      "publication": "demo04",
+      "batch": "batch2",
+      "filename": "orders.csv",
+      "record_index": 2,
+      "business_key": [
+        "A4",
+        "1"
+      ],
+      "disposition": "accepted_winner",
+      "reasons": [],
+      "resolved": true
+    },
+    {
+      "name": "multiple_rejection_reasons",
+      "business_key": [
+        "BROKEN",
+        "1"
+      ],
+      "reasons": [
+        "INVALID_ORDER_DATE",
+        "INVALID_QUANTITY",
+        "INVALID_UNIT_PRICE"
+      ]
+    },
+    {
+      "name": "chart_comparison",
+      "observed": "Daily 63/35; products P1 38, P2 60; EAST 70, WEST 28. Rendered shapes and labels compared with SQL receipts and exported SUM(net_sales) bindings."
+    },
+    {
+      "name": "publisher_identity",
+      "publisher": "e92b585c-22cc-4813-b00e-b894ea680a37",
+      "credential_mode": "Viewing with publisher credentials",
+      "screenshot": "../../docs/assets/release-20261106/publisher-identity.jpg"
+    }
+  ],
+  "notes": [
+    "Native table row selection scopes other widgets on rejected_records. Source table remains visible; unresolved-reasons aggregate retains its independent batch/entity scope. No standalone resolution-status dropdown is claimed.",
+    "The Databricks console displays an automated-browser-control warning; all described published interactions completed without bypassing it.",
+    "Date input fill was rejected/reset by native date controls; final checks used the visible calendar. Text filter checks waited for debounce.",
+    "During batch2 multi-selection an obsolete seventh locator disappeared after batch filtering settled. Fresh visible state confirmed exactly six selected, counters 6/0/6.",
+    "Snapshot labels are transcribed exactly as displayed; UTC source timestamps remain in SQL/API evidence."
+  ],
+  "captures": [
+    "dashboard-arrival.jpg",
+    "dashboard-baseline.jpg",
+    "dashboard-corrections.jpg",
+    "dashboard-final.jpg",
+    "dashboard-replay.jpg",
+    "earlier-unknown-customer.jpg",
+    "filter-combined.jpg",
+    "filter-date-jan01.jpg",
+    "filter-product-p1.jpg",
+    "filter-quality-empty.jpg",
+    "filter-region-west.jpg",
+    "publisher-identity.jpg",
+    "quality-baseline.jpg",
+    "quality-batch2-unresolved.jpg",
+    "rejected-record-detail.jpg",
+    "resolved-record-selection.jpg",
+    "snapshot-and-lines.jpg"
+  ]
+}

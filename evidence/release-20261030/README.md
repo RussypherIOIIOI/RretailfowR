@@ -1,5 +1,7 @@
 # Release evidence — 30 October 2026
 
+**Historical checkpoint, superseded on 6 November:** private publication, publisher/ACL inspection, rendered checks and genuine media are now verified. See the [launch report](../release-20261106/README.md); retain the original failures and decisions below as history.
+
 ## Current checkpoint — 31 October 2026
 
 | Requirement | Observed status | Evidence |

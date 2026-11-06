@@ -1,0 +1,213 @@
+{
+  "type": "silent_annotated_screen_walkthrough",
+  "source": "Real Databricks console, captured through cua_repl",
+  "playback_speed": 1,
+  "source_capture_seconds": 129.507,
+  "metadata": {
+    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
+    "codec": "h264",
+    "pix_fmt": "yuvj420p(pc, bt470bg/unknown/unknown, progressive)",
+    "fps": 0.23,
+    "source_size": [
+      756,
+      1340
+    ],
+    "size": [
+      756,
+      1340
+    ],
+    "rotate": 0,
+    "duration": 129.52
+  },
+  "source_frame_count": 30,
+  "fully_decoded_frames": 3312,
+  "source_frames": [
+    {
+      "file": "frame-0000.jpg",
+      "t": 0.047,
+      "sha256": "91485ce845019075329be75846d2fa855e2a4d1de6a458048433eb77e2525fb4"
+    },
+    {
+      "file": "frame-0001.jpg",
+      "t": 3.086,
+      "sha256": "91485ce845019075329be75846d2fa855e2a4d1de6a458048433eb77e2525fb4"
+    },
+    {
+      "file": "frame-0002.jpg",
+      "t": 6.118,
+      "sha256": "91485ce845019075329be75846d2fa855e2a4d1de6a458048433eb77e2525fb4"
+    },
+    {
+      "file": "frame-0003.jpg",
+      "t": 9.154,
+      "sha256": "91485ce845019075329be75846d2fa855e2a4d1de6a458048433eb77e2525fb4"
+    },
+    {
+      "file": "frame-0004.jpg",
+      "t": 12.187,
+      "sha256": "91485ce845019075329be75846d2fa855e2a4d1de6a458048433eb77e2525fb4"
+    },
+    {
+      "file": "frame-0005.jpg",
+      "t": 25.317,
+      "sha256": "e05ce41f9cadbc6a169028a541f16b3652de032b398d0b064a3671a824b73cd5"
+    },
+    {
+      "file": "frame-0006.jpg",
+      "t": 28.357,
+      "sha256": "e05ce41f9cadbc6a169028a541f16b3652de032b398d0b064a3671a824b73cd5"
+    },
+    {
+      "file": "frame-0007.jpg",
+      "t": 31.395,
+      "sha256": "e05ce41f9cadbc6a169028a541f16b3652de032b398d0b064a3671a824b73cd5"
+    },
+    {
+      "file": "frame-0008.jpg",
+      "t": 34.419,
+      "sha256": "e05ce41f9cadbc6a169028a541f16b3652de032b398d0b064a3671a824b73cd5"
+    },
+    {
+      "file": "frame-0009.jpg",
+      "t": 37.446,
+      "sha256": "e05ce41f9cadbc6a169028a541f16b3652de032b398d0b064a3671a824b73cd5"
+    },
+    {
+      "file": "frame-0010.jpg",
+      "t": 51.097,
+      "sha256": "76ce0504695c427836f0845ec51a95331eddb10019e917e2b404f5b76a75b2f6"
+    },
+    {
+      "file": "frame-0011.jpg",
+      "t": 54.123,
+      "sha256": "76ce0504695c427836f0845ec51a95331eddb10019e917e2b404f5b76a75b2f6"
+    },
+    {
+      "file": "frame-0012.jpg",
+      "t": 57.158,
+      "sha256": "76ce0504695c427836f0845ec51a95331eddb10019e917e2b404f5b76a75b2f6"
+    },
+    {
+      "file": "frame-0013.jpg",
+      "t": 60.182,
+      "sha256": "76ce0504695c427836f0845ec51a95331eddb10019e917e2b404f5b76a75b2f6"
+    },
+    {
+      "file": "frame-0014.jpg",
+      "t": 63.217,
+      "sha256": "76ce0504695c427836f0845ec51a95331eddb10019e917e2b404f5b76a75b2f6"
+    },
+    {
+      "file": "frame-0015.jpg",
+      "t": 69.428,
+      "sha256": "ffcc389a9145ed84bbb12b1d70c4abe26031f65925ba55269cd41b1a533d00c7"
+    },
+    {
+      "file": "frame-0016.jpg",
+      "t": 72.463,
+      "sha256": "ffcc389a9145ed84bbb12b1d70c4abe26031f65925ba55269cd41b1a533d00c7"
+    },
+    {
+      "file": "frame-0017.jpg",
+      "t": 75.501,
+      "sha256": "ffcc389a9145ed84bbb12b1d70c4abe26031f65925ba55269cd41b1a533d00c7"
+    },
+    {
+      "file": "frame-0018.jpg",
+      "t": 78.542,
+      "sha256": "ffcc389a9145ed84bbb12b1d70c4abe26031f65925ba55269cd41b1a533d00c7"
+    },
+    {
+      "file": "frame-0019.jpg",
+      "t": 81.574,
+      "sha256": "ffcc389a9145ed84bbb12b1d70c4abe26031f65925ba55269cd41b1a533d00c7"
+    },
+    {
+      "file": "frame-0020.jpg",
+      "t": 88.034,
+      "sha256": "22c0e85c2a44eeeea357a72e12adf6c6831e948269b930e86ffbe91628f1d1a8"
+    },
+    {
+      "file": "frame-0021.jpg",
+      "t": 91.068,
+      "sha256": "22c0e85c2a44eeeea357a72e12adf6c6831e948269b930e86ffbe91628f1d1a8"
+    },
+    {
+      "file": "frame-0022.jpg",
+      "t": 94.112,
+      "sha256": "22c0e85c2a44eeeea357a72e12adf6c6831e948269b930e86ffbe91628f1d1a8"
+    },
+    {
+      "file": "frame-0023.jpg",
+      "t": 97.148,
+      "sha256": "22c0e85c2a44eeeea357a72e12adf6c6831e948269b930e86ffbe91628f1d1a8"
+    },
+    {
+      "file": "frame-0024.jpg",
+      "t": 100.193,
+      "sha256": "22c0e85c2a44eeeea357a72e12adf6c6831e948269b930e86ffbe91628f1d1a8"
+    },
+    {
+      "file": "frame-0025.jpg",
+      "t": 117.376,
+      "sha256": "64c51b07e25e28fb408e3676633e3f1656c6806d3eb4ecfae3b1bc66cb049372"
+    },
+    {
+      "file": "frame-0026.jpg",
+      "t": 120.422,
+      "sha256": "4d540677e1c9f155d28f5ecce542de581500ecf3580b5875fd2e2089fd4112ba"
+    },
+    {
+      "file": "frame-0027.jpg",
+      "t": 123.45,
+      "sha256": "4d540677e1c9f155d28f5ecce542de581500ecf3580b5875fd2e2089fd4112ba"
+    },
+    {
+      "file": "frame-0028.jpg",
+      "t": 126.477,
+      "sha256": "4d540677e1c9f155d28f5ecce542de581500ecf3580b5875fd2e2089fd4112ba"
+    },
+    {
+      "file": "frame-0029.jpg",
+      "t": 129.507,
+      "sha256": "4d540677e1c9f155d28f5ecce542de581500ecf3580b5875fd2e2089fd4112ba"
+    }
+  ],
+  "annotations": [
+    {
+      "start": 0,
+      "end": 25.286,
+      "text": "Synthetic CSVs -> Bronze -> Silver -> gated Gold. Baseline: USD 55."
+    },
+    {
+      "start": 25.286,
+      "end": 51.059,
+      "text": "Valid corrections move sales to USD 91. Duplicates add no revenue."
+    },
+    {
+      "start": 51.059,
+      "end": 69.392,
+      "text": "Customer C9 arrives. Sales stay USD 91 until explicit replay."
+    },
+    {
+      "start": 69.392,
+      "end": 87.997,
+      "text": "Explicit replay admits the seven-dollar line: USD 98 / 8 units / 5 orders."
+    },
+    {
+      "start": 87.997,
+      "end": 117.349,
+      "text": "Eight historical rejects: seven unresolved, one resolved after replay."
+    },
+    {
+      "start": 117.349,
+      "end": 129.517,
+      "text": "Resolved A4/1 remains traceable to batch2, orders.csv, record 2."
+    }
+  ],
+  "font": "C:\\Windows\\Fonts\\segoeui.ttf",
+  "ffmpeg_version": "7.1-essentials_build-www.gyan.dev",
+  "sha256": "2d0097d0c9e5378def56f1e2910e29b80dce20ffb20f7e2f3fe5855cb4b78980",
+  "audio": "None; explanatory annotations are not a transcript of speech",
+  "review": "Full decode passed; visual review is recorded separately"
+}

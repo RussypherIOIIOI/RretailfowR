@@ -4,7 +4,7 @@
 
 The former `workspace` catalog no longer exists. The exact approved schema/volume grants were applied in `tmc_solutions_jvs`, and existing job `1055508848756404` was updated to that catalog while retaining M2M principal `jarvis-cli-m2m` and concurrency one. All five demo runs succeeded, including the identical rerun. Use the current catalog in the operational examples below. Review existing state before any submission. Strict bundle validation passes without warnings; bundle deployment remains unexecuted.
 
-Use the [current status, actual run IDs and remaining approval](../evidence/release-20261030/README.md). SQL dataset checks passed and the real dashboard export exists. Full corrected acceptance passed; do not duplicate its successful run. The next approval is private publisher-mode dashboard publication, not broader catalog grants. Do not switch the job to the admin identity. The sections below describe current operation; original failures remain in the historical evidence.
+Use the [current launch evidence](../evidence/release-20261106/README.md) and [retained pipeline run IDs](../evidence/release-20261030/README.md). SQL dataset checks passed and the real dashboard export exists. Full corrected acceptance passed; do not duplicate its successful run. Private publisher-mode publication was approved and completed on November 4; publisher identity, ACL and rendered behavior were independently verified on November 6. Do not switch the job to the admin identity. The sections below describe current operation; original failures remain in the historical evidence.
 
 ## Actual deployment
 
@@ -128,7 +128,7 @@ The Gold rejected_records view includes each ever-rejected occurrence once with 
 
 ## Finish dashboard and portfolio evidence
 
-The dashboard and real export already exist, and all four SQL datasets passed against demo04. Follow [the remaining release procedure](release-resume.md) to recheck access, obtain the exact private publication approval if still absent, verify rendered widgets and filters, and capture authentic media. Keep the live definition and committed export synchronized.
+The dashboard and real export already exist, and all four SQL datasets passed against demo04. The [release verification procedure](release-resume.md) records observed rendered interactions, source provenance and authentic media. Keep the live definition and committed export synchronized.
 
 Source was published on 2026-10-16 to [RussypherIOIIOI/RretailfowR](https://github.com/RussypherIOIIOI/RretailfowR), preserving its initial commit and owner-selected GPL-3.0 license. The local main branch tracks origin/main. Credentials and local deployment state remain excluded.
 

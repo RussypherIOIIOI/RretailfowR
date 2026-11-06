@@ -10,7 +10,7 @@ Test layers establish different facts. Local Python success does not establish D
 | Static/build | Ruff; Python build | Source lint and distributable wheel | Passed |
 | Real Spark | tests/spark_acceptance.py via notebooks/spark_checks.py | Runtime validation, FK joins, selection and typed projection | Nine checks passed |
 | Persisted Delta | tests/delta_acceptance.py via notebooks/integration.py | MERGE, ledgers, snapshots, retries, replay and recovery assertions | Full isolated acceptance passed, plus five real demo jobs; [complete output](../evidence/release-20261030/delta-acceptance-passed.json) |
-| Dashboard | Execute dashboard/*.sql and test widgets | SQL compatibility, pinned snapshots, metrics and filters | Four datasets and 12 SQL checks passed; real export retained; rendered publication approval pending |
+| Dashboard | Execute dashboard/*.sql and test widgets | SQL compatibility, pinned snapshots, metrics and filters | Four datasets, 12 fresh SQL checks and rendered controls/history/reset/reload passed; [UI receipts](../evidence/release-20261106/dashboard-ui.json) |
 | GitHub CI | .github/workflows/ci.yml | Repeat local checks and wheel build in hosted CI | Passed on acceptance source `f43dcc2`; [run](https://github.com/RussypherIOIIOI/RretailfowR/actions/runs/41150023703) |
 
 Local commands are in [quickstart](quickstart.md). Remote submission and output inspection are in [runbook](runbook.md). The Spark script needs the deployment state and wheel from scripts.deploy; it does not create project tables. The Delta script creates an explicitly selected, new test namespace and intentionally mutates test data.
@@ -45,7 +45,7 @@ Expected progression: 55.00 / 4 units / 2 orders / 3 lines; 91.00 / 7 / 4 / 5; a
 
 The Delta suite interrupts after Bronze, after customer evaluation freeze, after customer merge, after Silver, during Gold staging and after complete staging. It forces a failing reject threshold and interrupts rollback after one real table restore, requiring the retry to restore all three tables. Full attempt C passed; the two preceding actual failures are retained alongside the successful output.
 
-Exact frozen outcomes and interrupted three-table rollback/resume executed in attempt B; that run later failed when the test used unsupported append-mode file I/O on the volume. Full corrected attempt C passed using sequential fixture rewriting and a fresh logical table/file namespace within the same approved schemas/volume. It also passed historical snapshot totals, original C9 rejection retention and malformed records remaining rejected. [Current evidence](../evidence/release-20261030/README.md). Still unproven: multi-writer behavior (unsupported), large data performance, rendered dashboard cross-refresh behavior and long-term snapshot cleanup.
+Exact frozen outcomes and interrupted three-table rollback/resume executed in attempt B; that run later failed when the test used unsupported append-mode file I/O on the volume. Full corrected attempt C passed using sequential fixture rewriting and a fresh logical table/file namespace within the same approved schemas/volume. It also passed historical snapshot totals, original C9 rejection retention and malformed records remaining rejected. [Current evidence](../evidence/release-20261030/README.md). Still unproven: multi-writer behavior (unsupported), large data performance, long-term snapshot cleanup.
 
 ## Change verification
 

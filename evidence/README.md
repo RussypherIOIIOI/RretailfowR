@@ -1,6 +1,8 @@
 # Evidence index
 
-Latest runtime evidence: [October 30-31 release attempt](release-20261030/README.md), including applied scoped grants, five successful demo runs, full isolated Delta acceptance, strict bundle validation, four dashboard datasets and 12 SQL checks. Remaining runtime gates are private dashboard publication and rendered checks. [Resume checklist](../docs/release-resume.md).
+Current launch evidence: [6 November live API/UI, local checks, review and media receipts](release-20261106/README.md). Earlier permission/publication blockers below are historical.
+
+Retained pipeline acceptance: [October 30-31 release attempt](release-20261030/README.md), including applied scoped grants, five successful demo runs and full isolated Delta acceptance. The [November 6 launch evidence](release-20261106/README.md) adds fresh SQL, published identity/ACL, rendered checks and reviewed media. [Verification procedure](../docs/release-resume.md).
 
 Evidence is dated 2026-10-15 unless its contents say otherwise. These files record different stages of development; an earlier run is not the final verification result. [Verification summary](../docs/verification.md).
 

@@ -4,7 +4,7 @@
 
 RetailFlow turns deliberately messy synthetic CSVs into a dimensional sales model. Its central demonstration is a second batch containing corrections, duplicates, conflicts and invalid records: valid corrections should update sales, duplicates should not inflate them, and rejected rows should remain explainable.
 
-**Release status · 31 October 2026:** scoped permissions are repaired, all five real six-task demo jobs succeeded, and full isolated Delta acceptance **passed**, including interrupted rollback and exact frozen outcomes. SQL verified persisted **55.00 → 91.00 → 91.00 → 98.00**, rejection history and rerun conservation. All four Gold datasets and 12 SQL checks passed; the actual dashboard definition is exported. Rendered dashboard checks and recording await approval for private publisher-mode publication. [Current evidence and exact remaining gate](evidence/release-20261030/README.md).
+**Release verification · 6 November 2026:** the existing six-task job and private published dashboard are verified. Live APIs confirm the approved publisher/warehouse, unchanged creator/admin audience, single writer and retained successful runs. Rendered sales/quality controls, historical 55 → 91 → 91 → 98 results, provenance, reset and refresh passed. [Launch evidence](evidence/release-20261106/README.md) includes genuine captures and the [2:10 silent snapshot walkthrough](docs/assets/retailflow-walkthrough.mp4). Final source-publication receipts are linked from that report.
 
 **Stack:** Databricks · PySpark · SQL · Delta Lake · Unity Catalog · Lakeflow Jobs · Databricks AI/BI dashboard specification. Data workloads run in Databricks; local Python supports development and deployment. No separate frontend.
 
@@ -94,4 +94,4 @@ V1 uses USD, Type 1 dimensions, full Gold recomputation, no deletes/returns and 
 
 Source: [RussypherIOIIOI/RretailfowR](https://github.com/RussypherIOIIOI/RretailfowR). The repository preserves the owner-selected [GPL-3.0 license](LICENSE).
 
-Next: approve the private dashboard publication, verify rendered widgets and filters, capture dashboard/video evidence, then complete PR review and merge. The pipeline and SQL gates already have retained passing evidence. [Release checklist](docs/release-checklist.md) · [limits and roadmap](docs/limitations-and-roadmap.md) · [contributing](CONTRIBUTING.md).
+The bounded synthetic-data installation is available privately; public screenshots and the silent walkthrough require no workspace access. [Release receipts](https://github.com/RussypherIOIIOI/RretailfowR/releases) track final PR/main CI and public media verification. [Release checklist](docs/release-checklist.md) · [limits and roadmap](docs/limitations-and-roadmap.md) · [contributing](CONTRIBUTING.md).
